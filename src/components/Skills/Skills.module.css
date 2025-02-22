@@ -1,0 +1,279 @@
+/* Secțiunea principală */
+.skillsSection {
+  position: relative;
+  width: 100%;
+  min-height: 80vh;
+  overflow: hidden;
+  margin: 0rem auto 0 auto;
+  border-top: 2px dashed #888;    /* linie deasupra */
+  background-size: cover;
+  
+  background: rgba(0,0,0,0.4);
+}
+
+/* Fundal: imagine + overlay */
+.bgImage {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+}
+
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+/* Containerul principal (stânga/dreapta + titlu) */
+.content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 4rem 2rem;
+  height: 100%;
+  color: #fff;
+  
+}
+
+/* Stânga: carduri */
+.leftSide {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  max-width: 30%;
+}
+
+.card {
+  padding: 1rem;
+  border-radius: 8px;
+  position: relative;
+}
+
+/* Frame wrapper */
+.frameWrapper {
+  position: relative;
+  width: 250px;
+  margin-bottom: 1rem;
+}
+
+.frameImage {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.frameText {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: #fff;
+  text-transform: uppercase;
+  font-weight: 700;
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+.cardParagraph {
+  font-size: 1rem;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Dreapta: laptop + skill-uri */
+.rightSide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Laptop mai mare (550px) */
+.laptopContainer {
+  position: relative;
+  width: 550px;
+  height: auto;
+}
+
+.laptopImage {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+/* Containerul skill-urilor, centrat pe ecranul laptopului (DESKTOP) */
+.laptopSkills {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 75%;
+  height: 89%;
+  background: rgba(246, 246, 248, 0.08);
+  border-radius: 6px;
+  padding: 1rem;
+
+  display: flex;
+  flex-direction: column;
+}
+
+/* Titlu "MY SKILLS" */
+.laptopSkillsTitle {
+  margin: 0;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+/* Grid cu 3 categorii (Front End, Back End, UI/UX) */
+.skillsGrid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1rem;
+  flex: 1;
+}
+
+.category {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 4px;
+  padding: 0.5rem;
+}
+
+.category h4 {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  margin: 0 0 0.5rem 0;
+}
+
+.category ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.category li {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.7rem;
+  margin-bottom: 0.3rem;
+}
+
+/* Titlul mare la baza secțiunii (desktop) */
+.title {
+  position: absolute;
+  bottom: -10rem;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 5rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  margin: 0;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+}
+
+/* 
+   ===================================================================================
+   RESPONSIVITATE
+   ===================================================================================
+*/
+
+/* (ex.) Până la 1024px (tablete) */
+@media (max-width: 1024px) {
+  .content {
+    padding: 3rem 1.5rem;
+    gap: 2rem;
+  }
+  .leftSide {
+    max-width: 60%;
+  }
+  .laptopContainer {
+    width: 450px;
+  }
+  .skillsGrid {
+    grid-template-columns: 1fr 1fr; /* două coloane */
+  }
+  .title {
+    bottom: -6rem;
+    font-size: 3rem;
+  }
+}
+
+/* Până la 768px => layout pe coloane 
+   + skills SUB laptop */
+   @media (max-width: 768px) {
+    .content {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 2rem;
+    }
+  
+    .leftSide {
+      max-width: 100%;
+      margin-bottom: 2rem;
+    }
+  
+    .rightSide {
+      width: 100%;
+      margin-bottom: 2rem;
+      display: flex;
+      justify-content: center; /* opțional, dacă vrei să poziționezi laptopul centrat */
+    }
+  
+    .laptopContainer {
+      width: 100%;
+      position: static;
+    }
+  
+    .laptopImage {
+      width: 100%;
+      height: auto;
+      margin-bottom: 1rem;
+    }
+  
+    /* Aici facem containerul de skill-uri static și centrat */
+    .laptopSkills {
+      position: static;
+      transform: none;
+      top: auto;
+      left: auto;
+  
+      /* Pentru a putea fi centrat, îi dăm o lățime maximă și auto left/right */
+      width: 90%;         /* sau 100%, dar atunci nu se mai vede centrat */
+      max-width: 400px;   /* ajustează după preferințe */
+      margin: 0 auto;
+  
+      background: rgba(246, 246, 248, 0.08);
+      border-radius: 6px;
+      padding: 1rem;
+    }
+  
+    .skillsGrid {
+      grid-template-columns: 1fr;
+    }
+  
+    .title {
+      position: static;
+      transform: none;
+      margin-top: 1rem;
+      font-size: 2.5rem;
+      text-align: center;
+      bottom: auto;
+    }
+  }
+  

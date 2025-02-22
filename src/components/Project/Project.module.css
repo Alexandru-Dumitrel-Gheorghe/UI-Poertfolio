@@ -1,0 +1,197 @@
+/* ------------------------------
+   Containerul principal
+------------------------------ */
+.container {
+  
+  background: rgba(0,0,0,0.4);
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  /* Pentru a lăsa spațiu pe margini */
+  padding: 2rem;
+  box-sizing: border-box;
+  margin: 0rem auto 0 auto;
+  border-bottom: 2px dashed #888;
+}
+
+/* ------------------------------
+   Coloana stângă
+------------------------------ */
+.leftColumn {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  /* Un pic de spațiu între laptop și text */
+  gap: 2rem;
+}
+
+/* Imaginea din stânga (Laptop 1) */
+.laptop1Container {
+  width: 80%;
+  display: flex;
+  justify-content: center;
+}
+
+/* ------------------------------
+   Text (descriere + liste)
+------------------------------ */
+.textSection {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin: 20px 0 1rem 80px; /* margin-top: 20px; margin-left: 80px; */
+  font-size: 1.4rem;
+  line-height: 1.4;
+}
+
+.description {
+  bottom: 10%;
+  right: 10%;
+  width: 40rem; 
+  max-width: 600px;
+  margin: 0 0 1rem 0;
+  font-size: 1.4rem;
+  line-height: 1.4;
+}
+
+.listsWrapper {
+  display: flex;
+  gap: 2rem;
+}
+
+.technologies,
+.features {
+  font-size: 1.2rem;
+}
+
+.technologies ul,
+.features ul {
+  list-style-type: disc;
+  margin-left: 1.2rem;
+  margin-top: 0.5rem;
+  font-size: 1rem;
+}
+
+/* Butoane sub text */
+.buttonsContainer {
+  margin-top: 2rem;
+  display: flex;
+  gap: 1.5rem;
+}
+
+.button {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  text-decoration: none;
+  color: #fff;
+  background-color: #00b894;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.button:hover {
+  background-color: #333;
+  color: #fff;
+}
+
+/* ------------------------------
+   Coloana dreaptă
+------------------------------ */
+.rightColumn {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  /* Vom împinge laptopul în jos, iar titlul rămâne sus */
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 2rem;
+  /* Mic spațiu la dreapta */
+  padding-right: 2rem;
+  margin-bottom: 50px;
+}
+
+.title {
+  font-size: 5rem;
+  line-height: 1.2;
+  font-weight: 700;
+  text-transform: uppercase;
+  margin: 120px 70px 0 0; /* margin-top: 80px; margin-right: 80px; */
+}
+
+.laptop2Container {
+  width: 60%;
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 80px;
+  margin-right: 120px;
+}
+
+/* ------------------------------
+   Stil comun pentru ambele imagini
+------------------------------ */
+.laptopImage {
+  max-width: 70%;
+  height: auto;
+}
+
+/* ------------------------------
+   MEDIA QUERY: Ecrane mici
+   (ex: sub 768px)
+------------------------------ */
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+    padding: 1rem;
+  }
+
+  .leftColumn,
+  .rightColumn {
+    width: 100%;
+    align-items: center;
+    margin: 0;
+    padding: 0;
+  }
+
+  .textSection {
+    margin-left: 0;
+    margin-right: 0;
+    font-size: 1.2rem;
+    line-height: 1.4;
+  }
+
+  .description {
+    width: 100%;
+    max-width: 100%;
+    font-size: 1.2rem;
+  }
+
+  .listsWrapper {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .laptop1Container,
+  .laptop2Container {
+    width: 100%;
+    justify-content: center;
+    margin: 1rem 0;
+  }
+
+  .laptopImage {
+    max-width: 100%;
+  }
+
+  .title {
+    font-size: 3rem;
+    margin: 1rem 0;
+    text-align: center;
+  }
+
+  .buttonsContainer {
+    justify-content: center;
+  }
+}

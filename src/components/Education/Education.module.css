@@ -1,0 +1,135 @@
+/* Secțiunea principală cu fundal */
+.educationSection {
+    position: relative;
+    width: 100%;
+    min-height: 70vh;
+    color: #fff;
+    overflow: hidden;
+    padding: 4rem 2rem;
+    box-sizing: border-box;
+  }
+  
+  /* Overlay (opțional) */
+  .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.4);
+    z-index: 1;
+  }
+  
+  /* Wrapper pentru coloane + titlu vertical */
+  .contentWrapper {
+    position: relative;
+    z-index: 2; 
+    max-width: 1200px; 
+    margin: 0 auto;
+  }
+  
+  /* Două coloane side by side, 
+     + linie verticală la jumătate (pseudo-element) */
+  .columns {
+    display: flex;
+    gap: 4rem;
+    justify-content: space-between;
+    position: relative; /* necesar pentru pseudo-element */
+  }
+  
+  /* Linia verticală - pseudo-element */
+  .columns::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;               /* la jumătatea containerului */
+    width: 1px;              /* grosimea liniei */
+    background-color: #fff;  /* culoarea liniei */
+    opacity: 0.4;            /* transparență, dacă vrei */
+    transform: translateX(-50%);
+  }
+  
+  /* Fiecare coloană */
+  .column {
+    flex: 1;
+  }
+  
+  /* Stil pentru heading, subheading, paragraph */
+  .heading {
+    font-size: 1.8rem;
+    margin: 0 0 0.5rem;
+    font-weight: 700;
+  }
+  
+  .subHeading {
+    font-size: 1rem;
+    margin: 0 0 1rem;
+    color: #ccc;
+  }
+  
+  .paragraph {
+    font-size: 1.2rem;
+    line-height: 2;
+    margin: 0 0 2rem;
+  }
+  
+  /* Titlu vertical "EDUCATION" => mare, centrat pe verticală, la dreapta */
+  .verticalTitle {
+    position: absolute;
+    top: 70%;        /* punct de referință vertical */
+    right: -6rem;    /* mai la dreapta, ex. -6rem */
+    transform: translateY(-50%) rotate(180deg);
+    transform-origin: center right;
+    font-size: 6rem; 
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    color: #fff;
+    writing-mode: vertical-rl; 
+    text-orientation: mixed;
+    z-index: 3;
+  }
+  
+  /* RESPONSIVITATE */
+  
+  /* Sub 1024px */
+  @media (max-width: 1024px) {
+    .heading {
+      font-size: 1.5rem;
+    }
+    .verticalTitle {
+      font-size: 5rem;
+      right: -3rem; /* reduce distanța la dreapta */
+    }
+  }
+  
+  /* Sub 768px => coloanele devin verticale, ascundem (sau modificăm) titlul vertical */
+  @media (max-width: 768px) {
+    .columns {
+      flex-direction: column;
+      gap: 2rem;
+    }
+  
+    .columns::after {
+      display: none; /* ascundem linia verticală la mobil, dacă dorim */
+    }
+  
+    .verticalTitle {
+      display: none; /* sau transform-o în orizontal dacă dorești */
+    }
+  }
+  
+  /* Sub 480px */
+  @media (max-width: 480px) {
+    .heading {
+      font-size: 1.3rem;
+    }
+    .subHeading {
+      font-size: 0.9rem;
+    }
+    .paragraph {
+      font-size: 0.95rem;
+    }
+  }
+  

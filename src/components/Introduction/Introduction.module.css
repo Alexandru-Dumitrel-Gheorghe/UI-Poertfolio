@@ -1,0 +1,35 @@
+.introduction {
+    position: relative;
+    width: 100%;
+    height: auto; /* dacă SVG-ul determină înălțimea */
+    background: #000;
+  }
+  
+  .introImage {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+  
+  .textContainer {
+    /* Ca să așezi textul peste SVG, poți folosi position absolute,
+       dacă vrei să calce exact pe design */
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    color: #fff;
+  }
+  
+  .title {
+    font-size: 3rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+  }
+  
+  .subtitle {
+    font-size: 1.2rem;
+    margin-top: 0.5rem;
+  }
+  

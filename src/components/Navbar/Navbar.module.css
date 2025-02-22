@@ -1,0 +1,141 @@
+/* Navbar-ul fix, pe toată lățimea, deasupra */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 999;
+  
+  /* Transparent la început */
+  background-color: transparent;
+  /* Efect de tranziție la background */
+  transition: background-color 0.4s ease;
+  
+  padding: 0.5rem 1rem;
+  color: #fff;
+}
+
+/* Clasa .scrolled se aplică după 50px scroll */
+.scrolled {
+  /* Un fundal negru semi-transparent */
+  background-color: rgba(17, 17, 17, 0.85);
+}
+
+.navContent {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px; /* sau cât dorești */
+  margin: 0 auto;
+}
+
+/* Link-urile (stânga) */
+.linksContainer {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.linksContainer a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.linksContainer a:hover {
+  color: #ccc;
+}
+
+/* Iconițele (dreapta) */
+.socialLinks {
+  display: flex;
+  gap: 1rem;
+}
+
+.socialLinks a {
+  color: #fff;
+  font-size: 1.2rem;
+  transition: color 0.3s ease;
+}
+
+.socialLinks a:hover {
+  color: #ccc;
+}
+
+/* Butonul hamburger (mobil) */
+.mobileMenuIcon {
+  display: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+/* Meniul mobil, full screen overlay */
+.mobileMenu {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 80%;
+  height: 100vh;
+  background-color: #111;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.closeIcon {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+.mobileMenuContent {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  text-align: center;
+}
+
+.mobileMenuContent a {
+  color: #fff;
+  font-size: 1.5rem;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.mobileMenuContent a:hover {
+  color: #ccc;
+}
+
+.mobileSocialLinks {
+  display: flex;
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
+
+.mobileSocialLinks a {
+  color: #fff;
+  font-size: 1.5rem;
+  transition: color 0.3s ease;
+}
+
+.mobileSocialLinks a:hover {
+  color: #ccc;
+}
+
+/* Responsivitate */
+@media (max-width: 768px) {
+  /* Ascundem link-urile și iconițele (desktop) */
+  .linksContainer {
+    display: none;
+  }
+  .socialLinks {
+    display: none;
+  }
+  /* Afișăm butonul hamburger */
+  .mobileMenuIcon {
+    display: block;
+  }
+}

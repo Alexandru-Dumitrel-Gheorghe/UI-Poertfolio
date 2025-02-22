@@ -1,0 +1,168 @@
+/* Container principal: flex pe 2 coloane */
+.container {
+    display: flex;
+    min-height: 100vh;
+    color: #fff;            /* text alb */
+    padding: 4rem;
+    box-sizing: border-box;
+    
+    background: rgba(0,0,0,0.4);
+  margin: 0rem auto 0 auto;
+  border-bottom: 2px dashed #888;
+  }
+  
+  /* ==================================
+     Coloana stângă
+  ================================== */
+  .leftColumn {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    margin-right: 2rem; /* un pic de spațiu față de col. dreaptă */
+  }
+  
+  .title {
+    font-size: 5rem;
+    line-height: 1.2;
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+  
+  .description {
+    font-size: 1.3rem;
+    line-height: 1.6;
+    max-width: 600px;
+    margin-top: 5rem;
+  }
+  
+  /* Imaginea wide din stânga (sub text) */
+  .imageLeft {
+    width: 100%;
+    max-width: 530px; /* ajustează după preferință */
+    
+    margin-top: 6rem;
+  }
+  
+  /* ==================================
+     Coloana dreaptă
+  ================================== */
+  .rightColumn {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    /* Pentru ecrane mari, ținem margin-left 600px */
+    margin-left: 600px;
+    margin-top: 40px;
+  }
+  
+  /* Imaginea "Konto Erstellen" */
+  .imageRight {
+    width: 100%;
+    max-width: 300px; /* mai îngustă decât cea din stânga */
+    margin-bottom: 2rem;
+  }
+  
+  /* Lista cu funcționalități */
+  .features {
+    max-width: 350px; /* aproximativ lățimea imaginii de sus */
+  }
+  
+  .featuresTitle {
+    font-size: 1.6rem;
+    margin-bottom: 1rem;
+  }
+  
+  .featuresList {
+    list-style: disc;
+    margin-left: 1.5rem;
+    line-height: 1.6;
+  }
+  
+  /* =============================
+     Butoane Live Demo / GitHub
+  ============================= */
+  .buttonsContainer {
+    margin-top: 2rem;
+    display: flex;
+    gap: 1rem; /* spațiere între butoane */
+  }
+  
+  .button {
+    display: inline-block;
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    font-weight: 600;
+    text-decoration: none;
+    color: #fff;
+    background-color: #2895d4;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+  }
+  
+  .button:hover {
+    background-color: #333;
+    color: #fff;
+  }
+  
+  /* 
+     ==================================
+     MEDIA QUERY 1:
+     Ecrane medii (sub 1200px)
+     ==================================
+     - Micșorăm margin-left pentru .rightColumn 
+     - Redimensionăm puțin titlul ca să nu iasă din ecran
+  */
+  @media (max-width: 1200px) {
+    .rightColumn {
+      margin-left: 4rem;   /* în loc de 600px */
+      margin-top: 4rem;    /* puțin spațiu de sus */
+    }
+  
+    .title {
+      font-size: 4rem;
+    }
+  }
+  
+  /* 
+     ==================================
+     MEDIA QUERY 2:
+     Ecrane mici (sub 768px)
+     ==================================
+     - Trecem la un layout pe o singură coloană
+  */
+  @media (max-width: 768px) {
+    .container {
+      flex-direction: column;
+      padding: 2rem;
+    }
+  
+    .leftColumn, 
+    .rightColumn {
+      margin-right: 0;
+      margin-left: 0;
+      margin-bottom: 2rem;
+      margin-top: 0;
+    }
+  
+    .title {
+      font-size: 2.5rem;
+    }
+  
+    .description {
+      font-size: 1.1rem;
+      margin-top: 2rem; /* ceva spațiu sub titlu */
+    }
+  
+    .imageLeft, 
+    .imageRight {
+      max-width: 100%;
+      margin-top: 1rem;
+    }
+  
+    .features {
+      max-width: 100%;
+    }
+  }
+  

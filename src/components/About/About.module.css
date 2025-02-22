@@ -1,0 +1,89 @@
+.aboutSection {
+  display: flex;
+  position: relative;
+  min-height: 100vh;
+  padding: 4rem;
+  box-sizing: border-box;
+  color: #fff;
+  background: rgba(0,0,0,0.4);
+}
+
+/* Coloana stângă: Text */
+.leftSide {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* sau flex-start, după cum preferi */
+  margin-right: 2rem;
+}
+
+.introTitle {
+  font-size: 4rem;
+  text-transform: uppercase;
+  margin-bottom: 2rem;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.paragraph {
+  font-size: 1.3rem;
+  line-height: 1.6;
+  max-width: 600px;
+  margin-bottom: 1.5rem;
+}
+
+/* Coloana dreaptă: Video */
+.rightSide {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cubeVideo {
+  width: 100%;
+  max-width: 600px; /* ajustează după cum dorești */
+  border: 2px solid #333;
+  border-radius: 8px;
+}
+
+/* Linie de separare sub secțiune (opțional) */
+.sectionDivider {
+  width: 80%;
+  height: 2px;
+  background-color: #666;
+  margin: 4rem auto 0 auto; /* margin-top 4rem, centrat orizontal */
+  border-radius: 1px;
+}
+
+/* ==========================================
+   MEDIA QUERY: ecrane sub 768px
+========================================== */
+@media (max-width: 768px) {
+  .aboutSection {
+    flex-direction: column;
+    padding: 2rem;
+  }
+
+  .leftSide {
+    margin-right: 0;
+    margin-bottom: 2rem;
+  }
+
+  .introTitle {
+    font-size: 2.5rem;
+  }
+
+  .paragraph {
+    font-size: 1.1rem;
+  }
+
+  .cubeVideo {
+    max-width: 100%;
+  }
+
+  .sectionDivider {
+    width: 100%;
+    margin: 2rem 0 0 0;
+  }
+}

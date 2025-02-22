@@ -1,38 +1,90 @@
-.App {
-  text-align: center;
+/* app.css */
+
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* Fundal cosmic */
+body {
+  /* Fundal de bază */
+  background-color: #0a0a0a;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-attachment: fixed; 
+  /* menține fundalul fix la scroll (opțional) */
+
+  /*
+    Layer 1: 'nebuloase' radiale, foarte transparente, 
+    la diverse poziții
+  */
+  background-image: 
+    radial-gradient(
+      circle at 20% 30%,         /* poziție */
+      rgba(255, 0, 255, 0.08),   /* culoare (magenta) + transparență */
+      transparent 40%
+    ),
+    radial-gradient(
+      circle at 70% 40%, 
+      rgba(0, 255, 255, 0.08),   /* cian */
+      transparent 35%
+    ),
+    radial-gradient(
+      circle at 40% 80%, 
+      rgba(255, 255, 0, 0.06),   /* galben */
+      transparent 40%
+    ),
+
+  /*
+    Layer 2: câteva "stele" punctuale,
+    folosind radial-gradient(1px la 1px)
+    => mic punct alb cu transparent în jur
+  */
+    radial-gradient(1px 1px at 10% 20%,  rgba(255,255,255,0.6), transparent),
+    radial-gradient(1px 1px at 25% 90%,  rgba(255,255,255,0.7), transparent),
+    radial-gradient(1px 1px at 80% 15%,  rgba(255,255,255,0.5), transparent),
+    radial-gradient(1px 1px at 60% 50%,  rgba(255,255,255,0.6), transparent),
+    radial-gradient(1px 1px at 90% 85%,  rgba(255,255,255,0.8), transparent),
+    radial-gradient(1px 1px at 50% 10%,  rgba(255,255,255,0.5), transparent);
+
+  /* Suprapunere a straturilor prin screen (sau lighten) */
+  background-blend-mode: screen;
+  color: #fff;  /* text alb */
+  font-family: sans-serif;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+
+/* 
+  Scrollbar styling (Chrome, Safari, Edge) 
+  ======================
+*/
+::-webkit-scrollbar {
+  width: 12px;                /* lățimea scrollbar-ului */
+  background-color: #222;     /* fundal general scrollbar */
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+::-webkit-scrollbar-track {
+  background-color: #333;     /* fundal șina scrollbar */
 }
 
-.App-link {
-  color: #61dafb;
+::-webkit-scrollbar-thumb {
+  background-color: #666;     /* thumb-ul scrollbar */
+  border-radius: 6px;         /* colțuri rotunjite */
+  border: 2px solid #333;     /* spațiu în jur, pentru efect */
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+::-webkit-scrollbar-thumb:hover {
+  background-color: #555;     /* hover mai deschis */
+}
+
+/*
+  Scrollbar styling pentru Firefox 
+  ======================
+  - scrollbar-color: <thumb> <track>
+  - scrollbar-width: auto | thin
+*/
+html {
+  scrollbar-color: #666 #333; /* thumb la #666, track la #333 */
+  scrollbar-width: thin;      /* lățime subțire */
 }
