@@ -13,7 +13,7 @@ const ChatBot = () => {
 
   // API-Key from .env
   const API_KEY = process.env.REACT_APP_OPENAI_API_KEY;
-  console.log('API KEY from .env:', API_KEY);
+  
 
   // Send message to ChatGPT
   const handleSendMessage = async () => {
