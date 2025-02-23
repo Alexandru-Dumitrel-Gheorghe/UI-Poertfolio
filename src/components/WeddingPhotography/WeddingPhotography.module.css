@@ -59,10 +59,10 @@
   */
   .laptopRight {
     position: absolute;
-    top: 20%; /* aprox, ajustează */
-    right: 10%; /* aprox, ajustează */
+    top: 10%; /* aprox, ajustează */
+    right: 9%; /* aprox, ajustează */
     width: 45rem; /* ușor mai mare decât left */
-    max-width: 600px;
+    max-width: 500px;
     height: auto;
     z-index: 5;
   }
@@ -74,17 +74,26 @@
   */
   .infoBlock {
     position: absolute;
-    bottom: 10%; /* aprox, ajustează */
-    right: 10%;
+    bottom: 8%; /* aprox, ajustează */
+    right: 9%;
     width: 40rem; /* Ajustează pentru a încăpea textul */
-    max-width: 600px;
+    max-width: 445px;
     z-index: 10;
+    padding: 2rem;
+    border-radius: 10px;
+    transition: transform 0.3s ease;
+  }
+  
+  .infoBlock:hover {
+    transform: scale(1.02); /* ușoară mărire la hover */
   }
   
   .description {
     margin: 0 0 1rem 0;
     font-size: 1.4rem;
     line-height: 1.4;
+    color: #fff;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
   }
   
   .listsContainer {
@@ -96,13 +105,37 @@
     margin: 0 0 0.5rem 0;
     font-size: 1.1rem;
     text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #ffdddd;
+    position: relative;
+  }
+  
+  .listsContainer h3::after {
+    content: "";
+    display: block;
+    width: 50%;
+    height: 2px;
+    background: #fff;
+    margin-top: 5px;
+    border-radius: 2px;
   }
   
   .listsContainer ul {
     list-style: disc;
     padding-left: 1.2rem;
     margin: 0;
+    color: #eee;
   }
+  
+  .listsContainer li {
+    margin-bottom: 0.5rem;
+    transition: color 0.3s ease;
+  }
+  
+  .listsContainer li:hover {
+    color: #ffcccb;
+  }
+  
   
   /* 
      ============================================

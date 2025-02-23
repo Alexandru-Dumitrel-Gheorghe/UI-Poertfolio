@@ -1,82 +1,129 @@
-/* ------------------------------
-   Containerul principal
------------------------------- */
-.container {
-  
-  background: rgba(0,0,0,0.4);
-  min-height: 100vh;
+/* 
+ * ------------------------------------------------
+ * 1. Setup general (fond, background, culori)
+ * ------------------------------------------------
+ */
+ .pageWrapper {
   width: 100%;
+  color: #fff;
+  font-family: "Open Sans", sans-serif;
+}
+
+/* 
+ * ------------------------------------------------
+ * 2. Container principal (max-width, layout)
+ * ------------------------------------------------
+ */
+.container {
+
+  margin: 0 auto;
   display: flex;
-  /* Pentru a lăsa spațiu pe margini */
+  gap: 2rem;
   padding: 2rem;
   box-sizing: border-box;
-  margin: 0rem auto 0 auto;
+  background: rgba(0, 0, 0, 0.4);
+  /* O linie discretă sub conținut, opțional */
   border-bottom: 2px dashed #888;
 }
 
-/* ------------------------------
-   Coloana stângă
------------------------------- */
+/* 
+ * ------------------------------------------------
+ * 3. Coloana stângă
+ * ------------------------------------------------
+ */
 .leftColumn {
   flex: 1;
   display: flex;
   flex-direction: column;
+  gap: 2rem; /* spațiu între laptop și text */
   align-items: flex-start;
-  /* Un pic de spațiu între laptop și text */
-  gap: 2rem;
 }
 
 /* Imaginea din stânga (Laptop 1) */
 .laptop1Container {
-  width: 80%;
+  width: 65%;
   display: flex;
   justify-content: center;
+  margin-left: 20px;
 }
 
-/* ------------------------------
-   Text (descriere + liste)
------------------------------- */
+/* 
+ * ------------------------------------------------
+ * 4. Text (descriere + liste)
+ * ------------------------------------------------
+ */
 .textSection {
-  width: 100%;
+  width: 50%;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  margin: 20px 0 1rem 80px; /* margin-top: 20px; margin-left: 80px; */
-  font-size: 1.4rem;
-  line-height: 1.4;
+  font-size: 1.2rem;
+  line-height: 1.6;
+  margin-left: 80px;
+
+  /* Opțional, ceva padding dacă vrei un mic fundal */
+  /* background: rgba(255, 255, 255, 0.05);
+  padding: 1.5rem;
+  border-radius: 8px; */
 }
 
 .description {
-  bottom: 10%;
-  right: 10%;
-  width: 40rem; 
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+  line-height: 1.6;
   max-width: 600px;
-  margin: 0 0 1rem 0;
-  font-size: 1.4rem;
-  line-height: 1.4;
+  margin-left: 20px;
 }
 
+/* Listă tehnologii + funcții */
 .listsWrapper {
   display: flex;
-  gap: 2rem;
+  gap: 3rem;
+  margin-bottom: 1.5rem;
+  margin-left: 10px;
 }
 
 .technologies,
 .features {
+  font-size: 1rem;
+}
+
+.technologies h3,
+.features h3 {
   font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  position: relative;
+}
+
+/* Linie subtitlu decorativă */
+.technologies h3::after,
+.features h3::after {
+  content: "";
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+  width: 65%;
+  height: 2px;
+  background-color: #1aafa8;
+  border-radius: 2px;
 }
 
 .technologies ul,
 .features ul {
   list-style-type: disc;
-  margin-left: 1.2rem;
   margin-top: 0.5rem;
-  font-size: 1rem;
+  line-height: 1.5;
+  margin-left: -20px;
 }
 
-/* Butoane sub text */
+/* 
+ * ------------------------------------------------
+ * 5. Butoane sub text
+ * ------------------------------------------------
+ */
 .buttonsContainer {
-  margin-top: 2rem;
   display: flex;
   gap: 1.5rem;
 }
@@ -90,38 +137,41 @@
   color: #fff;
   background-color: #00b894;
   border-radius: 5px;
-  transition: background-color 0.3s ease;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
 }
 
 .button:hover {
   background-color: #333;
-  color: #fff;
+    color: #fff;
+  transform: translateY(-2px);
 }
 
-/* ------------------------------
-   Coloana dreaptă
------------------------------- */
+/* 
+ * ------------------------------------------------
+ * 6. Coloana dreaptă
+ * ------------------------------------------------
+ */
 .rightColumn {
   flex: 1;
   display: flex;
   flex-direction: column;
-  /* Vom împinge laptopul în jos, iar titlul rămâne sus */
-  justify-content: space-between;
+  justify-content: space-between; /* titlul sus, imaginea jos */
   align-items: flex-end;
   gap: 2rem;
-  /* Mic spațiu la dreapta */
-  padding-right: 2rem;
   margin-bottom: 50px;
 }
 
 .title {
-  font-size: 5rem;
+  font-size: 4rem;
   line-height: 1.2;
   font-weight: 700;
   text-transform: uppercase;
-  margin: 120px 70px 0 0; /* margin-top: 80px; margin-right: 80px; */
+  margin: 80px 70px 0 0;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
 }
 
+/* Imaginea din coloana dreaptă */
 .laptop2Container {
   width: 60%;
   display: flex;
@@ -130,18 +180,26 @@
   margin-right: 120px;
 }
 
-/* ------------------------------
-   Stil comun pentru ambele imagini
------------------------------- */
+/* 
+ * ------------------------------------------------
+ * 7. Stil comun pentru imagini (laptop)
+ * ------------------------------------------------
+ */
 .laptopImage {
   max-width: 70%;
   height: auto;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-/* ------------------------------
-   MEDIA QUERY: Ecrane mici
-   (ex: sub 768px)
------------------------------- */
+.laptopImage:hover {
+  transform: scale(1.05);
+}
+
+/* 
+ * ------------------------------------------------
+ * 8. MEDIA QUERY: Ecrane mici (sub 768px)
+ * ------------------------------------------------
+ */
 @media (max-width: 768px) {
   .container {
     flex-direction: column;
@@ -157,16 +215,11 @@
   }
 
   .textSection {
-    margin-left: 0;
-    margin-right: 0;
-    font-size: 1.2rem;
-    line-height: 1.4;
-  }
-
-  .description {
     width: 100%;
-    max-width: 100%;
-    font-size: 1.2rem;
+    margin-top: 1rem;
+    margin-left: 0;
+    font-size: 1.1rem;
+    line-height: 1.5;
   }
 
   .listsWrapper {
@@ -186,7 +239,7 @@
   }
 
   .title {
-    font-size: 3rem;
+    font-size: 2.5rem;
     margin: 1rem 0;
     text-align: center;
   }
