@@ -1,11 +1,14 @@
 .scrollToTop {
     position: fixed;
-    bottom: 30px;
-    left: 30px;
+    bottom: calc(30px + env(safe-area-inset-bottom, 0));
+    left: calc(30px + env(safe-area-inset-left, 0));
     z-index: 1000;
   }
   
   .button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     background: linear-gradient(135deg, var(--color-primary), var(--color-secondary));
     color: var(--color-white);
     border: none;
@@ -21,6 +24,7 @@
   .button:hover {
     transform: scale(1.1);
   }
+  
   
   /* Responsive adjustments */
   @media (max-width: 768px) {

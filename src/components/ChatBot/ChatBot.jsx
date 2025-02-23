@@ -11,17 +11,17 @@ const ChatBot = () => {
   const [input, setInput] = useState('');
   const chatboxRef = useRef(null);
 
-  // API-Key din .env
+  // API-Key from .env
   const API_KEY = process.env.REACT_APP_OPENAI_API_KEY;
   console.log('API KEY from .env:', API_KEY);
 
-  // Trimite mesaj la ChatGPT
+  // Send message to ChatGPT
   const handleSendMessage = async () => {
     if (input.trim() === '') return;
     const userMessage = input.trim();
     setMessages([...messages, { sender: 'user', text: userMessage }]);
     setInput('');
-    // Adăugăm un mesaj temporar "Denke nach..."
+    // Add a temporary message "Denke nach..."
     setMessages(prev => [...prev, { sender: 'bot', text: 'Denke nach...' }]);
 
     try {
@@ -46,12 +46,12 @@ const ChatBot = () => {
         { sender: 'bot', text: 'Ups! Etwas ist schief gelaufen. Bitte versuche es erneut.' },
       ]);
     } finally {
-      // Derulare la ultimul mesaj
+      // Scroll to the latest message
       chatboxRef.current?.scrollTo(0, chatboxRef.current.scrollHeight);
     }
   };
 
-  // Trimite mesaj la apăsarea Enter
+  // Handle Enter key press
   const handleKeyPress = (e) => {
     if (e.key === 'Enter' && !e.shiftKey) {
       e.preventDefault();
@@ -61,7 +61,7 @@ const ChatBot = () => {
 
   return (
     <div className={styles.container}>
-      {/* Buton de toggle */}
+      {/* Toggle button */}
       <button
         className={`${styles.chatbotToggler} ${isOpen ? styles.open : ''}`}
         onClick={() => setIsOpen(!isOpen)}
@@ -99,16 +99,15 @@ const ChatBot = () => {
                 </button>
               </header>
 
-              {/* Info despre Chatbot */}
+              {/* Info section */}
               <div className={styles.info}>
                 <p>
                   Dieser Chatbot wurde mit der OpenAI API erstellt und bietet Echtzeit-Unterstützung.
-                  Er ist in mein Portfolio integriert, um meine Fähigkeiten in der Entwicklung
-                  interaktiver Webanwendungen zu demonstrieren.
+                  Er ist in mein Portfolio integriert, um meine Fähigkeiten in der Entwicklung interaktiver Webanwendungen zu demonstrieren.
                 </p>
               </div>
 
-              {/* Lista de mesaje */}
+              {/* Message list */}
               <ul ref={chatboxRef} className={styles.chatbox}>
                 {messages.map((msg, index) => (
                   <motion.li
@@ -124,7 +123,7 @@ const ChatBot = () => {
                 ))}
               </ul>
 
-              {/* Zona de input */}
+              {/* Input area */}
               <div className={styles.chatInput}>
                 <textarea
                   value={input}
