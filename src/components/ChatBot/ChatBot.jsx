@@ -1,155 +1,151 @@
-import React, { useState, useRef, useEffect, useCallback } from "react";
-import { motion } from "framer-motion";
-import styles from "./ChatBot.module.css";
-import { FaPaperPlane, FaMicrophone, FaPlus } from "react-icons/fa";
-
-/** Indicator de tastare */
-const TypingIndicator = () => (
-  <div className={styles.typingIndicator}>
-    <span></span>
-    <span></span>
-    <span></span>
-  </div>
-);
-
-/** Lista de sesiuni de chat */
-const ChatSessionList = ({ sessions, activeSessionId, onSelectSession, onNewChat }) => {
-  return (
-    <motion.aside 
-      className={styles.sidebar}
-      initial={{ x: -100, opacity: 0 }}
-      animate={{ x: 0, opacity: 1 }}
-      transition={{ duration: 0.4 }}
-    >
-      <button className={styles.newChatButton} onClick={onNewChat}>
-        <FaPlus /> Neuer Chat
-      </button>
-      <div className={styles.chatList}>
-        {sessions.map((session) => (
-          <button
-            key={session.id}
-            className={`${styles.chatSession} ${session.id === activeSessionId ? styles.activeSession : ""}`}
-            onClick={() => onSelectSession(session.id)}
-          >
-            {session.title}
-          </button>
-        ))}
-      </div>
-    </motion.aside>
-  );
-};
-
-/** Fereastra de chat */
-const ChatWindow = ({ chat, chatboxRef }) => {
-  return (
-    <motion.div 
-      className={styles.chatbot}
-      initial={{ opacity: 0, y: 30 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5 }}
-    >
-      <header className={styles.chatHeader}>
-        <h2>{chat?.title || "Kein Chat ausgewählt"}</h2>
-      </header>
-      <ul className={styles.chatbox} ref={chatboxRef}>
-        {chat?.messages.map((msg) => (
-          <motion.li
-            key={msg.id}
-            className={`${styles.chat} ${styles[msg.sender]}`}
-            initial={{ opacity: 0, x: msg.sender === "outgoing" ? 50 : -50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.3 }}
-          >
-            {msg.sender === "incoming" && <span className={styles.iconBot}>🤖</span>}
-            {typeof msg.text === "object" ? msg.text : <p>{msg.text}</p>}
-          </motion.li>
-        ))}
-      </ul>
-    </motion.div>
-  );
-};
-
-/** Input pentru chat */
-const ChatInput = ({ inputText, onInputChange, onSend, onKeyDown, onVoiceInput, isListening }) => {
-  return (
-    <div className={styles.chatInput}>
-      <textarea
-        placeholder="Nachricht eingeben..."
-        spellCheck="false"
-        value={inputText}
-        onChange={onInputChange}
-        onKeyDown={onKeyDown}
-      ></textarea>
-      <button onClick={onSend} className={styles.sendButton} disabled={!inputText.trim()}>
-        <FaPaperPlane />
-      </button>
-      <button onClick={onVoiceInput} className={styles.voiceButton}>
-        <FaMicrophone className={isListening ? styles.listening : ""} />
-      </button>
-    </div>
-  );
-};
+import React, { useState, useRef } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import styles from './ChatBot.module.css';
+import { FaTimes, FaPaperPlane, FaRobot } from 'react-icons/fa';
 
 const ChatBot = () => {
-  const [chatSessions, setChatSessions] = useState([
-    {
-      id: Date.now(),
-      title: "Chat #1",
-      messages: [{ id: Date.now(), sender: "incoming", text: "Hallo, wie kann ich Ihnen helfen?" }],
-    },
+  const [isOpen, setIsOpen] = useState(false);
+  const [messages, setMessages] = useState([
+    { sender: 'bot', text: 'Hallo! Wie kann ich dir heute helfen?' }
   ]);
-  const [activeChatId, setActiveChatId] = useState(chatSessions[0].id);
-  const [inputText, setInputText] = useState("");
+  const [input, setInput] = useState('');
   const chatboxRef = useRef(null);
 
-  const currentChat = chatSessions.find((chat) => chat.id === activeChatId);
+  // API-Key din .env
+  const API_KEY = process.env.REACT_APP_OPENAI_API_KEY;
+  console.log('API KEY from .env:', API_KEY);
 
-  const addMessageToCurrentChat = useCallback(
-    (message) => {
-      setChatSessions((prevSessions) =>
-        prevSessions.map((chat) =>
-          chat.id === activeChatId ? { ...chat, messages: [...chat.messages, message] } : chat
-        )
-      );
-    },
-    [activeChatId]
-  );
+  // Trimite mesaj la ChatGPT
+  const handleSendMessage = async () => {
+    if (input.trim() === '') return;
+    const userMessage = input.trim();
+    setMessages([...messages, { sender: 'user', text: userMessage }]);
+    setInput('');
+    // Adăugăm un mesaj temporar "Denke nach..."
+    setMessages(prev => [...prev, { sender: 'bot', text: 'Denke nach...' }]);
 
-  const handleSend = () => {
-    if (!inputText.trim()) return;
-    const outgoingMessage = { id: Date.now(), sender: "outgoing", text: inputText };
-    addMessageToCurrentChat(outgoingMessage);
-    setInputText("");
+    try {
+      const response = await fetch('https://api.openai.com/v1/chat/completions', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          Authorization: `Bearer ${API_KEY}`,
+        },
+        body: JSON.stringify({
+          model: 'gpt-3.5-turbo',
+          messages: [{ role: 'user', content: userMessage }],
+        }),
+      });
 
-    const incomingId = Date.now() + 1;
-    const placeholderMessage = { id: incomingId, sender: "incoming", text: <TypingIndicator /> };
-    addMessageToCurrentChat(placeholderMessage);
+      const data = await response.json();
+      const botResponse = data.choices?.[0]?.message?.content || 'Fehler in der Antwort.';
+      setMessages(prev => [...prev.slice(0, -1), { sender: 'bot', text: botResponse }]);
+    } catch (error) {
+      setMessages(prev => [
+        ...prev.slice(0, -1),
+        { sender: 'bot', text: 'Ups! Etwas ist schief gelaufen. Bitte versuche es erneut.' },
+      ]);
+    } finally {
+      // Derulare la ultimul mesaj
+      chatboxRef.current?.scrollTo(0, chatboxRef.current.scrollHeight);
+    }
+  };
 
-    setTimeout(() => {
-      addMessageToCurrentChat({ id: incomingId, sender: "incoming", text: "Ich bin noch in der Entwicklung 😃" });
-    }, 1000);
+  // Trimite mesaj la apăsarea Enter
+  const handleKeyPress = (e) => {
+    if (e.key === 'Enter' && !e.shiftKey) {
+      e.preventDefault();
+      handleSendMessage();
+    }
   };
 
   return (
     <div className={styles.container}>
-      <h1 className={styles.pageTitle}>Chatbot</h1>
-      <div className={styles.chatLayout}>
-        <ChatSessionList
-          sessions={chatSessions}
-          activeSessionId={activeChatId}
-          onSelectSession={setActiveChatId}
-          onNewChat={() => setChatSessions([...chatSessions, { id: Date.now(), title: `Chat #${chatSessions.length + 1}`, messages: [] }])}
-        />
-        <div className={styles.chatContainer}>
-          <ChatWindow chat={currentChat} chatboxRef={chatboxRef} />
-          <ChatInput
-            inputText={inputText}
-            onInputChange={(e) => setInputText(e.target.value)}
-            onSend={handleSend}
-            onKeyDown={(e) => e.key === "Enter" && !e.shiftKey && (e.preventDefault(), handleSend())}
-          />
-        </div>
-      </div>
+      {/* Buton de toggle */}
+      <button
+        className={`${styles.chatbotToggler} ${isOpen ? styles.open : ''}`}
+        onClick={() => setIsOpen(!isOpen)}
+        aria-label={isOpen ? 'Chatbot schließen' : 'Chatbot öffnen'}
+      >
+        <FaRobot />
+      </button>
+
+      <AnimatePresence>
+        {isOpen && (
+          <>
+            <motion.div
+              className={styles.overlay}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setIsOpen(false)}
+              aria-hidden="true"
+            />
+            <motion.div
+              className={styles.chatbot}
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.8 }}
+              transition={{ duration: 0.3 }}
+            >
+              <header className={styles.header}>
+                <h2 className={styles.title}>Chatbot</h2>
+                <button
+                  className={styles.closeButton}
+                  onClick={() => setIsOpen(false)}
+                  aria-label="Chatbot schließen"
+                >
+                  <FaTimes />
+                </button>
+              </header>
+
+              {/* Info despre Chatbot */}
+              <div className={styles.info}>
+                <p>
+                  Dieser Chatbot wurde mit der OpenAI API erstellt und bietet Echtzeit-Unterstützung.
+                  Er ist in mein Portfolio integriert, um meine Fähigkeiten in der Entwicklung
+                  interaktiver Webanwendungen zu demonstrieren.
+                </p>
+              </div>
+
+              {/* Lista de mesaje */}
+              <ul ref={chatboxRef} className={styles.chatbox}>
+                {messages.map((msg, index) => (
+                  <motion.li
+                    key={index}
+                    className={msg.sender === 'user' ? styles.outgoing : styles.incoming}
+                    initial={{ opacity: 0, x: msg.sender === 'user' ? 50 : -50 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    {msg.sender === 'bot' && <span className={styles.botIcon}>🤖</span>}
+                    <p>{msg.text}</p>
+                  </motion.li>
+                ))}
+              </ul>
+
+              {/* Zona de input */}
+              <div className={styles.chatInput}>
+                <textarea
+                  value={input}
+                  onChange={(e) => setInput(e.target.value)}
+                  placeholder="Schreibe eine Nachricht..."
+                  rows={1}
+                  onKeyPress={handleKeyPress}
+                  aria-label="Nachricht eingeben"
+                />
+                <button
+                  onClick={handleSendMessage}
+                  className={styles.sendButton}
+                  aria-label="Nachricht senden"
+                >
+                  <FaPaperPlane />
+                </button>
+              </div>
+            </motion.div>
+          </>
+        )}
+      </AnimatePresence>
     </div>
   );
 };

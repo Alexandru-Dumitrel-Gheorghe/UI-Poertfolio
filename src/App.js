@@ -11,6 +11,7 @@ import Project from "./components/Project/Project";
 import ProjectTaskTimer from "./components/Project/ProjectTaskTimer";
 import Education from "./components/Education/Education";
 import ContactMe from "./components/Contact/ContactMe";
+import ChatBot from "./components/ChatBot/ChatBot";  // Importul ChatBot
 
 function App() {
   return (
@@ -25,7 +26,7 @@ function App() {
       <ProjectTaskTimer />
       <Education />
       <ContactMe />
-      
+      <ChatBot />  {/* ChatBot este adăugat în pagină */}
     </div>
   );
 }
