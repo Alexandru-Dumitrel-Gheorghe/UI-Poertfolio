@@ -4,7 +4,6 @@ html, body {
   margin: 0;
   padding: 0;
   height: 100%;
-  overflow-x: hidden;
 }
 
 /* Fundal cosmic */
@@ -14,6 +13,9 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed; 
+
+  
+  
   /* menține fundalul fix la scroll (opțional) */
 
   /*

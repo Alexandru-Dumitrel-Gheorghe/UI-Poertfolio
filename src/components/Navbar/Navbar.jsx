@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect } from "react"; 
 import styles from "./Navbar.module.css";
 import { motion, AnimatePresence } from "framer-motion";
 import { FaBars, FaTimes, FaLinkedin, FaGithub } from "react-icons/fa";
@@ -15,11 +15,10 @@ const Navbar = () => {
 
   useEffect(() => {
     const handleScroll = () => {
-      // Dacă ai scroll peste 50px, setăm isScrolled = true
       if (window.scrollY > 50) {
-        setIsScrolled(true);
+        setIsScrolled(true); // Fundal opac după 50px scroll
       } else {
-        setIsScrolled(false);
+        setIsScrolled(false); // Fundal transparent la început
       }
     };
     

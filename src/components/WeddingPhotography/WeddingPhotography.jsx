@@ -3,7 +3,7 @@ import styles from "./WeddingPhotography.module.css";
 
 const WeddingPhotography = () => {
   return (
-    <section className={styles.weddingSection}>
+    <section id="WeddingPhotography" className={styles.weddingSection}>
       <div className={styles.containerWedding}>
         <h1 className={styles.mainTitle}>
           Wedding <br />

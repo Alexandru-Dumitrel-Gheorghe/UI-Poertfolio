@@ -1,7 +1,6 @@
 import React from "react";
 import styles from "./Skills.module.css";
 
-// Exemplu: react-icons (asigură-te că ai instalat cu `npm install react-icons`)
 import {
   FaHtml5,
   FaCss3Alt,
@@ -20,12 +19,12 @@ import { TbBrandFigma } from "react-icons/tb";
 const Skills = () => {
   return (
     <section className={styles.skillsSection} id="skills">
-      {/* Fundal și overlay */}
       <div className={styles.bgImage}></div>
       <div className={styles.overlay}></div>
 
       <div className={styles.content}>
-        {/* Stânga: carduri */}
+        <h1 className={styles.title}>SKILLS</h1>
+
         <div className={styles.leftSide}>
           <div className={styles.card}>
             <div className={styles.frameWrapper}>
@@ -62,7 +61,6 @@ const Skills = () => {
           </div>
         </div>
 
-        {/* Dreapta: laptop + skill-uri în interior */}
         <div className={styles.rightSide}>
           <div className={styles.laptopContainer}>
             <img
@@ -71,11 +69,9 @@ const Skills = () => {
               className={styles.laptopImage}
             />
 
-            {/* Containerul skill-urilor */}
             <div className={styles.laptopSkills}>
               <h3 className={styles.laptopSkillsTitle}>MY SKILLS</h3>
               <div className={styles.skillsGrid}>
-                {/* 1) Front End */}
                 <div className={styles.category}>
                   <h4>
                     <FaLaptopCode /> Front End
@@ -99,7 +95,6 @@ const Skills = () => {
                   </ul>
                 </div>
 
-                {/* 2) Back End */}
                 <div className={styles.category}>
                   <h4>
                     <FaServer /> Back End
@@ -112,12 +107,11 @@ const Skills = () => {
                       <SiMongodb /> MongoDB
                     </li>
                     <li>
-                      <FaGitAlt /> Git &amp; GitHub
+                      <FaGitAlt /> Git & GitHub
                     </li>
                   </ul>
                 </div>
 
-                {/* 3) UI/UX */}
                 <div className={styles.category}>
                   <h4>
                     <FaPaintBrush /> UI/UX Design
@@ -135,9 +129,6 @@ const Skills = () => {
             </div>
           </div>
         </div>
-
-        {/* Titlu mare */}
-        <h1 className={styles.title}>PERSONAL SKILLS</h1>
       </div>
     </section>
   );

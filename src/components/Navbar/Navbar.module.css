@@ -13,6 +13,7 @@
   
   padding: 0.5rem 1rem;
   color: #fff;
+  overflow-x: hidden;
 }
 
 /* Clasa .scrolled se aplică după 50px scroll */

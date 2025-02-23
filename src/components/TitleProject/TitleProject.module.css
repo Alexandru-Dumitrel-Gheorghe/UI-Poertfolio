@@ -1,0 +1,82 @@
+.titleContainer {
+  text-align: center;
+  margin: 0 auto;
+  padding: 4rem 1rem;
+  border-top: 2px dashed #888;
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)), url("/public/ui/banner3.png") no-repeat center center;
+  background-size: cover;
+  min-height: 30vh; /* Am mărit înălțimea pentru a face bannerul mai impunător */
+  overflow-x: hidden;
+}
+
+.mainTitle {
+  font-size: 5rem;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  margin-bottom: 1rem;
+  font-weight: 700;
+  color: #fff;
+  animation: fadeIn 2s ease-in-out; /* Animație pentru titlu */
+}
+
+.subtitle {
+  font-size: 1.5rem;
+  color: #ccc;
+  margin-bottom: 2rem;
+}
+
+.arrowContainer {
+  display: inline-block;
+  margin-top: 2rem;
+  cursor: pointer;
+  animation: bounce 2s infinite;
+}
+
+.downArrow {
+  font-size: 3rem;
+  color: #fff;
+  transition: transform 0.3s ease;
+}
+
+/* Adăugăm efect de hover pentru săgeată */
+.arrowHovered .downArrow {
+  transform: translateY(5px); /* Împinge săgeata un pic în jos */
+}
+
+/* Animația de tip bounce pentru săgeată */
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% {
+    transform: translateY(0);
+  }
+  40% {
+    transform: translateY(10px);
+  }
+  60% {
+    transform: translateY(5px);
+  }
+}
+
+/* Animația pentru apariția titlului */
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Stiluri responsive pentru ecrane mici */
+@media (max-width: 768px) {
+  .mainTitle {
+    font-size: 3rem;
+  }
+  .subtitle {
+    font-size: 1.2rem;
+  }
+  .downArrow {
+    font-size: 2.5rem;
+  }
+}

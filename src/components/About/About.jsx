@@ -4,6 +4,9 @@ import styles from "./About.module.css";
 const About = () => {
   return (
     <section className={styles.aboutSection} id="about">
+      {/* Videoclipul ca fundal */}
+      
+
       <div className={styles.aboutContainer}>
         {/* Colțul stânga: Text */}
         <div className={styles.leftSide}>
@@ -40,7 +43,7 @@ const About = () => {
             muted 
             playsInline
           >
-            <source src="/ui/cube.mp4" type="video/mp4" />
+            <source src="/ui/introductionvideo1.mp4" type="video/mp4" />
             {/* Fallback text pentru browsere vechi */}
             Your browser does not support the video tag.
           </video>

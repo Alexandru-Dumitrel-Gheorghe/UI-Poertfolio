@@ -1,267 +1,263 @@
-/* --------------------------------------------------
-   1. Setup general
------------------------------------------------------ */
-
-/* Variabile pentru culori și efecte */
-:root {
-  --primary-color: #00b894;
-  --secondary-color: #333;
-  --card-bg: rgba(68, 24, 24, 0.15);
-  --text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
-}
-
-/* Wrapper general, conține toate secțiunile */
-.pageWrapper {
+/* Container principal: flex pe 2 coloane */
+.container {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  background: linear-gradient(135deg, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.6));
-  padding: 1rem;
-  /* Linie decorativă cu efect de pulsare */
+  min-height: 100vh;
+  color: #fff;            /* text alb */
+  padding: 4rem;
+  box-sizing: border-box;
+  background: rgba(0,0,0,0.4);
+  margin: 0rem auto 0 auto;
   border-bottom: 2px dashed #888;
-  animation: pulseBorder 3s infinite;
+  overflow-x: hidden;
 }
 
-@keyframes pulseBorder {
-  0%, 100% {
-    border-color: #888;
-  }
-  50% {
-    border-color: var(--primary-color);
-  }
-}
-
-/* --------------------------------------------------
-   2. HERO SECTION
------------------------------------------------------ */
-.heroSection {
-  width: 100%;
-  padding: 4rem 2rem;
-  display: flex;
-  justify-content: center;
-}
-
-.heroContent {
-  width: 100%;
-  max-width: 1200px;
-  background: var(--card-bg);
-  backdrop-filter: blur(8px);
-  border-radius: 10px;
-  padding: 3rem;
-  display: flex;
-  flex-wrap: nowrap; /* setăm inițial pe un singur rând, dar cu spațiu pentru reflow */
-  gap: 2rem;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.25);
-}
-
-.heroText {
+/* ==================================
+   Coloana stângă
+================================== */
+.leftColumn {
   flex: 1;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  text-align: left; /* Aliniere stânga, se poate schimba cu center dacă preferi */
+  justify-content: flex-start;
+  margin-right: 2rem; /* spațiu față de col. dreaptă */
+  padding: 1rem;
 }
 
+/* Titlu */
 .title {
-  font-size: 4rem;
+  font-size: 5rem;
   line-height: 1.2;
   font-weight: 700;
   text-transform: uppercase;
-  margin: 0px 70px 0 0;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.6);
+  color: #fff; /* păstrăm culoarea textului */
+  text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+  transition: transform 0.3s ease;
 }
 
+/* Efect hover pentru titlu */
+.title:hover {
+  transform: scale(1.05);
+}
+
+/* Descriere */
 .description {
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   line-height: 1.6;
   max-width: 600px;
-  color: #fff;
-  text-shadow: var(--text-shadow);
+  margin-top: 5rem;
+  color: #ddd;
+  transition: opacity 0.3s ease;
 }
 
-.heroImageWrapper {
-  flex: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.heroImage {
+/* Imaginea wide din stânga (sub text) */
+.imageLeft {
   width: 100%;
-  max-width: 500px;
+  max-width: 530px; /* ajustează după preferință */
+  margin-top: 6rem;
   border-radius: 8px;
-  transition: transform 0.4s ease, box-shadow 0.4s ease;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
-.heroImage:hover {
-  transform: scale(1.05) rotate(1deg);
-  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.35);
+/* Efect hover pentru imagine */
+.imageLeft:hover {
+  transform: scale(1.03);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
 }
 
-/* --------------------------------------------------
-   3. FEATURES SECTION
------------------------------------------------------ */
-.featuresSection {
-  width: 100%;
-  padding: 4rem 2rem;
-  display: flex;
-  justify-content: center;
+/* Responsivitate */
+@media (max-width: 768px) {
+  .title {
+    font-size: 3.5rem;
+  }
+  .description {
+    font-size: 1.1rem;
+    margin-top: 3rem;
+  }
+  .imageLeft {
+    max-width: 100%;
+    margin-top: 3rem;
+  }
 }
 
-.featuresContent {
-  width: 100%;
-  max-width: 1200px;
-  background: var(--card-bg);
-  backdrop-filter: blur(8px);
-  border-radius: 40px;
-  padding: 3rem;
-  display: flex;
-  flex-wrap: nowrap; /* la fel ca la Hero, vom modifica la responsive */
-  gap: 2rem;
-  align-items: flex-start;
-  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.25);
-}
-
-.featuresImageWrapper {
-  flex: 1;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.featuresImage {
-  width: 100%;
-  max-width: 300px;
-  border-radius: 8px;
-  transition: transform 0.4s ease, box-shadow 0.4s ease;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-}
-
-.featuresImage:hover {
-  transform: scale(1.08);
-  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.35);
-}
-
-.featuresListWrapper {
+/* ==================================
+   Coloana dreaptă
+================================== */
+.rightColumn {
   flex: 1;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  align-items: flex-start;
+  margin-top: 40px;
+  margin-left: 600px; /* Implicit pentru ecrane mari */
+}
+
+/* Pentru ecrane medii, centrăm conținutul */
+@media (max-width: 1200px) {
+  .rightColumn {
+    margin-left: auto;
+    margin-right: auto;
+    align-items: center;
+  }
+}
+
+/* Pentru ecrane mici, eliminăm marginile laterale */
+@media (max-width: 768px) {
+  .rightColumn {
+    margin: 40px auto 0 auto;
+    align-items: center;
+  }
+}
+
+/* Imaginea "Konto Erstellen" (dreapta-sus) */
+.imageRight {
+  width: 100%;
+  max-width: 250px;   /* mai îngustă decât cea din stânga */
+  margin-bottom: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.imageRight:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+}
+
+/* ==================================
+   Lista cu funcționalități
+================================== */
+.features {
+  max-width: 350px; /* aproximativ lățimea imaginii de sus */
 }
 
 .featuresTitle {
-  font-size: 2rem;
-  color: var(--primary-color);
+  font-size: 1.8rem;
   margin-bottom: 1rem;
-  text-shadow: var(--text-shadow);
-  margin-left: 45px;
-}
-
-.featuresList {
-  list-style: disc;
-  margin-left: 1.5rem;
-  line-height: 1.6;
-  font-size: 1.1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  position: relative;
   color: #fff;
-  text-shadow: var(--text-shadow);
+  text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.3);
 }
 
-/* --------------------------------------------------
-   4. CTA SECTION
------------------------------------------------------ */
-.ctaSection {
-  width: 100%;
-  padding: 3rem 2rem;
-  text-align: center;
+/* Lista de feature-uri */
+.featuresList {
+  list-style: none;         /* Scoatem bullet-urile implicite */
+  padding: 0;
+  margin: 0;
+  line-height: 1.6;
+  color: #ddd;              /* culoarea textului */
+  font-size: 1rem;
 }
 
+/* Stil personalizat pentru fiecare element din listă */
+.featuresList li {
+  position: relative;
+  padding-left: 2rem;       /* spațiu pentru "bullet" personalizat */
+  margin-bottom: 0.8rem;
+  transition: color 0.3s ease;
+}
+
+/* Bullet personalizat (cerc) folosind pseudo-element */
+.featuresList li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.4rem;
+  width: 0.6rem;
+  height: 0.6rem;
+  border-radius: 50%;
+  background-color: #00b894; /* accent color */
+  transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+/* Efect la hover pentru fiecare item */
+.featuresList li:hover {
+  color: #fff;
+}
+
+.featuresList li:hover::before {
+  transform: scale(1.3);
+  background-color: #333;
+}
+
+/* =============================
+   Butoane Live Demo / GitHub
+============================= */
 .buttonsContainer {
-  display: inline-flex;
-  gap: 1.5rem;
+  margin-top: 2rem;
+  display: flex;
+  gap: 1rem; /* spațiere între butoane */
+  margin-left: 20px;
 }
 
 .button {
   display: inline-block;
-  padding: 0.75rem 1.5rem;
+  padding: 0.50rem 1.2rem;
   font-size: 1rem;
   font-weight: 600;
   text-decoration: none;
   color: #fff;
-  background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+  background-color: #2895d4;
   border-radius: 5px;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
-  background-size: 200% auto;
-  background-position: left center;
+  transition: background-color 0.3s ease;
 }
 
 .button:hover {
-  background-position: right center;
-  transform: translateY(-3px);
+  background-color: #333;
+  color: #fff;
 }
 
-/* --------------------------------------------------
-   5. MEDIA QUERIES
------------------------------------------------------ */
-
-/* Centrare pe mobil și tablete */
-@media (max-width: 992px) {
-  /* 
-     Asigurăm că secțiunile trec pe coloană și conținutul este centrat 
-     atât pe orizontală, cât și la nivel de text.
-  */
-  .heroContent,
-  .featuresContent {
-    flex-direction: column;       /* Trecem pe coloană */
-    align-items: center;         /* Centrare orizontală a elementelor */
-    text-align: center;          /* Centrează textul */
+/* 
+   ==================================
+   MEDIA QUERY 1: Ecrane medii (sub 1200px)
+================================== */
+@media (max-width: 1200px) {
+  .rightColumn {
+    margin-left: 4rem; /* în loc de 600px */
+    margin-top: 4rem;
   }
-
-  /* Conținutul textului (titluri, descrieri, etc.) */
-  .heroText,
-  .featuresListWrapper {
-    max-width: 600px;            /* Lățime maximă pentru text */
-    margin: 0 auto;              /* Centrează blocul în container */
-    text-align: center;          /* Asigură textul centrat */
-  }
-
-  /* Listele de funcționalități, dacă vrei să fie centrate */
-  .featuresList {
-    margin: 0 auto;              /* Centrează lista */
-    text-align: left;            /* Dacă vrei bullet-urile aliniate stânga */
-    /* 
-       Dacă le vrei complet centrate, inclusiv bullet-urile, 
-       poți folosi:
-         text-align: center;
-         list-style-position: inside;
-    */
+  .title {
+    font-size: 4rem;
   }
 }
 
-/* Pentru butoane - ctaSection */
-.ctaSection {
-  text-align: center; /* Textul din secțiunea CTA centrat */
-}
-
-/* Container-ul de butoane */
-.buttonsContainer {
-  /* Folosește flex pentru aliniere orizontală; 
-     la ecrane mici, putem forța coloană. 
-  */
-  display: flex;
-  justify-content: center; 
-  align-items: center;
-  gap: 1rem; 
-  flex-wrap: wrap; /* Dacă vrei ca butoanele să sară pe linie nouă la ecrane mici */
-}
-
-/* Dacă vrei ca pe ecrane foarte mici butoanele să fie 100% lățime și stivuite: */
-@media (max-width: 480px) {
-  .buttonsContainer {
+/* 
+   ==================================
+   MEDIA QUERY 2: Ecrane mici (sub 768px)
+================================== */
+@media (max-width: 768px) {
+  .container {
     flex-direction: column;
+    padding: 2rem;
   }
-  .button {
-    width: 30%; /* Buton full width pe mobil */
+
+  .leftColumn,
+  .rightColumn {
+    margin-right: 0;
+    margin-left: 0;
+    margin-bottom: 2rem;
+    margin-top: 0;
+  }
+
+  .title {
+    font-size: 2.5rem;
+  }
+
+  .description {
+    font-size: 1.1rem;
+    margin-top: 2rem;
+  }
+
+  .imageLeft,
+  .imageRight {
+    max-width: 100%;
+    margin-top: 1rem;
+  }
+
+  .features {
+    max-width: 100%;
   }
 }

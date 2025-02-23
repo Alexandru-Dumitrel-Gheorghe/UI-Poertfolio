@@ -1,35 +1,48 @@
-/* ==========================================
-   SECTIUNEA PRINCIPALĂ
-========================================== */
+/* ========================================== */
+/* SECTIUNEA PRINCIPALĂ                       */
+/* ========================================== */
 .aboutSection {
+  position: relative;
   width: 100%;
-  min-height: 100vh;         /* Dacă vrei să ocupe toată înălțimea */
-  background: rgba(0, 0, 0, 0.4);
+  min-height: 100vh;
   color: #fff;
   box-sizing: border-box;
-  padding: 4rem 0;          /* Spațiu vertical (sus-jos) */
+  padding: 4rem 0;
   display: flex;
-  flex-direction: column;    /* pentru a avea .aboutContainer + divider în coloană */
-  position: relative;
+  flex-direction: column;
+  overflow-x: hidden;
 }
 
-/* 
-   Container intern cu max-width 
-   pentru a centra conținutul pe orizontală 
-*/
+/* ========================================== */
+/* VIDEOCIPUL CA FUNDAL                      */
+/* ========================================== */
+.backgroundVideo {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Acoperă complet fundalul */
+  z-index: -1; /* Plasăm videoclipul în fundal */
+  opacity: 0.8; /* Adăugăm un pic de transparență pentru a evidenția textul */
+}
+
+/* ========================================== */
+/* CONTAINER INTERIOR (max-width pentru aliniere) */
+/* ========================================== */
 .aboutContainer {
   max-width: 1200px;
-  margin: 0 auto;           /* centrează containerul */
+  margin: 0 auto;
   display: flex;
-  flex-direction: row;      /* textul în stânga, video în dreapta */
-  align-items: center;      /* vertical center pe rând */
-  gap: 2rem;                /* spațiu între stânga și dreapta */
-  padding: 0 2rem;          /* spațiu orizontal intern */
+  flex-direction: row;
+  align-items: center;
+  gap: 2rem;
+  padding: 0 2rem;
 }
 
-/* ==========================================
-   COLOANA STÂNGĂ (TEXT)
-========================================== */
+/* ========================================== */
+/* COLOANA STÂNGA (TEXT)                     */
+/* ========================================== */
 .leftSide {
   flex: 1;
   display: flex;
@@ -38,12 +51,12 @@
 }
 
 .introTitle {
-  font-size: 4rem;
+  font-size: 5rem;
   text-transform: uppercase;
-  margin-bottom: 2rem;
+  letter-spacing: 3px;
+  margin-bottom: 1rem;
   font-weight: 700;
-  line-height: 1.2;
-  /* culorile rămân #fff din .aboutSection */
+  animation: fadeIn 1s ease-out;
 }
 
 .paragraph {
@@ -51,11 +64,24 @@
   line-height: 1.6;
   max-width: 600px;
   margin-bottom: 1.5rem;
+  animation: fadeIn 1s ease-out;
 }
 
-/* ==========================================
-   COLOANA DREAPTĂ (VIDEO)
-========================================== */
+/* Animație pentru text */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ========================================== */
+/* COLOANA DREAPTA (VIDEO)                   */
+/* ========================================== */
 .rightSide {
   flex: 1;
   display: flex;
@@ -65,41 +91,52 @@
 
 .cubeVideo {
   width: 100%;
-  max-width: 600px; 
+  max-width: 600px;
   border: 2px solid #333;
   border-radius: 8px;
+  transition: transform 0.3s ease;
 }
 
-/* ==========================================
-   LINIE DE SEPARARE (OPȚIONAL)
-========================================== */
+.cubeVideo:hover {
+  transform: scale(1.05);
+}
+
+/* ========================================== */
+/* LINIE DE SEPARARE (OPȚIONAL)              */
+/* ========================================== */
 .sectionDivider {
   width: 80%;
   height: 2px;
   background-color: #666;
-  margin: 4rem auto 0 auto; /* margin-top: 4rem, centrat orizontal */
+  margin: 4rem auto 0 auto;
   border-radius: 1px;
 }
 
-/* ==========================================
-   MEDIA QUERY: ecrane sub 992px
-   -> Trecem layout-ul pe coloană
-========================================== */
+/* ========================================== */
+/* MEDIA QUERY: ecrane sub 992px              */
+/* ========================================== */
 @media (max-width: 992px) {
   .aboutContainer {
     flex-direction: column;
-    text-align: center;    /* centrează textele */
+    text-align: center;
   }
 
   .leftSide {
-    margin-bottom: 2rem;   /* spațiu între text și video */
+    margin-bottom: 2rem;
+  }
+
+  .introTitle {
+    font-size: 4rem;
+  }
+
+  .cubeVideo {
+    max-width: 500px;
   }
 }
 
-/* ==========================================
-   MEDIA QUERY: ecrane sub 768px
-   -> Micșorăm fonturile și ajustăm spațiile
-========================================== */
+/* ========================================== */
+/* MEDIA QUERY: ecrane sub 768px              */
+/* ========================================== */
 @media (max-width: 768px) {
   .introTitle {
     font-size: 2.5rem;
@@ -119,10 +156,9 @@
   }
 }
 
-/* ==========================================
-   MEDIA QUERY: ecrane sub 480px
-   -> Ajustări și mai fine
-========================================== */
+/* ========================================== */
+/* MEDIA QUERY: telefoane mici sub 480px       */
+/* ========================================== */
 @media (max-width: 480px) {
   .introTitle {
     font-size: 2rem;
@@ -130,5 +166,13 @@
 
   .paragraph {
     font-size: 1rem;
+  }
+
+  .cubeVideo {
+    max-width: 100%;
+  }
+
+  .sectionDivider {
+    width: 100%;
   }
 }

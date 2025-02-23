@@ -15,7 +15,7 @@ function ContactMe() {
     <section className={styles.contactSection} id="contact">
       {/* Titluri principale */}
       <div className={styles.titleArea}>
-        <h1 className={styles.mainTitle}>KONTAKT</h1>
+        <h1 className={styles.mainTitle}>CONTACT</h1>
         <p className={styles.subTitle}>Lass uns in Verbindung bleiben</p>
       </div>
 
