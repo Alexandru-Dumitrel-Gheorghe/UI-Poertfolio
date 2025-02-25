@@ -1,129 +1,111 @@
+/* Secțiunea de contact cu fundal gradient */
 .contactSection {
-  min-height: 50vh;
-  padding: 4rem 2rem;
-  box-sizing: border-box;
   display: flex;
-  flex-direction: column;
-  align-items: center; /* totul centrat pe orizontală */
-  justify-content: center; /* centrare verticală */
+  justify-content: center;
+  align-items: center;
+  padding: 60px 20px;
+  min-height: 100vh;
+  perspective: 1000px;
   border-top: 2px dashed #888;
-  background: rgba(0,0,0,0.4);
 }
 
-.titleArea {
-  text-align: center;
-  margin-bottom: 3rem;
-}
-
-/* Titlu mare */
-.mainTitle {
-  font-size: 5rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  margin: 0;
-  letter-spacing: 2px;
-  line-height: 1;
-  text-shadow: 3px 3px 8px rgba(0,0,0,0.8);
-}
-
-/* Subtitlu */
-.subTitle {
-  font-size: 1.3rem;
-  margin-top: 0.5rem;
-  color: #ccc;
-}
-
-/* Caseta info contact */
-.infoBox {
-  background: rgba(255,255,255,0.05); /* semitransparent */
-  border: 1px solid rgba(255,255,255,0.15);
-  box-shadow: 0 0 20px rgba(0,0,0,0.3);
-  backdrop-filter: blur(4px);
-  border-radius: 10px;
-  padding: 2rem;
-  max-width: 700px;
+/* Containerul central */
+.content {
+  max-width: 800px;
   width: 100%;
-
-  /* Afișăm 4 items (Telefon, Email, etc.) sub formă de grid 2x2 */
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 2rem;
-  margin-bottom: 2rem;
-  overflow-x: hidden;
+  text-align: center;
+  transition: transform 0.3s ease;
+  padding: 20px;
 }
 
-/* Fiecare item: icon + label + value */
-.infoItem {
+/* Numele */
+.name {
+  font-size: 3rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  color: #fff;
+  transition: transform 0.3s ease;
+}
+
+/* Titlul */
+.title {
+  font-size: 1.5rem;
+  color: #ccc;
+  margin-bottom: 2rem;
+  transition: transform 0.3s ease;
+}
+
+/* Detaliile de contact */
+.contactDetails {
   display: flex;
-  align-items: flex-start;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 1rem;
+  margin-bottom: 2rem;
+}
+
+.contactItem {
+  display: flex;
+  align-items: center;
+  padding: 8px 16px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.contactItem:hover {
+  transform: perspective(500px) rotateX(5deg) scale(1.05);
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
 }
 
 .icon {
-  font-size: 2rem;
-  color: #2895d4;
+  margin-right: 8px;
+  font-size: 1.4rem;
+  color: #00bcd4;
 }
 
-/* Label: ex. "Telefon", "Email Adresse" */
-.infoLabel {
-  font-size: 1rem;
-  font-weight: 600;
-  margin: 0;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-}
-
-/* Valoare: ex. "+49 1577 2158264" */
-.infoValue {
-  font-size: 1.1rem;
-  margin: 0.2rem 0 0 0;
-  color: #f0f0f0;
-}
-
-/* Iconițe Social Media dedesubt */
+/* Iconițele Social Media */
 .socialIcons {
   display: flex;
-  gap: 1.5rem;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 2rem;
 }
 
 .socialIcons a {
-  font-size: 1.8rem;
-  color: #fff;
-  transition: transform 0.2s ease, color 0.2s ease;
+  font-size: 2rem;
+  color: #00bcd4;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .socialIcons a:hover {
-  transform: scale(1.2);
-  color: #2895d4; /* highlight la hover */
+  transform: scale(1.2) translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
 }
 
-/* Responsiv sub 768px */
+/* Media Queries */
 @media (max-width: 768px) {
-  .mainTitle {
-    font-size: 3.5rem;
+  .name {
+    font-size: 2.5rem;
   }
+  .title {
+    font-size: 1.3rem;
+  }
+  .contactDetails {
+    flex-direction: column;
+    gap: 1rem;
+  }
+}
 
-  .subTitle {
+@media (max-width: 480px) {
+  .name {
+    font-size: 2rem;
+  }
+  .title {
     font-size: 1.1rem;
   }
-
-  .infoBox {
-    grid-template-columns: 1fr; /* toate 4 intr-o singura coloana */
-  }
-
-  .icon {
-    font-size: 1.5rem;
-  }
-
-  .infoLabel {
-    font-size: 0.9rem;
-  }
-
-  .infoValue {
-    font-size: 1rem;
-  }
-
-  .socialIcons {
-    margin-top: 1rem;
+  .socialIcons a {
+    font-size: 1.8rem;
   }
 }

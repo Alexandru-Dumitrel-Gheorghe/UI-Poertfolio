@@ -1,24 +1,17 @@
-/* Navbar-ul fix, pe toată lățimea, deasupra */
 .navbar {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   z-index: 999;
-  
-  /* Transparent la început */
   background-color: transparent;
-  /* Efect de tranziție la background */
   transition: background-color 0.4s ease;
-  
   padding: 0.5rem 1rem;
   color: #fff;
   overflow-x: hidden;
 }
 
-/* Clasa .scrolled se aplică după 50px scroll */
 .scrolled {
-  /* Un fundal negru semi-transparent */
   background-color: rgba(17, 17, 17, 0.85);
 }
 
@@ -26,11 +19,10 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  max-width: 1200px; /* sau cât dorești */
+  max-width: 1200px;
   margin: 0 auto;
 }
 
-/* Link-urile (stânga) */
 .linksContainer {
   display: flex;
   gap: 1.5rem;
@@ -40,14 +32,32 @@
   color: #fff;
   text-decoration: none;
   font-weight: 500;
+  position: relative;
   transition: color 0.3s ease;
+  cursor: pointer; /* Asigură că cursorul rămâne degetul arătător */
 }
 
-.linksContainer a:hover {
-  color: #ccc;
+
+.linksContainer a::after {
+  content: "👉";
+  position: absolute;
+  left: -1.5rem; /* plasat la stânga linkului */
+  opacity: 0;
+  transform: translateX(-10px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
-/* Iconițele (dreapta) */
+.linksContainer a:hover::after {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+
+.linksContainer a:hover::after {
+  opacity: 1;
+  transform: translateX(0);
+}
+
 .socialLinks {
   display: flex;
   gap: 1rem;
@@ -63,14 +73,13 @@
   color: #ccc;
 }
 
-/* Butonul hamburger (mobil) */
 .mobileMenuIcon {
   display: none;
   font-size: 1.5rem;
   cursor: pointer;
 }
 
-/* Meniul mobil, full screen overlay */
+/* Meniul mobil */
 .mobileMenu {
   position: fixed;
   top: 0;
@@ -128,14 +137,12 @@
 
 /* Responsivitate */
 @media (max-width: 768px) {
-  /* Ascundem link-urile și iconițele (desktop) */
   .linksContainer {
     display: none;
   }
   .socialLinks {
     display: none;
   }
-  /* Afișăm butonul hamburger */
   .mobileMenuIcon {
     display: block;
   }

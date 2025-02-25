@@ -11,17 +11,14 @@ const ChatBot = () => {
   const [input, setInput] = useState('');
   const chatboxRef = useRef(null);
 
-  // API-Key from .env
   const API_KEY = process.env.REACT_APP_OPENAI_API_KEY;
-  
 
-  // Send message to ChatGPT
   const handleSendMessage = async () => {
     if (input.trim() === '') return;
     const userMessage = input.trim();
     setMessages([...messages, { sender: 'user', text: userMessage }]);
     setInput('');
-    // Add a temporary message "Denke nach..."
+    // Adaugă mesajul temporar "Denke nach..."
     setMessages(prev => [...prev, { sender: 'bot', text: 'Denke nach...' }]);
 
     try {
@@ -46,12 +43,10 @@ const ChatBot = () => {
         { sender: 'bot', text: 'Ups! Etwas ist schief gelaufen. Bitte versuche es erneut.' },
       ]);
     } finally {
-      // Scroll to the latest message
       chatboxRef.current?.scrollTo(0, chatboxRef.current.scrollHeight);
     }
   };
 
-  // Handle Enter key press
   const handleKeyPress = (e) => {
     if (e.key === 'Enter' && !e.shiftKey) {
       e.preventDefault();
@@ -61,7 +56,6 @@ const ChatBot = () => {
 
   return (
     <div className={styles.container}>
-      {/* Toggle button */}
       <button
         className={`${styles.chatbotToggler} ${isOpen ? styles.open : ''}`}
         onClick={() => setIsOpen(!isOpen)}
@@ -99,7 +93,6 @@ const ChatBot = () => {
                 </button>
               </header>
 
-              {/* Info section */}
               <div className={styles.info}>
                 <p>
                   Dieser Chatbot wurde mit der OpenAI API erstellt und bietet Echtzeit-Unterstützung.
@@ -107,7 +100,6 @@ const ChatBot = () => {
                 </p>
               </div>
 
-              {/* Message list */}
               <ul ref={chatboxRef} className={styles.chatbox}>
                 {messages.map((msg, index) => (
                   <motion.li
@@ -123,7 +115,6 @@ const ChatBot = () => {
                 ))}
               </ul>
 
-              {/* Input area */}
               <div className={styles.chatInput}>
                 <textarea
                   value={input}

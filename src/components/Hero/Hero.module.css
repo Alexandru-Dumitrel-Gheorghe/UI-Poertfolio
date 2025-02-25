@@ -1,6 +1,4 @@
-/* ========================================== */
-/* HERO SECTION                               */
-/* ========================================== */
+/* Secțiunea principală */
 .heroSection {
   position: relative;
   width: 100%;
@@ -8,11 +6,11 @@
   color: #fff;
   padding: 2rem;
   box-sizing: border-box;
-  overflow-x: hidden;
+  overflow: hidden;
   border-bottom: 2px dashed #888;
 }
 
-/* VIDEOCIPUL DE FUNDAL */
+/* Videoclip de fundal */
 .backgroundVideo {
   position: absolute;
   top: 0;
@@ -20,28 +18,43 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
-  z-index: -1; /* Videoclipul rămâne în fundal */
-  opacity: 0.7; /* Facem videoclipul mai opac pentru a evidenția textul */
+  z-index: -2;
+  opacity: 0.6;
 }
 
-/* ========================================== */
-/* CONTAINER PRINCIPAL                        */
-/* ========================================== */
+/* Overlay de gradient animat */
+.gradientOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.7));
+  z-index: -1;
+  animation: gradientPulse 10s ease infinite;
+}
+
+@keyframes gradientPulse {
+  0% { opacity: 0.6; }
+  50% { opacity: 0.8; }
+  100% { opacity: 0.6; }
+}
+
+/* Container principal */
 .heroContainer {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   height: 100%;
+  position: relative;
+  z-index: 1;
 }
 
-/* ========================================== */
-/* TEXT STÂNGA SUS (Animat Left)              */
-/* ========================================== */
-.topLeft {
+/* Colțuri sus */
+.topLeft,
+.topRight {
   position: absolute;
-  top: 2rem;
-  left: 2rem;
   font-size: 1rem;
   text-transform: uppercase;
   font-weight: 600;
@@ -51,36 +64,35 @@
   animation-fill-mode: forwards;
 }
 
-.topRight {
-  position: absolute;
+.topLeft {
   top: 2rem;
-  right: 2rem;
-  font-size: 0.95rem;
-  text-align: right;
-  z-index: 2;
-  animation-duration: 1s;
-  animation-fill-mode: forwards;
+  left: 2rem;
 }
 
-/* ========================================== */
-/* CONȚINUT CENTRAL (Imagine, Titlu, Text)    */
-/* ========================================== */
+.topRight {
+  top: 2rem;
+  right: 2rem;
+  text-align: right;
+}
+
+/* Conținut central */
 .centerContent {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  min-height: 100vh;
   text-align: center;
   z-index: 2;
   animation-duration: 1s;
   animation-fill-mode: forwards;
 }
 
+/* Wrapper pentru imagine */
 .imageWrapper {
   position: relative;
   display: inline-block;
   margin-bottom: 1.5rem;
+  margin-top: 8rem;
 }
 
 .pulseRing {
@@ -97,6 +109,12 @@
   z-index: -1;
 }
 
+@keyframes pulseRing {
+  0% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+  70% { transform: translate(-50%, -50%) scale(1.4); opacity: 0; }
+  100% { transform: translate(-50%, -50%) scale(1.4); opacity: 0; }
+}
+
 .profileImage {
   width: 200px;
   height: 200px;
@@ -105,24 +123,59 @@
   border: 3px solid #fff;
 }
 
-/* Titlu */
+/* Titlu principal */
 .title {
   font-size: 5rem;
   text-transform: uppercase;
   letter-spacing: 3px;
-  margin-bottom: 1rem;
+  margin-bottom: 0.5rem;
   font-weight: 700;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.title:hover {
+  color: #00bcd4;
+}
+
+.title::after {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 0;
+  height: 4px;
+  background-color: #00bcd4;
+  transition: width 0.3s ease;
+}
+
+.title:hover::after {
+  width: 100%;
+}
+
+/* Tagline */
+.tagline {
+  font-size: 1.5rem;
+  margin: 0.5rem 0 1rem;
+  font-style: italic;
+  color: #ccc;
+  transition: color 0.3s ease;
+}
+
+.tagline:hover {
+  color: #00bcd4;
 }
 
 /* Descriere */
 .description {
   font-size: 1.2rem;
   max-width: 600px;
-  margin: 0 auto 2rem auto;
+  margin: 0 auto 2rem;
   line-height: 1.5;
 }
 
-/* Butonul de proiecte */
+/* Buton */
 .projectButton {
   background-color: #fff;
   color: #000;
@@ -142,9 +195,7 @@
   transform: scale(1.05);
 }
 
-/* ========================================== */
-/* ANIMAȚII                                 */
-/* ========================================== */
+/* Animații de fade-in */
 @keyframes fadeInLeft {
   0% { opacity: 0; transform: translateX(-50px); }
   100% { opacity: 1; transform: translateX(0); }
@@ -160,19 +211,11 @@
   100% { opacity: 1; transform: translateY(0); }
 }
 
-@keyframes pulseRing {
-  0% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
-  70% { transform: translate(-50%, -50%) scale(1.4); opacity: 0; }
-  100% { transform: translate(-50%, -50%) scale(1.4); opacity: 0; }
-}
-
 .fadeInLeft { animation-name: fadeInLeft; }
 .fadeInRight { animation-name: fadeInRight; }
 .fadeInUp { animation-name: fadeInUp; }
 
-/* ========================================== */
-/* MEDIA QUERIES                             */
-/* ========================================== */
+/* Responsive */
 @media (max-width: 768px) {
   .topLeft,
   .topRight {
@@ -180,19 +223,23 @@
     text-align: center;
     font-size: 1rem;
   }
-
+  
   .profileImage {
     width: 150px;
     height: 150px;
   }
-
+  
   .pulseRing {
     width: 170px;
     height: 170px;
   }
-
+  
   .title {
     font-size: 3rem;
+  }
+  
+  .tagline {
+    font-size: 1.2rem;
   }
 }
 
@@ -200,11 +247,11 @@
   .title {
     font-size: 2.5rem;
   }
-
+  
   .description {
     font-size: 1rem;
   }
-
+  
   .projectButton {
     font-size: 0.9rem;
     padding: 0.7rem 1.2rem;

@@ -23,7 +23,7 @@ const Education = () => {
             </p>
           </div>
 
-          {/* Coloana dreapta */}
+          {/* Coloana dreaptă */}
           <div className={styles.column}>
             <h2 className={styles.heading}>UI/UX Design</h2>
             <p className={styles.subHeading}>IT School | 2024 - Heute</p>

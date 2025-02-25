@@ -13,6 +13,8 @@ import Education from "./components/Education/Education";
 import ContactMe from "./components/Contact/ContactMe";
 import ChatBot from "./components/ChatBot/ChatBot";  // Importul ChatBot
 import ScrollToTop from './components/ScrollToTop/ScrollToTop';
+import GitHubProjects from "./components/GitHub/GitHubProjects";
+import Footer from "./components/Footer/Footer";
 
 function App() {
   return (
@@ -22,13 +24,15 @@ function App() {
       <About />
       <Skills />
       <TitleProject />
+      <ProjectTaskTimer />
       <WeddingPhotography />
       <Project />
-      <ProjectTaskTimer />
       <Education />
+      <GitHubProjects />
       <ContactMe />
       <ChatBot />
       <ScrollToTop />
+      <Footer />
     </div>
   );
 }

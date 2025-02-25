@@ -5,7 +5,6 @@ import styles from "./Skills.module.css";
 const Skills = () => {
   return (
     <section id="skills" className={styles.skillsSection}>
-      {/* Titlu cu animație de fade-in */}
       <motion.h2 
         className={styles.sectionTitle}
         initial={{ opacity: 0, y: -50 }}
@@ -16,7 +15,7 @@ const Skills = () => {
       </motion.h2>
 
       <div className={styles.container}>
-        {/* Secțiunea Stângă (Text + Skill Cards) */}
+        {/* Partea stângă: Text și Skill Cards */}
         <motion.div 
           className={styles.leftSide}
           initial={{ opacity: 0, x: -50 }}
@@ -47,7 +46,7 @@ const Skills = () => {
           </p>
         </motion.div>
 
-        {/* Secțiunea Dreaptă (Laptop Image) */}
+        {/* Partea dreaptă: Imagine */}
         <motion.div 
           className={styles.rightSide}
           initial={{ opacity: 0, x: 50 }}

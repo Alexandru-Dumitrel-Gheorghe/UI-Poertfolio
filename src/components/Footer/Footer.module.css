@@ -1,0 +1,47 @@
+.footer {
+  position: relative;  /* sau fixed, dacă vrei ca footer-ul să fie întotdeauna vizibil */
+  z-index: 10000;      /* asigură-te că este peste alte elemente */
+  background: #111;    /* Fundal întunecat */
+  color: #fff;
+  padding: 2rem 1rem;
+  text-align: center;
+  font-family: 'Roboto', sans-serif;
+}
+
+
+  
+  .topFooter {
+    margin-bottom: 1rem;
+  }
+  
+  .navLinks {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.5rem;
+  }
+  
+  .navLink {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1rem;
+    transition: color 0.3s ease, transform 0.3s ease;
+  }
+  
+  .navLink:hover {
+    color: #00bcd4;
+    transform: translateY(-3px);
+  }
+  
+  .bottomFooter {
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    padding-top: 1rem;
+    font-size: 0.9rem;
+  }
+  
+  @media (max-width: 480px) {
+    .navLink {
+      font-size: 0.9rem;
+    }
+  }
+  

@@ -16,9 +16,9 @@ const Navbar = () => {
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 50) {
-        setIsScrolled(true); // Fundal opac după 50px scroll
+        setIsScrolled(true);
       } else {
-        setIsScrolled(false); // Fundal transparent la început
+        setIsScrolled(false);
       }
     };
     
@@ -31,11 +31,11 @@ const Navbar = () => {
       <div className={styles.navContent}>
         {/* Link-urile (stânga) */}
         <div className={styles.linksContainer}>
-          <Link to="home" smooth={true} duration={500}>Home</Link>
-          <Link to="about" smooth={true} duration={500}>About</Link>
-          <Link to="skills" smooth={true} duration={500}>Skills</Link>
-          <Link to="projects" smooth={true} duration={500}>Projects</Link>
-          <Link to="contact" smooth={true} duration={500}>Contact</Link>
+          <Link to="home" smooth={true} duration={500} offset={-70}>Home</Link>
+          <Link to="about" smooth={true} duration={500} offset={-70}>About</Link>
+          <Link to="skills" smooth={true} duration={500} offset={-70}>Skills</Link>
+          <Link to="projects" smooth={true} duration={500} offset={-70}>Projects</Link>
+          <Link to="contact" smooth={true} duration={500} offset={-70}>Contact</Link>
         </div>
 
         {/* Iconițele (dreapta) */}
@@ -46,10 +46,10 @@ const Navbar = () => {
           <a href="https://figma.com" target="_blank" rel="noreferrer">
             <SiFigma />
           </a>
-          <a href="https://github.com" target="_blank" rel="noreferrer">
+          <a href="https://github.com/Alexandru-Dumitrel-Gheorghe" target="_blank" rel="noreferrer">
             <FaGithub />
           </a>
-          <a href="https://linkedin.com/in/username" target="_blank" rel="noreferrer">
+          <a href="https://www.linkedin.com/in/alexandru-gheorghe-a19a19314/" target="_blank" rel="noreferrer">
             <FaLinkedin />
           </a>
         </div>
@@ -75,11 +75,11 @@ const Navbar = () => {
             </div>
             
             <div className={styles.mobileMenuContent}>
-              <Link onClick={toggleMenu} to="home" smooth={true} duration={500}>Home</Link>
-              <Link onClick={toggleMenu} to="about" smooth={true} duration={500}>About</Link>
-              <Link onClick={toggleMenu} to="skills" smooth={true} duration={500}>Skills</Link>
-              <Link onClick={toggleMenu} to="projects" smooth={true} duration={500}>Projects</Link>
-              <Link onClick={toggleMenu} to="contact" smooth={true} duration={500}>Contact</Link>
+              <Link onClick={toggleMenu} to="home" smooth={true} duration={500} offset={-70}>Home</Link>
+              <Link onClick={toggleMenu} to="about" smooth={true} duration={500} offset={-70}>About</Link>
+              <Link onClick={toggleMenu} to="skills" smooth={true} duration={500} offset={-70}>Skills</Link>
+              <Link onClick={toggleMenu} to="projects" smooth={true} duration={500} offset={-70}>Projects</Link>
+              <Link onClick={toggleMenu} to="contact" smooth={true} duration={500} offset={-70}>Contact</Link>
               
               <div className={styles.mobileSocialLinks}>
                 <a href="https://miro.com" target="_blank" rel="noreferrer">

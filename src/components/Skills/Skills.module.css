@@ -1,4 +1,4 @@
-/* ---- General Styles ---- */
+/* Secțiunea principală */
 .skillsSection {
   padding: 6rem 2rem 5rem;
   color: #f1f1f1;
@@ -7,32 +7,55 @@
   border-top: 2px dashed #888;
 }
 
-/* ---- Section Title ---- */
+/* Titlul secțiunii */
 .sectionTitle {
-  font-size: 3.8rem;
+  font-size: 4rem;
   font-weight: bold;
   text-transform: uppercase;
-  margin-bottom: 8rem;
   color: #fff;
+  position: relative;
+  display: inline-block;
+  transition: color 0.3s ease;
+  margin-top: -2rem;
+  margin-bottom: 6rem;
 }
 
-/* ---- Layout Content ---- */
+.sectionTitle::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: -10px;
+  transform: translateX(-50%);
+  width: 0;
+  height: 3px;
+  background-color: #00bcd4;
+  transition: width 0.4s ease;
+}
+
+.sectionTitle:hover::after {
+  width: 100%;
+}
+
+/* Containerul folosind grid pentru o aliniere echilibrată */
 .container {
   max-width: 1200px;
   margin: 0 auto;
-  display: flex;
-  justify-content: center;
-  align-items: flex-start;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   gap: 5rem;
-  flex-wrap: wrap;
+  align-items: center;
 }
 
-/* ---- Left Side (Text + Skill Cards) ---- */
+/* Partea stângă: text și skill cards */
 .leftSide {
-  flex: 1;
-  min-width: 320px;
-  text-align: left;
   max-width: 500px;
+  margin: 0 auto;
+  text-align: left;
+  transition: transform 0.3s ease;
+}
+
+.leftSide:hover {
+  transform: translateY(-5px);
 }
 
 .skillCard {
@@ -41,46 +64,59 @@
   justify-content: center;
   width: 100%;
   max-width: 400px;
-  height: 60px;
+  height: 70px;
   border: 2px solid #fff;
   border-radius: 30px;
   margin: 2rem auto;
-  transition: transform 0.3s ease-in-out;
+  background: rgba(255, 255, 255, 0.1);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .skillCard:hover {
   transform: scale(1.05);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.3);
 }
 
 .skillTitle {
-  font-size: 1.3rem;
+  font-size: 1.4rem;
   font-weight: bold;
   text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: color 0.3s ease;
 }
 
-/* ---- Description ---- */
+.skillTitle:hover {
+  color: #00bcd4;
+}
+
 .description {
-  font-size: 1rem;
+  font-size: 1.1rem;
   line-height: 1.8;
   color: #ddd;
   margin-bottom: 3rem;
   text-align: justify;
+  transition: color 0.3s ease;
 }
 
-/* ---- Right Side (Laptop Image) ---- */
+.description:hover {
+  color: #fff;
+}
+
+/* Partea dreaptă: imagine */
 .rightSide {
-  flex: 1;
-  display: flex;
-  justify-content: center;
   max-width: 550px;
+  margin: 0 auto;
+  transition: transform 0.3s ease;
 }
 
 .laptopContainer {
   position: relative;
-  width: 100%;
   max-width: 500px;
-  margin-top: 40px;
-  transition: transform 0.3s ease-in-out;
+  margin: 40px auto 0;
+  border-radius: 20px;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .laptopContainer:hover {
@@ -90,41 +126,29 @@
 .laptopImage {
   width: 100%;
   display: block;
-  object-fit: contain;
+  object-fit: cover;
 }
 
-/* ---- RESPONSIVE STYLES ---- */
+/* Responsive */
 @media (max-width: 1024px) {
   .container {
-    flex-direction: column;
-    text-align: center;
+    grid-template-columns: 1fr;
     gap: 4rem;
   }
-
-  .leftSide {
-    text-align: center;
-  }
-
   .sectionTitle {
-    font-size: 3.2rem;
-  }
-
-  .description {
-    margin-bottom: 2.5rem;
+    font-size: 3.5rem;
+    margin-bottom: 3rem;
   }
 }
 
 @media (max-width: 768px) {
   .sectionTitle {
-    font-size: 2.8rem;
+    font-size: 3rem;
     margin-bottom: 2.5rem;
   }
-
-  .skillCard {
-    max-width: 250px;
-    height: 50px;
+  .leftSide {
+    text-align: center;
   }
-
   .laptopContainer {
     max-width: 380px;
   }
@@ -132,20 +156,12 @@
 
 @media (max-width: 480px) {
   .sectionTitle {
-    font-size: 2.4rem;
+    font-size: 2.5rem;
     margin-bottom: 2rem;
   }
-
   .leftSide {
     max-width: 90%;
   }
-
-  .skillCard {
-    max-width: 220px;
-    height: 45px;
-    font-size: 1rem;
-  }
-
   .laptopContainer {
     max-width: 400px;
   }

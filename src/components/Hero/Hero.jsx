@@ -9,8 +9,15 @@ const Hero = () => {
     }
   };
 
+  // Data curentă, formatată în limba germană (ex: "Januar 2025")
+  const currentDate = new Date();
+  const formattedDate = currentDate.toLocaleDateString("de-DE", {
+    month: "long",
+    year: "numeric",
+  });
+
   return (
-    <section className={styles.heroSection}>
+    <section id="home" className={styles.heroSection}>
       {/* Videoclipul de fundal */}
       <video 
         className={styles.backgroundVideo} 
@@ -23,8 +30,11 @@ const Hero = () => {
         Your browser does not support the video tag.
       </video>
 
+      {/* Overlay de gradient animat */}
+      <div className={styles.gradientOverlay}></div>
+
       <div className={styles.heroContainer}>
-        {/* Colț stânga sus (Fade In Left) */}
+        {/* Colț stânga sus */}
         <div className={`${styles.topLeft} ${styles.fadeInLeft}`}>
           <h2>
             FRONT END WEB DEVELOPER <br />
@@ -32,18 +42,18 @@ const Hero = () => {
           </h2>
         </div>
 
-        {/* Colț dreapta sus (Fade In Right) */}
+        {/* Colț dreapta sus */}
         <div className={`${styles.topRight} ${styles.fadeInRight}`}>
           <p>
             Alexandru Gheorghe <br />
-            Januar / 2025
+            {formattedDate}
           </p>
         </div>
 
-        {/* Conținut central (Fade In Up) */}
+        {/* Conținut central */}
         <div className={`${styles.centerContent} ${styles.fadeInUp}`}>
           <div className={styles.imageWrapper}>
-            {/* Inel pulsant sub imagine */}
+            {/* Inel pulsant animat */}
             <span className={styles.pulseRing}></span>
             <img
               src="/ui/profil.jpg"
@@ -53,6 +63,9 @@ const Hero = () => {
           </div>
 
           <h1 className={styles.title}>PORTFOLIO</h1>
+          <p className={styles.tagline}>
+            Crafting Digital Experiences with Passion and Precision.
+          </p>
           <p className={styles.description}>
             Leidenschaft für moderne Webtechnologien und die Erstellung
             benutzerfreundlicher, responsiver Lösungen.
