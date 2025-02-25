@@ -1,4 +1,4 @@
-/* Secțiunea principală */
+/* Main Hero Section */
 .heroSection {
   position: relative;
   width: 100%;
@@ -10,7 +10,7 @@
   border-bottom: 2px dashed #888;
 }
 
-/* Videoclip de fundal */
+/* Background video */
 .backgroundVideo {
   position: absolute;
   top: 0;
@@ -22,7 +22,7 @@
   opacity: 0.6;
 }
 
-/* Overlay de gradient animat */
+/* Animated gradient overlay */
 .gradientOverlay {
   position: absolute;
   top: 0;
@@ -40,7 +40,7 @@
   100% { opacity: 0.6; }
 }
 
-/* Container principal */
+/* Container for hero content */
 .heroContainer {
   display: flex;
   flex-direction: column;
@@ -51,7 +51,7 @@
   z-index: 1;
 }
 
-/* Colțuri sus */
+/* Top corners */
 .topLeft,
 .topRight {
   position: absolute;
@@ -75,7 +75,7 @@
   text-align: right;
 }
 
-/* Conținut central */
+/* Central content */
 .centerContent {
   display: flex;
   flex-direction: column;
@@ -87,12 +87,12 @@
   animation-fill-mode: forwards;
 }
 
-/* Wrapper pentru imagine */
+/* Image wrapper */
 .imageWrapper {
   position: relative;
   display: inline-block;
-  margin-bottom: 1.5rem;
   margin-top: 8rem;
+  margin-bottom: 1.5rem;
 }
 
 .pulseRing {
@@ -123,7 +123,7 @@
   border: 3px solid #fff;
 }
 
-/* Titlu principal */
+/* Main title */
 .title {
   font-size: 5rem;
   text-transform: uppercase;
@@ -167,7 +167,7 @@
   color: #00bcd4;
 }
 
-/* Descriere */
+/* Description */
 .description {
   font-size: 1.2rem;
   max-width: 600px;
@@ -175,7 +175,16 @@
   line-height: 1.5;
 }
 
-/* Buton */
+/* Button group container */
+.buttonGroup {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.5rem;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+/* Project button */
 .projectButton {
   background-color: #fff;
   color: #000;
@@ -195,7 +204,30 @@
   transform: scale(1.05);
 }
 
-/* Animații de fade-in */
+/* CV button */
+.cvButton {
+  background: #007acc;
+    box-shadow: 0 4px 15px rgba(0, 122, 204, 0.5);
+  padding: 0.8rem 1.5rem;
+  border: none;
+  border-radius: 4px;
+  font-size: 1rem;
+  cursor: pointer;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.cvButton:hover {
+  background: #007acc;
+  transform: scale(1.05);
+}
+
+.icon {
+  font-size: 1.2rem; /* Mărimea icoanei */
+}
+
+/* Animations */
 @keyframes fadeInLeft {
   0% { opacity: 0; transform: translateX(-50px); }
   100% { opacity: 1; transform: translateX(0); }
@@ -252,7 +284,8 @@
     font-size: 1rem;
   }
   
-  .projectButton {
+  .projectButton,
+  .cvButton {
     font-size: 0.9rem;
     padding: 0.7rem 1.2rem;
   }

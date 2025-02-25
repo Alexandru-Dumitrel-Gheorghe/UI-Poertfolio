@@ -3,10 +3,13 @@
   margin: 0 auto;
   padding: 4rem 1rem;
   border-top: 2px dashed #888;
-  background: linear-gradient(135deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.7)), url("/public/ui/banner3.png") no-repeat center center;
+  /* Folosim un background cu gradient și imagine */
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.8)),
+              url("/public/ui/banner3.png") no-repeat center center;
   background-size: cover;
-  min-height: 30vh; /* Am mărit înălțimea pentru a face bannerul mai impunător */
+  min-height: 35vh;
   overflow-x: hidden;
+  position: relative;
 }
 
 .mainTitle {
@@ -16,44 +19,51 @@
   margin-bottom: 1rem;
   font-weight: 700;
   color: #fff;
-  animation: fadeIn 2s ease-in-out; /* Animație pentru titlu */
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+  animation: fadeIn 2s ease-in-out;
+  transition: transform 0.3s ease;
+}
+
+.mainTitle:hover {
+  transform: scale(1.02);
 }
 
 .subtitle {
   font-size: 1.5rem;
   color: #ccc;
   margin-bottom: 2rem;
+  transition: color 0.3s ease;
+}
+
+.subtitle:hover {
+  color: #fff;
 }
 
 .arrowContainer {
   display: inline-block;
   margin-top: 2rem;
   cursor: pointer;
-  animation: bounce 2s infinite;
+  position: relative;
+  /* Efect de pulsare pentru a atrage atenția */
+  animation: pulse 2s infinite;
+  transition: transform 0.3s ease;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
 }
 
 .downArrow {
   font-size: 3rem;
   color: #fff;
-  transition: transform 0.3s ease;
+  transition: transform 0.3s ease, color 0.3s ease;
 }
 
-/* Adăugăm efect de hover pentru săgeată */
-.arrowHovered .downArrow {
-  transform: translateY(5px); /* Împinge săgeata un pic în jos */
-}
-
-/* Animația de tip bounce pentru săgeată */
-@keyframes bounce {
-  0%, 20%, 50%, 80%, 100% {
-    transform: translateY(0);
-  }
-  40% {
-    transform: translateY(10px);
-  }
-  60% {
-    transform: translateY(5px);
-  }
+.arrowContainer:hover .downArrow {
+  transform: translateY(5px) rotate(10deg);
+  color: #00bcd4;
 }
 
 /* Animația pentru apariția titlului */
@@ -68,7 +78,7 @@
   }
 }
 
-/* Stiluri responsive pentru ecrane mici */
+/* Responsive */
 @media (max-width: 768px) {
   .mainTitle {
     font-size: 3rem;

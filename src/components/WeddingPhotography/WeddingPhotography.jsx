@@ -7,26 +7,28 @@ const WeddingPhotography = () => {
   return (
     <section id="WeddingPhotography" className={styles.weddingSection}>
       <div className={styles.containerWedding}>
-        {/* Coloana stângă: Imagine */}
+        {/* Coloana stângă: Imagine cu efect de clip-path */}
         <div className={styles.left}>
-          <img
-            src="/ui/laptop-wedding1.png"
-            alt="Laptop Wedding"
-            className={styles.laptopImage}
-            loading="lazy"
-          />
+          <div className={styles.imageWrapper}>
+            <img
+              src="/ui/laptop-wedding1.png"
+              alt="Laptop Wedding"
+              className={styles.laptopImage}
+              loading="lazy"
+            />
+          </div>
         </div>
 
-        {/* Coloana dreaptă: Text și informații */}
+        {/* Coloana dreaptă: Text asimetric */}
         <div className={styles.right}>
-          <h1 className={styles.mainTitle}>
-            Wedding <br />
-            Portfolio
-          </h1>
-          <div className={styles.infoBlock}>
+          <div className={styles.textWrapper}>
+            <h1 className={styles.mainTitle}>
+              Wedding <br />
+              Portfolio
+            </h1>
             <p className={styles.description}>
-              Eine Website für Hochzeitsfotografie-Dienstleistungen mit
-              Portfolios, Leistungspaketen und Kundenbewertungen.
+              Eine Website für Hochzeitsfotografie-Dienstleistungen mit Portfolios,
+              Leistungspaketen und Kundenbewertungen.
             </p>
             <div className={styles.listsContainer}>
               <div className={styles.listGroup}>

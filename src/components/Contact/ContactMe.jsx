@@ -10,12 +10,14 @@ import {
 import { SiMiro, SiFigma } from "react-icons/si";
 import styles from "./ContactMe.module.css";
 
+
+
 function ContactMe() {
   return (
     <section className={styles.contactSection} id="contact">
       <div className={styles.content}>
         <h1 className={styles.name}>Alexandru-Dumitrel Gheorghe</h1>
-        <p className={styles.title}>Full-Stack Developer / Web Enthusiast</p>
+        <p className={styles.title}>Front-End Web Developer / Web Enthusiast</p>
 
         <div className={styles.contactDetails}>
           <div className={styles.contactItem}>

@@ -5,9 +5,9 @@ import { SiMongodb } from "react-icons/si";
 
 function ProjectTaskTimer() {
   return (
-    <section className={styles.taskTimerSection}>
+    <section id="task-timer" className={styles.taskTimerSection}>
       <div className={styles.container}>
-        {/* Coloana stângă: Text și informații */}
+        {/* Left Column: Text and information */}
         <div className={styles.leftColumn}>
           <h1 className={styles.title}>Task Timer</h1>
           <p className={styles.description}>
@@ -63,7 +63,7 @@ function ProjectTaskTimer() {
           </div>
         </div>
 
-        {/* Coloana dreaptă: Imagine */}
+        {/* Right Column: Image */}
         <div className={styles.rightColumn}>
           <img
             src="/ui/task-laptop.png"

@@ -6,7 +6,7 @@ const TitleProject = ({ title, subtitle, scrollToSection }) => {
   const [isHovered, setIsHovered] = useState(false);
 
   const handleScroll = () => {
-    const targetId = scrollToSection || "projects"; // Default la "projects"
+    const targetId = scrollToSection || "task-timer"; // Default la "projects"
     const element = document.getElementById(targetId);
     if (element) {
       element.scrollIntoView({

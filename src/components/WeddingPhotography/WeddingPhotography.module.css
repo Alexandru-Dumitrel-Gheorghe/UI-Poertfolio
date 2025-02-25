@@ -1,4 +1,4 @@
-/* Secțiunea principală a proiectului */
+/* Secțiunea principală */
 .weddingSection {
   padding: 80px 20px;
   color: #fff;
@@ -7,102 +7,84 @@
   border-top: 2px dashed #888;
 }
 
-/* Containerul general: flex pentru layout */
+/* Containerul general - grid asimetric */
 .containerWedding {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: 40% 60%;
   align-items: center;
+  gap: 2rem;
   max-width: 1200px;
   margin: 0 auto;
 }
 
-/* Coloanele: stânga pentru imagine, dreapta pentru text */
-.left,
-.right {
-  flex: 1;
-  min-width: 300px;
-  margin: 20px;
-}
-
-.icon {
-  font-size: 1.5rem;
-  margin-right: 8px;
-  transition: transform 0.3s, color 0.3s;
-}
-
-.listGroup li:hover .icon {
-  transform: scale(1.2);
-  color: #00bcd4;
-}
-
 /* Coloana stângă: imagine */
 .left {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  position: relative;
+}
+
+.imageWrapper {
+  position: relative;
+  overflow: hidden;
 }
 
 .laptopImage {
-  max-width: 100%;
+  width: 100%;
   height: auto;
   border-radius: 8px;
-  transition: transform 0.3s;
+  transition: transform 0.3s ease;
 }
 
 .laptopImage:hover {
-  transform: scale(1.03);
+  transform: scale(1.05);
 }
 
 /* Coloana dreaptă: text și informații */
 .right {
+  position: relative;
   padding: 20px;
 }
 
-/* Titlul principal, mare (5rem) cu linie sub el */
+.textWrapper {
+  position: relative;
+  /* Offset vertical pentru asimetrie */
+  transform: translateY(-30px);
+}
+
 .mainTitle {
-  font-size: 5rem;
+  font-size: 4rem;
   line-height: 1.2;
   font-weight: 700;
   text-transform: uppercase;
-  margin-bottom: 3rem;
+  margin-bottom: 2rem;
   color: #fff;
-  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
+  text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
   position: relative;
 }
 
 .mainTitle::after {
   content: "";
-  display: block;
-  width: 100px;
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  width: 60px;
   height: 4px;
   background-color: #00bcd4;
-  margin: 0 auto;
-  position: absolute;
-  left: 50%;
-  transform: translateX(-50%);
-  bottom: -10px;
   border-radius: 2px;
 }
 
-/* Blocul de informații */
-.infoBlock {
-  margin-top: 20px;
-}
-
 .description {
-  margin: 0 0 1.5rem 0;
-  font-size: 1.4rem;
-  line-height: 1.4;
-  color: #fff;
-  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
+  margin-bottom: 2rem;
+  font-size: 1.2rem;
+  line-height: 1.5;
+  color: #ddd;
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
 }
 
-/* Container pentru liste */
 .listsContainer {
   display: flex;
-  gap: 40px;
-  margin-bottom: 1.5rem;
+  gap: 2rem;
   flex-wrap: wrap;
+  margin-bottom: 2rem;
 }
 
 .listGroup {
@@ -126,18 +108,29 @@
 
 .listGroup li {
   margin-bottom: 0.5rem;
+  display: flex;
+  align-items: center;
 }
 
-/* Butoane */
+.icon {
+  font-size: 1.5rem;
+  margin-right: 8px;
+  transition: transform 0.3s, color 0.3s;
+}
+
+.listGroup li:hover .icon {
+  transform: scale(1.2);
+  color: #00bcd4;
+}
+
 .buttonsRow {
   display: flex;
-  gap: 20px;
+  gap: 1.5rem;
   flex-wrap: wrap;
 }
 
 .btnWebsite,
 .btnGithub {
-  display: inline-block;
   padding: 12px 24px;
   background-color: #00bcd4;
   color: #000;
@@ -153,22 +146,42 @@
   transform: translateY(-3px);
 }
 
-/* Responsivitate */
-@media (max-width: 768px) {
+/* Responsive */
+@media (max-width: 1024px) {
   .containerWedding {
-    flex-direction: column;
+    grid-template-columns: 1fr;
+    gap: 2rem;
   }
+  .textWrapper {
+    transform: translateY(-10px);
+  }
+  .mainTitle {
+    font-size: 3.5rem;
+    margin-bottom: 1.5rem;
+  }
+  .description {
+    font-size: 1.1rem;
+  }
+}
 
+@media (max-width: 768px) {
   .mainTitle {
     font-size: 3rem;
   }
-
-  .listsContainer {
-    flex-direction: column;
-    gap: 20px;
+  .listGroup h3 {
+    font-size: 1rem;
   }
+  .btnWebsite, .btnGithub {
+    padding: 10px 20px;
+    font-size: 0.9rem;
+  }
+}
 
-  .buttonsRow {
-    justify-content: center;
+@media (max-width: 480px) {
+  .mainTitle {
+    font-size: 2.5rem;
+  }
+  .description {
+    font-size: 1rem;
   }
 }

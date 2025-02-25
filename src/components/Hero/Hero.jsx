@@ -9,7 +9,12 @@ const Hero = () => {
     }
   };
 
-  // Data curentă, formatată în limba germană (ex: "Januar 2025")
+  // Handle CV download
+  const handleCVDownload = () => {
+    window.open("/ui/Lebenslauf.pdf", "_blank");
+  };
+
+  // Current date in German (e.g., "Januar 2025")
   const currentDate = new Date();
   const formattedDate = currentDate.toLocaleDateString("de-DE", {
     month: "long",
@@ -18,7 +23,7 @@ const Hero = () => {
 
   return (
     <section id="home" className={styles.heroSection}>
-      {/* Videoclipul de fundal */}
+      {/* Background video */}
       <video 
         className={styles.backgroundVideo} 
         autoPlay 
@@ -30,11 +35,11 @@ const Hero = () => {
         Your browser does not support the video tag.
       </video>
 
-      {/* Overlay de gradient animat */}
+      {/* Animated gradient overlay */}
       <div className={styles.gradientOverlay}></div>
 
       <div className={styles.heroContainer}>
-        {/* Colț stânga sus */}
+        {/* Top left corner */}
         <div className={`${styles.topLeft} ${styles.fadeInLeft}`}>
           <h2>
             FRONT END WEB DEVELOPER <br />
@@ -42,7 +47,7 @@ const Hero = () => {
           </h2>
         </div>
 
-        {/* Colț dreapta sus */}
+        {/* Top right corner */}
         <div className={`${styles.topRight} ${styles.fadeInRight}`}>
           <p>
             Alexandru Gheorghe <br />
@@ -50,14 +55,14 @@ const Hero = () => {
           </p>
         </div>
 
-        {/* Conținut central */}
+        {/* Central content */}
         <div className={`${styles.centerContent} ${styles.fadeInUp}`}>
           <div className={styles.imageWrapper}>
-            {/* Inel pulsant animat */}
+            {/* Animated pulse ring */}
             <span className={styles.pulseRing}></span>
             <img
               src="/ui/profil.jpg"
-              alt="Fotografie Profil"
+              alt="Profilfoto"
               className={styles.profileImage}
             />
           </div>
@@ -70,9 +75,14 @@ const Hero = () => {
             Leidenschaft für moderne Webtechnologien und die Erstellung
             benutzerfreundlicher, responsiver Lösungen.
           </p>
-          <button className={styles.projectButton} onClick={handleProjectsClick}>
-            Zu meinen Projekten
-          </button>
+          <div className={styles.buttonGroup}>
+            <button className={styles.projectButton} onClick={handleProjectsClick}>
+              Projekten
+            </button>
+            <button className={styles.cvButton} onClick={handleCVDownload}>
+              Lebenslauf📄
+            </button>
+          </div>
         </div>
       </div>
     </section>
