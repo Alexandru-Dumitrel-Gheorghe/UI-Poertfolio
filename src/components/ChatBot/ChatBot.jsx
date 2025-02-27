@@ -18,7 +18,7 @@ const ChatBot = () => {
     const userMessage = input.trim();
     setMessages([...messages, { sender: 'user', text: userMessage }]);
     setInput('');
-    // Adaugă mesajul temporar "Denke nach..."
+    // Temporary "thinking..." message
     setMessages(prev => [...prev, { sender: 'bot', text: 'Denke nach...' }]);
 
     try {

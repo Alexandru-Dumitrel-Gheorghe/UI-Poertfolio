@@ -6,17 +6,17 @@ function Project() {
   return (
     <section className={styles.projectSection}>
       <div className={styles.projectContent}>
-        {/* Coloana stângă (Text) */}
+        {/* Left column (Text) */}
         <div className={styles.left}>
           <h2 className={styles.title}>Tetris Game</h2>
           <p className={styles.description}>
-            Ein klassisches Tetris-Spiel mit React. Ordnen Sie fallende Tetrominos
-            so an, dass ganze Reihen entstehen, um Punkte zu sammeln.
+            A classic Tetris game built with React. Arrange falling Tetrominos
+            to create full rows and score points.
           </p>
 
           <div className={styles.lists}>
             <div className={styles.technologies}>
-              <h3>TECHNOLOGIEN</h3>
+              <h3>TECHNOLOGIES</h3>
               <ul>
                 <li>
                   <FaJsSquare className={styles.icon} />
@@ -37,13 +37,13 @@ function Project() {
               </ul>
             </div>
             <div className={styles.features}>
-              <h3>FUNKTIONEN</h3>
+              <h3>FEATURES</h3>
               <ul>
-                <li>Mehrere Level</li>
-                <li>Steigende Geschwindigkeit</li>
-                <li>Responsives Design</li>
-                <li>Intuitive Steuerung</li>
-                <li>Soundeffekte</li>
+                <li>Multiple levels</li>
+                <li>Increasing speed</li>
+                <li>Responsive design</li>
+                <li>Intuitive controls</li>
+                <li>Sound effects</li>
               </ul>
             </div>
           </div>
@@ -68,7 +68,7 @@ function Project() {
           </div>
         </div>
 
-        {/* Coloana dreaptă (Imagine laptop) */}
+        {/* Right column (Laptop image) */}
         <div className={styles.right}>
           <div className={styles.laptopContainer}>
             <img

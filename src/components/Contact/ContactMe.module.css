@@ -1,5 +1,5 @@
 /*************************************************
-  RESET SIMPLU (OPȚIONAL)
+  SIMPLE RESET (OPTIONAL)
 **************************************************/
 * {
   margin: 0;
@@ -8,7 +8,7 @@
 }
 
 /*************************************************
-  SECTIUNEA PRINCIPALĂ
+  MAIN SECTION
 **************************************************/
 .contactSection {
   width: 100%;
@@ -23,7 +23,7 @@
 }
 
 /*************************************************
-  BARA DE SUS
+  TOP BAR
 **************************************************/
 .topBar {
   display: flex;
@@ -42,7 +42,7 @@
 }
 
 /*************************************************
-  CONȚINUTUL CENTRAL
+  MAIN CONTENT
 **************************************************/
 .mainContent {
   flex: 1;
@@ -52,13 +52,13 @@
   align-items: center;
 }
 
-/* Textul mare de pe mijloc */
+/* Large text in the center */
 .centerText {
   text-align: center;
   margin-bottom: 1rem;
 }
 
-/* "Let’s work" - stil cursiv */
+/* "Let’s work" - cursive style */
 .scriptText {
   font-family: "Dancing Script", cursive;
   font-size: 2.5rem;
@@ -66,7 +66,7 @@
   margin-bottom: 0.3rem;
 }
 
-/* "TOGETHER" - stil bold, mare, negru */
+/* "TOGETHER" - bold, large, black */
 .boldText {
   font-size: 5rem;
   text-transform: uppercase;
@@ -77,7 +77,7 @@
   transition: color 0.3s ease;
 }
 
-/* Subtitlu opțional (descriere) */
+/* Optional subtitle (description) */
 .subTitle {
   font-size: 1.2rem;
   margin-top: 0.5rem;
@@ -85,7 +85,7 @@
 }
 
 /*************************************************
-  BUTOANE: PROJEKTEN & LEBENSLAUF
+  BUTTONS: PROJEKTEN & LEBENSLAUF
 **************************************************/
 .buttonGroup {
   margin-top: 1.5rem;
@@ -93,34 +93,34 @@
   gap: 1rem;
 }
 
-/* Buton pentru proiecte (Project Button) */
+/* Project button */
 .projectButton {
-  background: #ffffff;           /* Fundal alb */
-  color: #000;                   /* Text negru */
-  padding: 0.9rem 1.6rem;        /* Puțin mai mare */
-  border: 2px solid #fff;        /* Bordură albă */
-  border-radius: 4px;            /* Colțuri rotunjite */
-  font-size: 1.1rem;             /* Ușor mai mare decât 1rem */
-  font-weight: 600;              /* Mai gros */
+  background: #ffffff;           /* White background */
+  color: #000;                   /* Black text */
+  padding: 0.9rem 1.6rem;        /* Slightly larger */
+  border: 2px solid #fff;        /* White border */
+  border-radius: 4px;            /* Rounded corners */
+  font-size: 1.1rem;             /* Slightly larger than 1rem */
+  font-weight: 600;              /* Thicker font */
   cursor: pointer;
   text-transform: uppercase;
-  letter-spacing: 1.2px;         /* Ușor mai mult spațiu între litere */
+  letter-spacing: 1.2px;         /* Slightly more spacing between letters */
   transition: all 0.3s ease;
-  box-shadow: 0 4px 15px rgba(255, 255, 255, 0.2); /* Mică umbră deschisă */
+  box-shadow: 0 4px 15px rgba(255, 255, 255, 0.2); /* Subtle light shadow */
 }
 
 .projectButton:hover {
-  background: #333;              /* Fundal închis la hover */
-  color: #fff;                   /* Text alb */
-  border-color: #333;            /* Bordura devine închisă */
-  transform: translateY(-3px) scale(1.05); /* Ușoară ridicare și mărire */
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4); /* Umbră mai mare */
+  background: #333;              /* Dark background on hover */
+  color: #fff;                   /* White text */
+  border-color: #333;            /* Dark border */
+  transform: translateY(-3px) scale(1.05); /* Slight lift and enlarge */
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4); /* Larger shadow */
 }
 
-/* Buton pentru CV (CV Button) */
+/* CV button */
 .cvButton {
   background: linear-gradient(135deg, #007acc 0%, #005f99 100%); 
-  /* Gradient albastru */
+  /* Blue gradient */
   color: #fff;
   padding: 0.9rem 1.6rem;
   border: none;
@@ -140,9 +140,8 @@
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
 }
 
-
 /*************************************************
-  BARA DE JOS
+  BOTTOM BAR
 **************************************************/
 .bottomBar {
   display: flex;
@@ -155,7 +154,7 @@
   gap: 1rem;
 }
 
-/* Fiecare item de contact (telefon, email, etc.) */
+/* Contact item (phone, email, etc.) */
 .contactItem {
   display: flex;
   align-items: center;
@@ -164,7 +163,7 @@
   color: #ffffff;
 }
 
-/* Iconițele contact */
+/* Contact icons */
 .icon {
   font-size: 1.2rem;
   color: #00bcd4;

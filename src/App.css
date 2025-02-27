@@ -6,43 +6,41 @@ html, body {
   height: 100%;
 }
 
-/* Fundal cosmic */
+/* Cosmic Background */
 body {
-  /* Fundal de bază */
+  /* Base background */
   background-color: #0a0a0a;
   background-repeat: no-repeat;
   background-size: cover;
   background-attachment: fixed; 
-
   
-  
-  /* menține fundalul fix la scroll (opțional) */
+  /* Keeps the background fixed during scroll (optional) */
 
   /*
-    Layer 1: 'nebuloase' radiale, foarte transparente, 
-    la diverse poziții
+    Layer 1: Radial 'nebulae', very transparent, 
+    at various positions
   */
   background-image: 
     radial-gradient(
-      circle at 20% 30%,         /* poziție */
-      rgba(255, 0, 255, 0.08),   /* culoare (magenta) + transparență */
+      circle at 20% 30%,         /* position */
+      rgba(255, 0, 255, 0.08),   /* color (magenta) + transparency */
       transparent 40%
     ),
     radial-gradient(
       circle at 70% 40%, 
-      rgba(0, 255, 255, 0.08),   /* cian */
+      rgba(0, 255, 255, 0.08),   /* cyan */
       transparent 35%
     ),
     radial-gradient(
       circle at 40% 80%, 
-      rgba(255, 255, 0, 0.06),   /* galben */
+      rgba(255, 255, 0, 0.06),   /* yellow */
       transparent 40%
     ),
 
   /*
-    Layer 2: câteva "stele" punctuale,
-    folosind radial-gradient(1px la 1px)
-    => mic punct alb cu transparent în jur
+    Layer 2: Some "stars" as small white dots,
+    using radial-gradient(1px by 1px)
+    => small white dot with transparency around it
   */
     radial-gradient(1px 1px at 10% 20%,  rgba(255,255,255,0.6), transparent),
     radial-gradient(1px 1px at 25% 90%,  rgba(255,255,255,0.7), transparent),
@@ -51,9 +49,9 @@ body {
     radial-gradient(1px 1px at 90% 85%,  rgba(255,255,255,0.8), transparent),
     radial-gradient(1px 1px at 50% 10%,  rgba(255,255,255,0.5), transparent);
 
-  /* Suprapunere a straturilor prin screen (sau lighten) */
+  /* Overlay layers through screen (or lighten) */
   background-blend-mode: screen;
-  color: #fff;  /* text alb */
+  color: #fff;  /* white text */
   font-family: sans-serif;
 }
 
@@ -63,31 +61,31 @@ body {
   ======================
 */
 ::-webkit-scrollbar {
-  width: 12px;                /* lățimea scrollbar-ului */
-  background-color: #222;     /* fundal general scrollbar */
+  width: 12px;                /* scrollbar width */
+  background-color: #222;     /* general scrollbar background */
 }
 
 ::-webkit-scrollbar-track {
-  background-color: #333;     /* fundal șina scrollbar */
+  background-color: #333;     /* track background */
 }
 
 ::-webkit-scrollbar-thumb {
-  background-color: #666;     /* thumb-ul scrollbar */
-  border-radius: 6px;         /* colțuri rotunjite */
-  border: 2px solid #333;     /* spațiu în jur, pentru efect */
+  background-color: #666;     /* scrollbar thumb */
+  border-radius: 6px;         /* rounded corners */
+  border: 2px solid #333;     /* space around, for effect */
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background-color: #555;     /* hover mai deschis */
+  background-color: #555;     /* hover effect, lighter */
 }
 
 /*
-  Scrollbar styling pentru Firefox 
+  Scrollbar styling for Firefox 
   ======================
   - scrollbar-color: <thumb> <track>
   - scrollbar-width: auto | thin
 */
 html {
-  scrollbar-color: #666 #333; /* thumb la #666, track la #333 */
-  scrollbar-width: thin;      /* lățime subțire */
+  scrollbar-color: #666 #333; /* thumb at #666, track at #333 */
+  scrollbar-width: thin;      /* thin width */
 }

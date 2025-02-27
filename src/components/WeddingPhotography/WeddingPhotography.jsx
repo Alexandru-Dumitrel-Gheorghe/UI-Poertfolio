@@ -7,7 +7,7 @@ const WeddingPhotography = () => {
   return (
     <section id="WeddingPhotography" className={styles.weddingSection}>
       <div className={styles.containerWedding}>
-        {/* Coloana stângă: Imagine cu efect de clip-path */}
+        {/* Left Column: Image with clip-path effect */}
         <div className={styles.left}>
           <div className={styles.imageWrapper}>
             <img
@@ -19,7 +19,7 @@ const WeddingPhotography = () => {
           </div>
         </div>
 
-        {/* Coloana dreaptă: Text asimetric */}
+        {/* Right Column: Asymmetric text */}
         <div className={styles.right}>
           <div className={styles.textWrapper}>
             <h1 className={styles.mainTitle}>
@@ -27,12 +27,12 @@ const WeddingPhotography = () => {
               Portfolio
             </h1>
             <p className={styles.description}>
-              Eine Website für Hochzeitsfotografie-Dienstleistungen mit Portfolios,
-              Leistungspaketen und Kundenbewertungen.
+              A website for wedding photography services with portfolios,
+              service packages, and customer reviews.
             </p>
             <div className={styles.listsContainer}>
               <div className={styles.listGroup}>
-                <h3>Technologien:</h3>
+                <h3>Technologies:</h3>
                 <ul>
                   <li>
                     <FaJsSquare className={styles.icon} /> JavaScript
@@ -52,12 +52,12 @@ const WeddingPhotography = () => {
                 </ul>
               </div>
               <div className={styles.listGroup}>
-                <h3>Funktionen:</h3>
+                <h3>Features:</h3>
                 <ul>
-                  <li>Responsives Design</li>
-                  <li>Interaktive Galerie</li>
-                  <li>Kontaktformular</li>
-                  <li>Servicepakete</li>
+                  <li>Responsive Design</li>
+                  <li>Interactive Gallery</li>
+                  <li>Contact Form</li>
+                  <li>Service Packages</li>
                 </ul>
               </div>
             </div>

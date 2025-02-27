@@ -1,7 +1,7 @@
 .footer {
-  position: relative;  /* sau fixed, dacă vrei ca footer-ul să fie întotdeauna vizibil */
-  z-index: 10000;      /* asigură-te că este peste alte elemente */
-  background: #111;    /* Fundal întunecat */
+  position: relative;  
+  z-index: 10000;      
+  background: #111;    
   color: #fff;
   padding: 2rem 1rem;
   text-align: center;

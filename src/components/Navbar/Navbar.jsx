@@ -29,7 +29,7 @@ const Navbar = () => {
   return (
     <nav className={`${styles.navbar} ${isScrolled ? styles.scrolled : ""}`}>
       <div className={styles.navContent}>
-        {/* Link-urile (stânga) */}
+        {/* Links (left side) */}
         <div className={styles.linksContainer}>
           <Link to="home" smooth={true} duration={500} offset={-70}>Home</Link>
           <Link to="about" smooth={true} duration={500} offset={-70}>About</Link>
@@ -38,7 +38,7 @@ const Navbar = () => {
           <Link to="contact" smooth={true} duration={500} offset={-70}>Contact</Link>
         </div>
 
-        {/* Iconițele (dreapta) */}
+        {/* Icons (right side) */}
         <div className={styles.socialLinks}>
           <a href="https://miro.com" target="_blank" rel="noreferrer">
             <SiMiro />
@@ -54,13 +54,13 @@ const Navbar = () => {
           </a>
         </div>
 
-        {/* Buton hamburger (mobil) */}
+        {/* Mobile menu button */}
         <div className={styles.mobileMenuIcon} onClick={toggleMenu}>
           <FaBars />
         </div>
       </div>
 
-      {/* Meniul mobil, apare peste ecran */}
+      {/* Mobile menu, appears over the screen */}
       <AnimatePresence>
         {isOpen && (
           <motion.div

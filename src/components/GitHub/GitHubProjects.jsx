@@ -26,7 +26,7 @@ const GitHubProjects = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
 
-  // Fetch repository-urile
+  // Fetch repositories
   useEffect(() => {
     const fetchRepos = async () => {
       try {
@@ -43,7 +43,7 @@ const GitHubProjects = () => {
           throw new Error("Failed to fetch repositories");
         }
         const data = await response.json();
-        // Selectăm doar primele 3 repository-uri actualizate recent
+        // Select the first 3 most recently updated repositories
         setRepos(data.slice(0, 3));
       } catch (err) {
         setError(err.message);
@@ -55,7 +55,7 @@ const GitHubProjects = () => {
     fetchRepos();
   }, []);
 
-  // Fetch numărul de commit-uri pentru fiecare repository
+  // Fetch commit counts for each repository
   useEffect(() => {
     const fetchCommitCounts = async () => {
       if (repos.length > 0) {
@@ -74,7 +74,6 @@ const GitHubProjects = () => {
               if (!response.ok) {
                 throw new Error("Failed to fetch commits for " + repo.name);
               }
-              // Extragem numărul total de commit-uri din header-ul de paginare
               const linkHeader = response.headers.get("Link");
               let commitCount = 1;
               if (linkHeader) {

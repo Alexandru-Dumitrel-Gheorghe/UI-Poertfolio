@@ -1,170 +1,169 @@
 /* General */
 .githubProjects {
-    padding: 80px 20px;
-    color: #fff;
-    font-family: 'Roboto', sans-serif;
-    border-top: 2px dashed #888;
-  }
-  
-  /* Heading cu efect de subliniere */
+  padding: 80px 20px;
+  color: #fff;
+  font-family: 'Roboto', sans-serif;
+  border-top: 2px dashed #888;
+}
+
+/* Heading with underline effect */
+.heading {
+  font-size: 2.5rem;
+  text-align: center;
+  margin-bottom: 4rem;
+  position: relative;
+  display: inline-block;
+  transition: color 0.3s ease;
+}
+
+.heading:hover {
+  color: #00bcd4;
+}
+
+.heading::after {
+  content: "";
+  position: absolute;
+  bottom: -8px;
+  left: 0;
+  width: 0;
+  height: 3px;
+  background-color: #00bcd4;
+  transition: width 0.3s ease;
+}
+
+.heading:hover::after {
+  width: 100%;
+}
+
+/* GitHub icon in heading */
+.githubIcon {
+  margin-right: 10px;
+  vertical-align: middle;
+}
+
+/* Project grid */
+.projectGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+}
+
+/* Project card */
+.projectCard {
+  background: rgba(255, 255, 255, 0.05);
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.projectCard:hover {
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.3);
+}
+
+/* Repository name with hover effect and underline */
+.repoName {
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+.repoName:hover {
+  color: #00bcd4;
+}
+
+.repoName::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: #00bcd4;
+  transition: width 0.3s ease;
+}
+
+.repoName:hover::after {
+  width: 100%;
+}
+
+/* Tech icons */
+.techIcons {
+  margin-bottom: 1rem;
+}
+
+.techIcons svg {
+  font-size: 1.8rem;
+  margin-right: 0.5rem;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.techIcons svg:hover {
+  transform: scale(1.2);
+  color: #00bcd4;
+}
+
+/* Repository description */
+.repoDescription {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+  transition: color 0.3s ease;
+}
+
+.repoDescription:hover {
+  color: #00bcd4;
+}
+
+/* GitHub link */
+.repoLink {
+  display: inline-block;
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+  color: #00bcd4;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.repoLink:hover {
+  color: #3cc2c2;
+}
+
+/* Additional stats */
+.repoExtra {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  font-size: 1rem;
+}
+
+.repoStat {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+/* Loader and error */
+.loader,
+.error {
+  text-align: center;
+  font-size: 1.2rem;
+  padding: 2rem;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
   .heading {
-    font-size: 2.5rem;
-    text-align: center;
-    margin-bottom: 4rem;
-    position: relative;
-    display: inline-block;
-    transition: color 0.3s ease;
-  }
-  
-  .heading:hover {
-    color: #00bcd4;
-  }
-  
-  .heading::after {
-    content: "";
-    position: absolute;
-    bottom: -8px;
-    left: 0;
-    width: 0;
-    height: 3px;
-    background-color: #00bcd4;
-    transition: width 0.3s ease;
-  }
-  
-  .heading:hover::after {
-    width: 100%;
-  }
-  
-  /* GitHub icon in heading */
-  .githubIcon {
-    margin-right: 10px;
-    vertical-align: middle;
-  }
-  
-  /* Grid-ul proiectelor */
-  .projectGrid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 2rem;
-  }
-  
-  /* Card de proiect */
-  .projectCard {
-    background: rgba(255, 255, 255, 0.05);
-    padding: 1.5rem;
-    border-radius: 12px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
-  }
-  
-  .projectCard:hover {
-    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.3);
-  }
-  
-  /* Numele repository-ului cu efect de hover și subliniere */
-  .repoName {
-    font-size: 1.8rem;
-    margin-bottom: 0.5rem;
-    position: relative;
-    transition: color 0.3s ease;
-  }
-  
-  .repoName:hover {
-    color: #00bcd4;
-  }
-  
-  .repoName::after {
-    content: "";
-    position: absolute;
-    bottom: -4px;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background-color: #00bcd4;
-    transition: width 0.3s ease;
-  }
-  
-  .repoName:hover::after {
-    width: 100%;
-  }
-  
-  /* Icoanele tehnologice */
-  .techIcons {
-    margin-bottom: 1rem;
-  }
-  
-  .techIcons svg {
-    font-size: 1.8rem;
-    margin-right: 0.5rem;
-    transition: transform 0.3s ease, color 0.3s ease;
-  }
-  
-  .techIcons svg:hover {
-    transform: scale(1.2);
-    color: #00bcd4;
-  }
-  
-  /* Descrierea repository-ului */
-  .repoDescription {
-    font-size: 1.1rem;
-    line-height: 1.6;
-    margin-bottom: 1rem;
-    transition: color 0.3s ease;
-  }
-  
-  .repoDescription:hover {
-    color: #00bcd4;
-  }
-  
-  /* Link-ul către GitHub */
-  .repoLink {
-    display: inline-block;
-    margin-bottom: 1rem;
-    font-size: 1.1rem;
-    color: #00bcd4;
-    text-decoration: none;
-    transition: color 0.3s ease;
-  }
-  
-  .repoLink:hover {
-    color: #3cc2c2;
-  }
-  
-  /* Statistici suplimentare */
-  .repoExtra {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1rem;
-    font-size: 1rem;
-  }
-  
-  .repoStat {
-    display: flex;
-    align-items: center;
-    gap: 0.3rem;
-  }
-  
-  /* Loader și eroare */
-  .loader,
-  .error {
-    text-align: center;
-    font-size: 1.2rem;
-    padding: 2rem;
-  }
-  
-  /* Responsive adjustments */
-  @media (max-width: 768px) {
-    .heading {
       font-size: 2rem;
-    }
-    .repoName {
-      font-size: 1.5rem;
-    }
-    .repoDescription {
-      font-size: 1rem;
-    }
-    .repoExtra {
-      font-size: 0.9rem;
-    }
   }
-  
+  .repoName {
+      font-size: 1.5rem;
+  }
+  .repoDescription {
+      font-size: 1rem;
+  }
+  .repoExtra {
+      font-size: 0.9rem;
+  }
+}

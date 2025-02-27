@@ -1,6 +1,6 @@
-/* ========================================== */
-/* SECTIUNEA PRINCIPALĂ                       */
-/* ========================================== */
+/*************************************************
+  MAIN SECTION
+**************************************************/
 .aboutSection {
   position: relative;
   width: 100%;
@@ -10,26 +10,40 @@
   padding: 4rem 0;
   display: flex;
   flex-direction: column;
-  overflow-x: hidden;
+  overflow: hidden; /* hides any animated elements */
 }
 
-/* ========================================== */
-/* VIDEOCIPUL CA FUNDAL                      */
-/* ========================================== */
-.backgroundVideo {
+/* --- Animated gradient background --- */
+.aboutSection::before {
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  object-fit: cover; /* Acoperă complet fundalul */
-  z-index: -1; /* Plasăm videoclipul în fundal */
-  opacity: 0.8; /* Adăugăm un pic de transparență pentru a evidenția textul */
+  
+  background-size: 400% 400%;
+  animation: gradientMove 15s ease infinite;
+  opacity: 0.85;
+  z-index: -1; /* placed behind */
 }
 
-/* ========================================== */
-/* CONTAINER INTERIOR (max-width pentru aliniere) */
-/* ========================================== */
+/* Keyframes for the animated gradient */
+@keyframes gradientMove {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/*************************************************
+  INNER CONTAINER
+**************************************************/
 .aboutContainer {
   max-width: 1200px;
   margin: 0 auto;
@@ -40,38 +54,52 @@
   padding: 0 2rem;
 }
 
-/* ========================================== */
-/* COLOANA STÂNGA (TEXT)                     */
-/* ========================================== */
+/*************************************************
+  LEFT SIDE (TEXT)
+**************************************************/
 .leftSide {
   flex: 1;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  animation: fadeInUp 1s ease forwards; /* Animation on appearance */
 }
 
 .introTitle {
-  font-size: 5rem;
+  font-size: 4.5rem;
   text-transform: uppercase;
   letter-spacing: 3px;
   margin-bottom: 1rem;
   font-weight: 700;
-  animation: fadeIn 1s ease-out;
+  opacity: 0; /* ready for animation */
+  animation: fadeInUp 1s ease forwards 0.2s; /* 0.2s delay */
 }
 
 .paragraph {
-  font-size: 1.3rem;
+  font-size: 1.2rem;
   line-height: 1.6;
   max-width: 600px;
   margin-bottom: 1.5rem;
-  animation: fadeIn 1s ease-out;
+  opacity: 0; /* ready for animation */
+  animation: fadeInUp 1s ease forwards;
+  /* Each paragraph has a slightly different delay */
 }
 
-/* Animație pentru text */
-@keyframes fadeIn {
+.paragraph:nth-of-type(1) {
+  animation-delay: 0.4s;
+}
+.paragraph:nth-of-type(2) {
+  animation-delay: 0.6s;
+}
+.paragraph:nth-of-type(3) {
+  animation-delay: 0.8s;
+}
+
+/* Keyframes for fadeInUp animation */
+@keyframes fadeInUp {
   from {
     opacity: 0;
-    transform: translateY(20px);
+    transform: translateY(40px);
   }
   to {
     opacity: 1;
@@ -79,31 +107,40 @@
   }
 }
 
-/* ========================================== */
-/* COLOANA DREAPTA (VIDEO)                   */
-/* ========================================== */
+/*************************************************
+  RIGHT SIDE (VIDEO + TILT)
+**************************************************/
 .rightSide {
   flex: 1;
   display: flex;
-  align-items: center;
   justify-content: center;
+  align-items: center;
+  perspective: 1000px; /* prepare 3D scene for tilt */
+}
+
+/* Wrapper to apply tilt effect on the video */
+.videoWrapper {
+  width: 100%;
+  max-width: 600px;
+  transition: transform 0.6s ease, box-shadow 0.6s ease;
+  transform: rotateY(-15deg) scale(0.95);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+}
+
+.videoWrapper:hover {
+  transform: rotateY(0deg) scale(1);
+  box-shadow: 0 25px 40px rgba(0, 0, 0, 0.5);
 }
 
 .cubeVideo {
   width: 100%;
-  max-width: 600px;
   border: 2px solid #333;
   border-radius: 8px;
-  transition: transform 0.3s ease;
 }
 
-.cubeVideo:hover {
-  transform: scale(1.05);
-}
-
-/* ========================================== */
-/* LINIE DE SEPARARE (OPȚIONAL)              */
-/* ========================================== */
+/*************************************************
+  SECTION DIVIDER (OPTIONAL)
+**************************************************/
 .sectionDivider {
   width: 80%;
   height: 2px;
@@ -112,9 +149,9 @@
   border-radius: 1px;
 }
 
-/* ========================================== */
-/* MEDIA QUERY: ecrane sub 992px              */
-/* ========================================== */
+/*************************************************
+  MEDIA QUERIES
+**************************************************/
 @media (max-width: 992px) {
   .aboutContainer {
     flex-direction: column;
@@ -126,27 +163,24 @@
   }
 
   .introTitle {
-    font-size: 4rem;
+    font-size: 3rem;
   }
 
-  .cubeVideo {
+  .videoWrapper {
     max-width: 500px;
   }
 }
 
-/* ========================================== */
-/* MEDIA QUERY: ecrane sub 768px              */
-/* ========================================== */
 @media (max-width: 768px) {
   .introTitle {
     font-size: 2.5rem;
   }
 
   .paragraph {
-    font-size: 1.1rem;
+    font-size: 1rem;
   }
 
-  .cubeVideo {
+  .videoWrapper {
     max-width: 100%;
   }
 
@@ -156,23 +190,12 @@
   }
 }
 
-/* ========================================== */
-/* MEDIA QUERY: telefoane mici sub 480px       */
-/* ========================================== */
 @media (max-width: 480px) {
   .introTitle {
     font-size: 2rem;
   }
 
   .paragraph {
-    font-size: 1rem;
-  }
-
-  .cubeVideo {
-    max-width: 100%;
-  }
-
-  .sectionDivider {
-    width: 100%;
+    font-size: 0.95rem;
   }
 }

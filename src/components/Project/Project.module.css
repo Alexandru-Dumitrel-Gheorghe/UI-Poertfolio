@@ -1,4 +1,4 @@
-/* Secțiunea principală a proiectului */
+/* Main project section */
 .projectSection {
   padding: 80px 20px;
   color: #fff;
@@ -6,7 +6,7 @@
   border-top: 2px dashed #888;
 }
 
-/* Conținutul secțiunii: flex pentru desktop, se stivuiește pe mobil */
+/* Content of the section: flex for desktop, stacks on mobile */
 .projectContent {
   display: flex;
   flex-wrap: wrap;
@@ -15,7 +15,7 @@
   margin: 0 auto;
 }
 
-/* Coloanele */
+/* Columns */
 .left,
 .right {
   flex: 1;
@@ -23,7 +23,7 @@
   margin: 20px;
 }
 
-/* Titlul secțiunii, mare (5rem) cu linie sub el */
+/* Section title, large (5rem) with an underline */
 .title {
   font-size: 5rem;
   line-height: 1.2;
@@ -36,7 +36,7 @@
   margin-bottom: 3rem;
 }
 
-/* Linia sub titlu */
+/* Line under the title */
 .title::after {
   content: "";
   display: block;
@@ -51,7 +51,7 @@
   border-radius: 2px;
 }
 
-/* Descrierea proiectului, mărită (1.4rem) */
+/* Project description, increased size (1.4rem) */
 .description {
   margin: 0 0 1.5rem 0;
   font-size: 1.4rem;
@@ -60,7 +60,7 @@
   text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
 }
 
-/* Gruparea listelor (tehnologii și funcții) */
+/* Grouping the lists (technologies and features) */
 .lists {
   display: flex;
   gap: 40px;
@@ -84,7 +84,7 @@
   position: relative;
 }
 
-/* Listă */
+/* List */
 .technologies ul,
 .features ul {
   list-style: none;
@@ -99,7 +99,7 @@
   align-items: center;
 }
 
-/* Icoanele tehnologice */
+/* Technology icons */
 .icon {
   font-size: 1.5rem;
   margin-right: 8px;
@@ -110,7 +110,7 @@
   color: #00bcd4;
 }
 
-/* Butoane */
+/* Buttons */
 .buttonsContainer {
   display: flex;
   gap: 20px;
@@ -134,7 +134,7 @@
   transform: translateY(-3px);
 }
 
-/* Imagine laptop */
+/* Laptop image */
 .laptopContainer {
   text-align: center;
 }
@@ -150,14 +150,14 @@
   transform: scale(1.03);
 }
 
-/* Responsivitate */
+/* Responsiveness */
 @media (max-width: 768px) {
   .projectContent {
     flex-direction: column;
   }
 
   .title {
-    font-size: 3rem; /* Mai mic pe mobil, dacă 5rem e prea mare */
+    font-size: 3rem; /* Smaller on mobile if 5rem is too large */
   }
 
   .lists {

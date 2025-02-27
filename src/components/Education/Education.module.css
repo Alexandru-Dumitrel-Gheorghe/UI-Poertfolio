@@ -1,4 +1,6 @@
-/* Secțiunea principală cu fundal */
+/*************************************************
+  MAIN SECTION WITH BACKGROUND
+**************************************************/
 .educationSection {
   position: relative;
   width: 100%;
@@ -10,7 +12,7 @@
   border-top: 2px dashed #888;
 }
 
-/* Overlay (opțional) */
+/* Optional overlay */
 .overlay {
   position: absolute;
   top: 0;
@@ -21,7 +23,7 @@
   z-index: 1;
 }
 
-/* Wrapper pentru coloane + titlu vertical */
+/* Wrapper for columns + vertical title */
 .contentWrapper {
   position: relative;
   z-index: 2;
@@ -29,7 +31,7 @@
   margin: 0 auto;
 }
 
-/* Două coloane side by side, cu gap și linie verticală */
+/* Two columns side by side, with gap and vertical line */
 .columns {
   display: flex;
   gap: 4rem;
@@ -37,7 +39,7 @@
   position: relative;
 }
 
-/* Linia verticală - pseudo-element */
+/* Vertical line - pseudo-element */
 .columns::after {
   content: "";
   position: absolute;
@@ -50,7 +52,7 @@
   transform: translateX(-50%);
 }
 
-/* Fiecare coloană */
+/* Each column */
 .column {
   flex: 1;
   transition: transform 0.3s ease;
@@ -60,7 +62,7 @@
   transform: translateY(-5px);
 }
 
-/* Stil pentru heading cu efect de hover și linie de subliniere */
+/* Heading style with hover effect and underline */
 .heading {
   font-size: 1.8rem;
   margin: 0 0 0.5rem;
@@ -88,7 +90,7 @@
   width: 100%;
 }
 
-/* Subheading cu efect de hover */
+/* Subheading with hover effect */
 .subHeading {
   font-size: 1rem;
   margin: 0 0 1rem;
@@ -100,7 +102,7 @@
   color: #fff;
 }
 
-/* Paragraf cu efect de hover */
+/* Paragraph with hover effect */
 .paragraph {
   font-size: 1.2rem;
   line-height: 2;
@@ -112,7 +114,7 @@
   color: #00bcd4;
 }
 
-/* Titlu vertical "EDUCATION" */
+/* Vertical "EDUCATION" title */
 .verticalTitle {
   position: absolute;
   top: 70%;
@@ -129,9 +131,9 @@
   z-index: 3;
 }
 
-/* RESPONSIVITATE */
+/* RESPONSIVENESS */
 
-/* Sub 1024px */
+/* Below 1024px */
 @media (max-width: 1024px) {
   .heading {
     font-size: 1.5rem;
@@ -142,7 +144,7 @@
   }
 }
 
-/* Sub 768px => coloanele devin verticale */
+/* Below 768px => columns become vertical */
 @media (max-width: 768px) {
   .columns {
     flex-direction: column;
@@ -158,7 +160,7 @@
   }
 }
 
-/* Sub 480px */
+/* Below 480px */
 @media (max-width: 480px) {
   .heading {
     font-size: 1.3rem;

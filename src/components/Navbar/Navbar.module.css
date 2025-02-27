@@ -34,24 +34,17 @@
   font-weight: 500;
   position: relative;
   transition: color 0.3s ease;
-  cursor: pointer; /* Asigură că cursorul rămâne degetul arătător */
+  cursor: pointer;
 }
-
 
 .linksContainer a::after {
   content: "👉";
   position: absolute;
-  left: -1.5rem; /* plasat la stânga linkului */
+  left: -1.5rem;
   opacity: 0;
   transform: translateX(-10px);
   transition: opacity 0.3s ease, transform 0.3s ease;
 }
-
-.linksContainer a:hover::after {
-  opacity: 1;
-  transform: translateX(0);
-}
-
 
 .linksContainer a:hover::after {
   opacity: 1;
@@ -71,7 +64,7 @@
 
 .socialLinks a:hover {
   color: #00bcd4;
-    transform: translateY(-3px);
+  transform: translateY(-3px);
 }
 
 .mobileMenuIcon {
@@ -80,7 +73,7 @@
   cursor: pointer;
 }
 
-/* Meniul mobil */
+/* Mobile menu */
 .mobileMenu {
   position: fixed;
   top: 0;
@@ -136,7 +129,7 @@
   color: #ccc;
 }
 
-/* Responsivitate */
+/* Responsiveness */
 @media (max-width: 768px) {
   .linksContainer {
     display: none;

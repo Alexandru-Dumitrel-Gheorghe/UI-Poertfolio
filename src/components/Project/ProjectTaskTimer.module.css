@@ -1,4 +1,4 @@
-/* Secțiunea principală a aplicației Task Timer */
+/* Main section of the Task Timer app */
 .taskTimerSection {
   padding: 80px 20px;
   color: #fff;
@@ -6,7 +6,7 @@
   border-top: 2px dashed #888;
 }
 
-/* Containerul general */
+/* General container */
 .container {
   display: flex;
   flex-wrap: wrap;
@@ -15,7 +15,7 @@
   margin: 0 auto;
 }
 
-/* Coloanele: stânga pentru text, dreapta pentru imagine */
+/* Columns: left for text, right for image */
 .leftColumn,
 .rightColumn {
   flex: 1;
@@ -23,7 +23,7 @@
   margin: 20px;
 }
 
-/* Coloana stângă: Text și informații */
+/* Left column: Text and information */
 .title {
   font-size: 5rem;
   line-height: 1.2;
@@ -31,7 +31,7 @@
   text-transform: uppercase;
   margin-bottom: 3rem;
   color: #fff;
-  text-shadow: 1px 1px 3px rgba(0,0,0,0.6);
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
   position: relative;
   margin-bottom: 5rem;
 }
@@ -55,11 +55,11 @@
   line-height: 1.4;
   margin-bottom: 1.5rem;
   color: #fff;
-  text-shadow: 1px 1px 3px rgba(0,0,0,0.6);
+  text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.6);
   margin-bottom: 4rem;
 }
 
-/* Containerul pentru liste (două secțiuni pe același rând) */
+/* Container for the lists (two sections on the same row) */
 .listsContainer {
   display: flex;
   gap: 40px;
@@ -107,7 +107,7 @@
   color: #00bcd4;
 }
 
-/* Butoanele */
+/* Buttons */
 .buttonsContainer {
   display: flex;
   gap: 20px;
@@ -131,7 +131,7 @@
   transform: translateY(-3px);
 }
 
-/* Coloana dreaptă: Imagine */
+/* Right column: Image */
 .rightColumn {
   display: flex;
   justify-content: center;

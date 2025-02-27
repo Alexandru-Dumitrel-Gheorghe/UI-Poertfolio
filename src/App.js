@@ -11,7 +11,7 @@ import Project from "./components/Project/Project";
 import ProjectTaskTimer from "./components/Project/ProjectTaskTimer";
 import Education from "./components/Education/Education";
 import ContactMe from "./components/Contact/ContactMe";
-import ChatBot from "./components/ChatBot/ChatBot";  // Importul ChatBot
+import ChatBot from "./components/ChatBot/ChatBot";
 import ScrollToTop from './components/ScrollToTop/ScrollToTop';
 import GitHubProjects from "./components/GitHub/GitHubProjects";
 import Footer from "./components/Footer/Footer";

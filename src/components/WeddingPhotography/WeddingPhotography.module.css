@@ -1,4 +1,4 @@
-/* Secțiunea principală */
+/* Main section */
 .weddingSection {
   padding: 80px 20px;
   color: #fff;
@@ -7,7 +7,7 @@
   border-top: 2px dashed #888;
 }
 
-/* Containerul general - grid asimetric */
+/* General container - asymmetric grid */
 .containerWedding {
   display: grid;
   grid-template-columns: 40% 60%;
@@ -17,7 +17,7 @@
   margin: 0 auto;
 }
 
-/* Coloana stângă: imagine */
+/* Left column: image */
 .left {
   position: relative;
 }
@@ -38,7 +38,7 @@
   transform: scale(1.05);
 }
 
-/* Coloana dreaptă: text și informații */
+/* Right column: text and information */
 .right {
   position: relative;
   padding: 20px;
@@ -46,7 +46,7 @@
 
 .textWrapper {
   position: relative;
-  /* Offset vertical pentru asimetrie */
+  /* Vertical offset for asymmetry */
   transform: translateY(-30px);
 }
 

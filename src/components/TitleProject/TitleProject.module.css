@@ -3,7 +3,7 @@
   margin: 0 auto;
   padding: 4rem 1rem;
   border-top: 2px dashed #888;
-  /* Folosim un background cu gradient și imagine */
+  /* Using a gradient background with an image */
   background: linear-gradient(135deg, rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.8)),
               url("/public/ui/banner3.png") no-repeat center center;
   background-size: cover;
@@ -44,7 +44,7 @@
   margin-top: 2rem;
   cursor: pointer;
   position: relative;
-  /* Efect de pulsare pentru a atrage atenția */
+  /* Pulse effect to draw attention */
   animation: pulse 2s infinite;
   transition: transform 0.3s ease;
 }
@@ -66,7 +66,7 @@
   color: #00bcd4;
 }
 
-/* Animația pentru apariția titlului */
+/* Animation for title appearance */
 @keyframes fadeIn {
   0% {
     opacity: 0;

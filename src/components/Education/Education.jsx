@@ -4,12 +4,12 @@ import styles from "./Education.module.css";
 const Education = () => {
   return (
     <section className={styles.educationSection}>
-      {/* Overlay (opțional) */}
+      {/* Optional overlay */}
       <div className={styles.overlay}></div>
 
       <div className={styles.contentWrapper}>
         <div className={styles.columns}>
-          {/* Coloana stânga */}
+          {/* Left column */}
           <div className={styles.column}>
             <h2 className={styles.heading}>Webentwicklung, Frontend-Entwicklung</h2>
             <p className={styles.subHeading}>IT School | 2023-2024</p>
@@ -23,7 +23,7 @@ const Education = () => {
             </p>
           </div>
 
-          {/* Coloana dreaptă */}
+          {/* Right column */}
           <div className={styles.column}>
             <h2 className={styles.heading}>UI/UX Design</h2>
             <p className={styles.subHeading}>IT School | 2024 - Heute</p>
@@ -38,7 +38,7 @@ const Education = () => {
           </div>
         </div>
 
-        {/* Titlu vertical "EDUCATION" pe partea dreaptă */}
+        {/* Vertical "EDUCATION" title on the right */}
         <div className={styles.verticalTitle}>EDUCATION</div>
       </div>
     </section>

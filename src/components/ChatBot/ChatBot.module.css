@@ -4,13 +4,13 @@ html {
 }
 
 /************************************************************/
-/*                    Culori & variabile                    */
+/*                    Colors & Variables                    */
 /************************************************************/
 :root {
   --color-primary: #800060;    /* Darker Magenta */
   --color-secondary: #2a6464;  /* Darker Cyan */
   --color-white: #ffffff;
-  --color-dark: #111;          /* și mai închis decât #222 */
+  --color-dark: #111;          /* Darker than #222 */
   --color-shadow: rgba(0, 0, 0, 0.5);
 
   --radius-lg: 20px;
@@ -19,7 +19,7 @@ html {
 }
 
 /************************************************************/
-/*                     Container general                    */
+/*                     General Container                    */
 /************************************************************/
 .container {
   position: fixed;
@@ -29,7 +29,7 @@ html {
 }
 
 /************************************************************/
-/*         Buton de toggle (deschidere/inchidere)           */
+/*         Toggle Button (open/close)                        */
 /************************************************************/
 .chatbotToggler {
   position: fixed;
@@ -135,7 +135,7 @@ html {
 }
 
 /************************************************************/
-/*                     Buton închidere                      */
+/*                     Close Button                         */
 /************************************************************/
 .closeButton {
   background: none;
@@ -162,7 +162,7 @@ html {
 }
 
 /************************************************************/
-/*                    Lista de mesaje (Chat)                */
+/*                    Chat List (Messages)                 */
 /************************************************************/
 .chatbox {
   flex: 1;
@@ -241,7 +241,7 @@ html {
 }
 
 /************************************************************/
-/*               Zona de input pentru chat                  */
+/*               Chat Input Area                            */
 /************************************************************/
 .chatInput {
   display: flex;
@@ -294,7 +294,7 @@ html {
 }
 
 /************************************************************/
-/*                    Responsivitate                        */
+/*                    Responsiveness                        */
 /************************************************************/
 @media (max-width: 768px) {
   .chatbot {

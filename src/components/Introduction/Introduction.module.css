@@ -1,7 +1,7 @@
 .introduction {
     position: relative;
     width: 100%;
-    height: auto; /* dacă SVG-ul determină înălțimea */
+    height: auto;
     background: #000;
   }
   
@@ -12,8 +12,6 @@
   }
   
   .textContainer {
-    /* Ca să așezi textul peste SVG, poți folosi position absolute,
-       dacă vrei să calce exact pe design */
     position: absolute;
     top: 50%;
     left: 50%;

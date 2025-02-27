@@ -1,4 +1,4 @@
-/* Secțiunea principală */
+/* Main section */
 .skillsSection {
   padding: 6rem 2rem 5rem;
   color: #f1f1f1;
@@ -7,7 +7,7 @@
   border-top: 2px dashed #888;
 }
 
-/* Titlul secțiunii */
+/* Section title */
 .sectionTitle {
   font-size: 4rem;
   font-weight: bold;
@@ -36,7 +36,7 @@
   width: 100%;
 }
 
-/* Containerul folosind grid pentru o aliniere echilibrată */
+/* Container using grid for balanced alignment */
 .container {
   max-width: 1200px;
   margin: 0 auto;
@@ -46,7 +46,7 @@
   align-items: center;
 }
 
-/* Partea stângă: text și skill cards */
+/* Left side: text and skill cards */
 .leftSide {
   max-width: 500px;
   margin: 0 auto;
@@ -103,7 +103,7 @@
   color: #fff;
 }
 
-/* Partea dreaptă: imagine */
+/* Right side: image */
 .rightSide {
   max-width: 550px;
   margin: 0 auto;

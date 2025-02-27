@@ -6,15 +6,15 @@ const TitleProject = ({ title, subtitle, scrollToSection }) => {
   const [isHovered, setIsHovered] = useState(false);
 
   const handleScroll = () => {
-    const targetId = scrollToSection || "task-timer"; // Default la "projects"
+    const targetId = scrollToSection || "task-timer"; // Default to "projects"
     const element = document.getElementById(targetId);
     if (element) {
       element.scrollIntoView({
-        behavior: "smooth", // Derulare lină
-        block: "start",     // Aliniere la începutul secțiunii
+        behavior: "smooth", // Smooth scrolling
+        block: "start",     // Align at the top of the section
       });
     } else {
-      console.log("Secțiunea nu a fost găsită!");
+      console.log("Section not found!");
     }
   };
 
@@ -24,7 +24,7 @@ const TitleProject = ({ title, subtitle, scrollToSection }) => {
         {title || "MY PROJECTS"}
       </h1>
       <p className={styles.subtitle}>
-        {subtitle || "Eine Auswahl moderner Projekte"}
+        {subtitle || "A selection of modern projects"}
       </p>
       <div
         className={`${styles.arrowContainer} ${isHovered ? styles.arrowHovered : ""}`}

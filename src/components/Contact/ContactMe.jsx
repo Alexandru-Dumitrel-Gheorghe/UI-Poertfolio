@@ -10,40 +10,36 @@ import {
 import { SiMiro, SiFigma } from "react-icons/si";
 import styles from "./ContactMe.module.css";
 
-// Funcție pentru descărcarea CV-ului
+// Function to download the CV
 const handleCVDownload = () => {
   window.open("/ui/Lebenslauf.pdf", "_blank");
 };
 
-
-
-// Funcție pentru butonul "Projekten" (exemplu)
+// Function for "Projekten" button (example)
 const handleProjectsClick = () => {
-  // De exemplu, poți să faci scroll către o secțiune de proiecte
-  // sau să navighezi către o altă pagină:
-  console.log("Navigare către secțiunea de proiecte!");
+  console.log("Navigating to projects section!");
 };
 
 function ContactMe() {
   return (
     <section className={styles.contactSection}>
-      {/* Bara de sus cu "Kontakt" */}
+      {/* Top bar with "Kontakt" */}
       <div className={styles.topBar}>
         <div className={styles.leftHeader}>Kontakt</div>
       </div>
 
-      {/* Conținutul central */}
+      {/* Main content */}
       <div className={styles.mainContent}>
         <div className={styles.centerText}>
           <h2 className={styles.scriptText}>Let’s work</h2>
           <h1 className={styles.boldText}>TOGETHER</h1>
         </div>
-        {/* Subtitlu */}
+        {/* Subtitle */}
         <p className={styles.subTitle}>
           Front-End Web Developer / UI/UX Designer
         </p>
 
-        {/* Grupul de butoane: Projekten și Lebenslauf */}
+        {/* Button group: Projekten and Lebenslauf */}
         <div className={styles.buttonGroup}>
           <button className={styles.projectButton} onClick={handleProjectsClick}>
             Projekten
@@ -54,7 +50,7 @@ function ContactMe() {
         </div>
       </div>
 
-      {/* Bara de jos cu informațiile de contact și link-urile */}
+      {/* Bottom bar with contact information and links */}
       <div className={styles.bottomBar}>
         <div className={styles.contactItem}>
           <FaPhoneAlt className={styles.icon} />
@@ -73,7 +69,7 @@ function ContactMe() {
           <span>32 Jahre</span>
         </div>
 
-        {/* Iconițe Social Media */}
+        {/* Social media icons */}
         <div className={styles.socialIcons}>
           <a
             href="https://github.com/Alexandru-Dumitrel-Gheorghe"
