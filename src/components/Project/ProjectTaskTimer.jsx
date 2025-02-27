@@ -11,11 +11,11 @@ function ProjectTaskTimer() {
         <div className={styles.leftColumn}>
           <h1 className={styles.title}>Task Timer</h1>
           <p className={styles.description}>
-            The Product Timer Dashboard is a web application that helps you track the time spent on various tasks. The front-end uses <strong>React</strong> and <strong>CSS Modules</strong>, while the back-end uses <strong>Node.js</strong> and <strong>MongoDB</strong>.
+            Das Product Timer Dashboard ist eine Webanwendung, die Ihnen hilft, die Zeit für verschiedene Aufgaben zu verfolgen. Im Front-End kommen <strong>React</strong> und <strong>CSS Modules</strong> zum Einsatz, während im Back-End <strong>Node.js</strong> und <strong>MongoDB</strong> verwendet werden.
           </p>
           <div className={styles.listsContainer}>
             <div className={styles.techSection}>
-              <h3 className={styles.sectionTitle}>Technologies:</h3>
+              <h3 className={styles.sectionTitle}>Technologien:</h3>
               <ul className={styles.techList}>
                 <li>
                   <FaReact className={styles.icon} /> React
@@ -32,14 +32,14 @@ function ProjectTaskTimer() {
               </ul>
             </div>
             <div className={styles.featuresSection}>
-              <h3 className={styles.sectionTitle}>Features:</h3>
+              <h3 className={styles.sectionTitle}>Funktionen:</h3>
               <ul className={styles.featuresList}>
-                <li>Real-time timer: Start, Pause, Stop</li>
-                <li>Categories: Sort tasks by categories</li>
-                <li>Daily, weekly, and monthly reports</li>
-                <li>PDF Export</li>
+                <li>Echtzeit-Timer: Start, Pause, Stopp</li>
+                <li>Kategorien: Aufgaben nach Kategorien sortieren</li>
+                <li>Tägliche, wöchentliche und monatliche Berichte</li>
+                <li>PDF-Export</li>
                 <li>Dark Mode</li>
-                <li>Responsive design</li>
+                <li>Responsives Design</li>
               </ul>
             </div>
           </div>

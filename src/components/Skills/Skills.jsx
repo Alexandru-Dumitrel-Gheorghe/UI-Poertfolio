@@ -15,7 +15,7 @@ const Skills = () => {
       </motion.h2>
 
       <div className={styles.container}>
-        {/* Left Column: Text and Skill Cards */}
+        {/* Partea stângă: Text și Skill Cards */}
         <motion.div 
           className={styles.leftSide}
           initial={{ opacity: 0, x: -50 }}
@@ -29,7 +29,9 @@ const Skills = () => {
             <p className={styles.skillTitle}>FRONT END WEB DEVELOPER</p>
           </motion.div>
           <p className={styles.description}>
-            I am a passionate Front-End Developer focused on creating user-friendly and engaging websites. With extensive knowledge in HTML, CSS, and JavaScript.
+            Ich bin ein leidenschaftlicher Front-End Developer mit einem Fokus
+            auf die Entwicklung benutzerfreundlicher und ansprechender Webseiten.
+            Mit umfassenden Kenntnissen in HTML, CSS und JavaScript.
           </p>
 
           <motion.div 
@@ -39,11 +41,12 @@ const Skills = () => {
             <p className={styles.skillTitle}>UI/UX DESIGN</p>
           </motion.div>
           <p className={styles.description}>
-            As a UI/UX Designer, I create user-centered digital experiences that are both aesthetically pleasing and functional.
+            Als UI/UX Designer gestalte ich benutzerzentrierte digitale Erlebnisse,
+            die sowohl ästhetisch ansprechend als auch funktional sind.
           </p>
         </motion.div>
 
-        {/* Right Column: Image */}
+        {/* Partea dreaptă: Imagine */}
         <motion.div 
           className={styles.rightSide}
           initial={{ opacity: 0, x: 50 }}
