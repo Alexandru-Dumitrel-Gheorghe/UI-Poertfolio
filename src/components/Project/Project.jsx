@@ -1,22 +1,24 @@
 import React from "react";
 import styles from "./Project.module.css";
 import { FaJsSquare, FaHtml5, FaCss3Alt, FaReact } from "react-icons/fa";
+import { useTranslation } from "react-i18next";
 
 function Project() {
+  const { t } = useTranslation();
+
   return (
     <section className={styles.projectSection}>
       <div className={styles.projectContent}>
         {/* Coloana stângă (Text) */}
         <div className={styles.left}>
-          <h2 className={styles.title}>Tetris Game</h2>
+          <h2 className={styles.title}>{t("projectTetris.title")}</h2>
           <p className={styles.description}>
-            Ein klassisches Tetris-Spiel mit React. Ordnen Sie fallende Tetrominos
-            so an, dass ganze Reihen entstehen, um Punkte zu sammeln.
+            {t("projectTetris.description")}
           </p>
 
           <div className={styles.lists}>
             <div className={styles.technologies}>
-              <h3>TECHNOLOGIEN</h3>
+              <h3>{t("projectTetris.technologies")}</h3>
               <ul>
                 <li>
                   <FaJsSquare className={styles.icon} />
@@ -37,13 +39,13 @@ function Project() {
               </ul>
             </div>
             <div className={styles.features}>
-              <h3>FUNKTIONEN</h3>
+              <h3>{t("projectTetris.features")}</h3>
               <ul>
-                <li>Mehrere Level</li>
-                <li>Steigende Geschwindigkeit</li>
-                <li>Responsives Design</li>
-                <li>Intuitive Steuerung</li>
-                <li>Soundeffekte</li>
+                <li>{t("projectTetris.bulletPoints.multipleLevels")}</li>
+                <li>{t("projectTetris.bulletPoints.increasingSpeed")}</li>
+                <li>{t("projectTetris.bulletPoints.responsiveDesign")}</li>
+                <li>{t("projectTetris.bulletPoints.intuitiveControls")}</li>
+                <li>{t("projectTetris.bulletPoints.soundEffects")}</li>
               </ul>
             </div>
           </div>
@@ -55,7 +57,7 @@ function Project() {
               rel="noopener noreferrer"
               className={styles.button}
             >
-              Live Demo
+              {t("projectTetris.liveDemoButton")}
             </a>
             <a
               href="https://github.com/Alexandru-Dumitrel-Gheorghe/Aleksander-Nikolic"
@@ -63,7 +65,7 @@ function Project() {
               rel="noopener noreferrer"
               className={styles.button}
             >
-              GitHub
+              {t("projectTetris.githubButton")}
             </a>
           </div>
         </div>

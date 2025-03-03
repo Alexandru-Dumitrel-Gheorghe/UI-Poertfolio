@@ -1,5 +1,9 @@
+// src/App.js
 import React from "react";
 import "./App.css";
+
+// Importă fișierul de configurare i18n
+import "./i18n";
 
 import Navbar from "./components/Navbar/Navbar";
 import Hero from "./components/Hero/Hero";

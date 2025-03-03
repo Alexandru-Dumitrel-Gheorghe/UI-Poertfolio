@@ -1,33 +1,13 @@
 import React from "react";
 import { motion } from "framer-motion";
 import styles from "./Skills.module.css";
-
-const skillsData = [
-  {
-    title: "FRONT END WEB DEVELOPER",
-    description:
-      "Ich bin ein leidenschaftlicher Front-End Developer mit einem Fokus auf die Entwicklung benutzerfreundlicher und ansprechender Webseiten. Mit umfassenden Kenntnissen in HTML, CSS und JavaScript.",
-  },
-  {
-    title: "UI/UX DESIGN",
-    description:
-      "Als UI/UX Designer gestalte ich benutzerzentrierte digitale Erlebnisse, die sowohl ästhetisch ansprechend als auch funktional sind.",
-  },
-];
-
-const SkillCard = ({ title, description }) => (
-  <div className={styles.skillItem}>
-    <motion.div
-      className={styles.skillCard}
-      whileHover={{ scale: 1.05 }}
-    >
-      <p className={styles.skillTitle}>{title}</p>
-    </motion.div>
-    <p className={styles.description}>{description}</p>
-  </div>
-);
+import { useTranslation } from "react-i18next";
 
 const Skills = () => {
+  const { t } = useTranslation();
+  // Obținem array-ul de abilități din traduceri; asigură-te că ai setat returnObjects: true
+  const skillsData = t("skills.items", { returnObjects: true });
+
   return (
     <section id="skills" className={styles.skillsSection}>
       <motion.h2
@@ -36,11 +16,11 @@ const Skills = () => {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 1 }}
       >
-        PERSONAL SKILLS
+        {t("skills.sectionTitle")}
       </motion.h2>
 
       <div className={styles.container}>
-        {/* Left side: Text & Skill Cards */}
+        {/* Stânga: Text și Skill Cards */}
         <motion.div
           className={styles.leftSide}
           initial={{ opacity: 0, x: -50 }}
@@ -48,15 +28,19 @@ const Skills = () => {
           transition={{ duration: 1, delay: 0.3 }}
         >
           {skillsData.map((skill, index) => (
-            <SkillCard 
-              key={index}
-              title={skill.title} 
-              description={skill.description} 
-            />
+            <div key={index} className={styles.skillItem}>
+              <motion.div
+                className={styles.skillCard}
+                whileHover={{ scale: 1.05 }}
+              >
+                <p className={styles.skillTitle}>{skill.title}</p>
+              </motion.div>
+              <p className={styles.description}>{skill.description}</p>
+            </div>
           ))}
         </motion.div>
 
-        {/* Right side: Image */}
+        {/* Dreapta: Imagine */}
         <motion.div
           className={styles.rightSide}
           initial={{ opacity: 0, x: 50 }}

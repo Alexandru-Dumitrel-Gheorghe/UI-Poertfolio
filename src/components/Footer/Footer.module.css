@@ -1,5 +1,5 @@
 .footer {
-  position: relative;  
+  position: relative;  /* sau fixed, dacă vrei ca footer-ul să fie întotdeauna vizibil */
   z-index: 10000;      
   background: #111;    
   color: #fff;

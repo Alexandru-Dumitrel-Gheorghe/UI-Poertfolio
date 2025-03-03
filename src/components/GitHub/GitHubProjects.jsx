@@ -16,13 +16,15 @@ import {
 } from "react-icons/fa";
 import { GoCommit } from "react-icons/go";
 import styles from "./GitHubProjects.module.css";
+import { useTranslation } from "react-i18next";
 
 const GITHUB_USERNAME = "Alexandru-Dumitrel-Gheorghe";
 const GITHUB_TOKEN = process.env.REACT_APP_GITHUB_TOKEN;
 
 const GitHubProjects = () => {
+  const { t } = useTranslation();
   const [repos, setRepos] = useState([]);
-  const [commitCounts, setCommitCounts] = useState({}); 
+  const [commitCounts, setCommitCounts] = useState({});
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
 
@@ -123,17 +125,17 @@ const GitHubProjects = () => {
   };
 
   if (loading) {
-    return <div className={styles.loader}>Lade Projekte...</div>;
+    return <div className={styles.loader}>{t("githubProjects.loader")}</div>;
   }
 
   if (error) {
-    return <div className={styles.error}>Fehler: {error}</div>;
+    return <div className={styles.error}>{t("githubProjects.error", { error })}</div>;
   }
 
   return (
     <section id="github-projects" className={styles.githubProjects}>
       <h2 className={styles.heading}>
-        <FaGithub className={styles.githubIcon} /> Neueste GitHub-Projekte
+        <FaGithub className={styles.githubIcon} /> {t("githubProjects.heading")}
       </h2>
       <div className={styles.projectGrid}>
         {repos.map((repo) => (
@@ -147,7 +149,7 @@ const GitHubProjects = () => {
             <p className={styles.repoDescription}>
               {repo.description
                 ? repo.description
-                : "Keine Beschreibung verfügbar."}
+                : t("githubProjects.noDescription")}
             </p>
             <a
               href={repo.html_url}
@@ -155,7 +157,7 @@ const GitHubProjects = () => {
               rel="noopener noreferrer"
               className={styles.repoLink}
             >
-              Auf GitHub ansehen <FaExternalLinkAlt />
+              {t("githubProjects.repoLinkText")} <FaExternalLinkAlt />
             </a>
             <div className={styles.repoExtra}>
               <div className={styles.repoStat}>

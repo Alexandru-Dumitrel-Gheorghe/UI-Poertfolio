@@ -2,11 +2,13 @@ import React, { useState, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import styles from './ChatBot.module.css';
 import { FaTimes, FaPaperPlane, FaRobot } from 'react-icons/fa';
+import { useTranslation } from 'react-i18next';
 
 const ChatBot = () => {
+  const { t } = useTranslation();
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState([
-    { sender: 'bot', text: 'Hallo! Wie kann ich dir heute helfen?' }
+    { sender: 'bot', text: t("chatbot.initialMessage") }
   ]);
   const [input, setInput] = useState('');
   const chatboxRef = useRef(null);
@@ -18,8 +20,8 @@ const ChatBot = () => {
     const userMessage = input.trim();
     setMessages([...messages, { sender: 'user', text: userMessage }]);
     setInput('');
-    // Temporary "thinking..." message
-    setMessages(prev => [...prev, { sender: 'bot', text: 'Denke nach...' }]);
+    // Adaugă mesajul temporar "thinking..."
+    setMessages(prev => [...prev, { sender: 'bot', text: t("chatbot.thinking") }]);
 
     try {
       const response = await fetch('https://api.openai.com/v1/chat/completions', {
@@ -35,12 +37,12 @@ const ChatBot = () => {
       });
 
       const data = await response.json();
-      const botResponse = data.choices?.[0]?.message?.content || 'Fehler in der Antwort.';
+      const botResponse = data.choices?.[0]?.message?.content || t("chatbot.errorResponse");
       setMessages(prev => [...prev.slice(0, -1), { sender: 'bot', text: botResponse }]);
     } catch (error) {
       setMessages(prev => [
         ...prev.slice(0, -1),
-        { sender: 'bot', text: 'Ups! Etwas ist schief gelaufen. Bitte versuche es erneut.' },
+        { sender: 'bot', text: t("chatbot.errorMessage") },
       ]);
     } finally {
       chatboxRef.current?.scrollTo(0, chatboxRef.current.scrollHeight);
@@ -59,7 +61,7 @@ const ChatBot = () => {
       <button
         className={`${styles.chatbotToggler} ${isOpen ? styles.open : ''}`}
         onClick={() => setIsOpen(!isOpen)}
-        aria-label={isOpen ? 'Chatbot schließen' : 'Chatbot öffnen'}
+        aria-label={isOpen ? t("chatbot.closeAria") : t("chatbot.openAria")}
       >
         <FaRobot />
       </button>
@@ -83,21 +85,18 @@ const ChatBot = () => {
               transition={{ duration: 0.3 }}
             >
               <header className={styles.header}>
-                <h2 className={styles.title}>Chatbot</h2>
+                <h2 className={styles.title}>{t("chatbot.title")}</h2>
                 <button
                   className={styles.closeButton}
                   onClick={() => setIsOpen(false)}
-                  aria-label="Chatbot schließen"
+                  aria-label={t("chatbot.closeAria")}
                 >
                   <FaTimes />
                 </button>
               </header>
 
               <div className={styles.info}>
-                <p>
-                  Dieser Chatbot wurde mit der OpenAI API erstellt und bietet Echtzeit-Unterstützung.
-                  Er ist in mein Portfolio integriert, um meine Fähigkeiten in der Entwicklung interaktiver Webanwendungen zu demonstrieren.
-                </p>
+                <p>{t("chatbot.info")}</p>
               </div>
 
               <ul ref={chatboxRef} className={styles.chatbox}>
@@ -119,15 +118,15 @@ const ChatBot = () => {
                 <textarea
                   value={input}
                   onChange={(e) => setInput(e.target.value)}
-                  placeholder="Schreibe eine Nachricht..."
+                  placeholder={t("chatbot.inputPlaceholder")}
                   rows={1}
                   onKeyPress={handleKeyPress}
-                  aria-label="Nachricht eingeben"
+                  aria-label={t("chatbot.inputAria")}
                 />
                 <button
                   onClick={handleSendMessage}
                   className={styles.sendButton}
-                  aria-label="Nachricht senden"
+                  aria-label={t("chatbot.sendAria")}
                 >
                   <FaPaperPlane />
                 </button>

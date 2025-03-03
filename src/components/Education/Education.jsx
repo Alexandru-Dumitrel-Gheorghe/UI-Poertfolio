@@ -1,7 +1,10 @@
 import React from "react";
 import styles from "./Education.module.css";
+import { useTranslation } from "react-i18next";
 
 const Education = () => {
+  const { t } = useTranslation();
+
   return (
     <section className={styles.educationSection}>
       {/* Optional overlay */}
@@ -9,37 +12,37 @@ const Education = () => {
 
       <div className={styles.contentWrapper}>
         <div className={styles.columns}>
-          {/* Left column */}
+          {/* Coloana stângă */}
           <div className={styles.column}>
-            <h2 className={styles.heading}>Webentwicklung, Frontend-Entwicklung</h2>
-            <p className={styles.subHeading}>IT School | 2023-2024</p>
+            <h2 className={styles.heading}>
+              {t("education.left.heading")}
+            </h2>
+            <p className={styles.subHeading}>
+              {t("education.left.subHeading")}
+            </p>
             <p className={styles.paragraph}>
-              Ich habe als Front-End Web Developer an der IT School umfassende
-              Kenntnisse in der Entwicklung benutzerfreundlicher Webseiten
-              erworben. Ich beherrsche die Grundlagen von HTML, CSS und
-              JavaScript (ES6+) und konnte bereits erste Projekte realisieren.
-              Zusätzlich legte ich Wert auf SEO (Suchmaschinenoptimierung) und
-              responsives Design, um moderne Webseiten optimal zu gestalten.
+              {t("education.left.paragraph")}
             </p>
           </div>
 
-          {/* Right column */}
+          {/* Coloana dreaptă */}
           <div className={styles.column}>
-            <h2 className={styles.heading}>UI/UX Design</h2>
-            <p className={styles.subHeading}>IT School | 2024 - Heute</p>
+            <h2 className={styles.heading}>
+              {t("education.right.heading")}
+            </h2>
+            <p className={styles.subHeading}>
+              {t("education.right.subHeading")}
+            </p>
             <p className={styles.paragraph}>
-              Als UI/UX Designer entwickle ich benutzerzentrierte digitale
-              Erlebnisse, die nicht nur funktional, sondern auch ästhetisch
-              ansprechend sind. Ich arbeite mit Tools wie Figma, Miro und
-              erstelle interaktive Prototypen, um die Benutzeroberfläche zu
-              optimieren. Dabei gehören Brainstorming-Sitzungen und
-              SEO-Anpassungen ebenso zu meinen Aufgaben.
+              {t("education.right.paragraph")}
             </p>
           </div>
         </div>
 
-        {/* Vertical "EDUCATION" title on the right */}
-        <div className={styles.verticalTitle}>EDUCATION</div>
+        {/* Titlu vertical "EDUCATION" */}
+        <div className={styles.verticalTitle}>
+          {t("education.verticalTitle")}
+        </div>
       </div>
     </section>
   );

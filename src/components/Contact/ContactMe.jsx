@@ -1,4 +1,5 @@
 import React from "react";
+import { useTranslation } from "react-i18next";
 import {
   FaPhoneAlt,
   FaEnvelope,
@@ -10,66 +11,69 @@ import {
 import { SiMiro, SiFigma } from "react-icons/si";
 import styles from "./ContactMe.module.css";
 
-// Function to download the CV
+// Funcția pentru descărcarea CV-ului
 const handleCVDownload = () => {
   window.open("/ui/Lebenslauf.pdf", "_blank");
 };
 
-// Function for "Projekten" button (example)
+// Funcția pentru butonul "Projekten" (exemplu)
 const handleProjectsClick = () => {
   console.log("Navigating to projects section!");
 };
 
 function ContactMe() {
+  const { t } = useTranslation();
+
   return (
     <section className={styles.contactSection}>
-      {/* Top bar with "Kontakt" */}
+      {/* Bara de sus cu "Kontakt" */}
       <div className={styles.topBar}>
-        <div className={styles.leftHeader}>Kontakt</div>
+        <div className={styles.leftHeader}>{t("contact.topBar")}</div>
       </div>
 
-      {/* Main content */}
+      {/* Conținutul principal */}
       <div className={styles.mainContent}>
         <div className={styles.centerText}>
-          <h2 className={styles.scriptText}>Let’s work</h2>
-          <h1 className={styles.boldText}>TOGETHER</h1>
+          <h2 className={styles.scriptText}>{t("contact.letWork")}</h2>
+          <h1 className={styles.boldText}>{t("contact.together")}</h1>
         </div>
-        {/* Subtitle */}
-        <p className={styles.subTitle}>
-          Front-End Web Developer / UI/UX Designer
-        </p>
+        {/* Subtitlu */}
+        <p className={styles.subTitle}>{t("contact.subtitle")}</p>
 
-        {/* Button group: Projekten and Lebenslauf */}
+        {/* Grupul de butoane: Projekten și Lebenslauf */}
         <div className={styles.buttonGroup}>
-          <button className={styles.projectButton} onClick={handleProjectsClick}>
-            Projekten
+          <button
+            className={styles.projectButton}
+            onClick={handleProjectsClick}
+          >
+            {t("contact.projectsButton")}
           </button>
           <button className={styles.cvButton} onClick={handleCVDownload}>
-            Lebenslauf📄
+            {t("contact.cvButton")}
           </button>
         </div>
       </div>
 
-      {/* Bottom bar with contact information and links */}
+      {/* Bara de jos cu informații de contact și link-uri */}
       <div className={styles.bottomBar}>
         <div className={styles.contactItem}>
           <FaPhoneAlt className={styles.icon} />
-          <span>+49 1577 2158264</span>
+          <span>{t("contact.phone")}</span>
         </div>
         <div className={styles.contactItem}>
           <FaEnvelope className={styles.icon} />
-          <span>gheorghe.93@icloud.com</span>
+          <span>{t("contact.email")}</span>
         </div>
         <div className={styles.contactItem}>
           <FaMapMarkerAlt className={styles.icon} />
-          <span>Fürstenfeldbruck, Deutschland</span>
+          <span>{t("contact.location")}</span>
         </div>
         <div className={styles.contactItem}>
           <FaUser className={styles.icon} />
-          <span>32 Jahre</span>
+          <span>{t("contact.age")}</span>
         </div>
 
-        {/* Social media icons */}
+        {/* Iconițele social media */}
         <div className={styles.socialIcons}>
           <a
             href="https://github.com/Alexandru-Dumitrel-Gheorghe"

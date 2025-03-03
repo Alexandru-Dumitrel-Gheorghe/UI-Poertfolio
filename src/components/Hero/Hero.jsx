@@ -1,7 +1,10 @@
 import React from "react";
 import styles from "./Hero.module.css";
+import { useTranslation } from "react-i18next";
 
 const Hero = () => {
+  const { t } = useTranslation();
+
   const handleProjectsClick = () => {
     const projectsSection = document.getElementById("projects");
     if (projectsSection) {
@@ -42,17 +45,18 @@ const Hero = () => {
         {/* Top left corner */}
         <div className={`${styles.topLeft} ${styles.fadeInLeft}`}>
           <h2>
-            FRONT END WEB DEVELOPER <br />
-            UI/UX DESIGNER
+            {t("hero.frontend")} <br />
+            {t("hero.uiux")}
           </h2>
         </div>
 
         {/* Top right corner */}
         <div className={`${styles.topRight} ${styles.fadeInRight}`}>
-          <p>
-            Alexandru Gheorghe <br />
-            {formattedDate}
-          </p>
+          <p
+            dangerouslySetInnerHTML={{
+              __html: t("hero.nameAndDate", { date: formattedDate }),
+            }}
+          />
         </div>
 
         {/* Central content */}
@@ -62,25 +66,20 @@ const Hero = () => {
             <span className={styles.pulseRing}></span>
             <img
               src="/ui/profil.jpg"
-              alt="Profilfoto"
+              alt={t("hero.profileAlt")}
               className={styles.profileImage}
             />
           </div>
 
-          <h1 className={styles.title}>PORTFOLIO</h1>
-          <p className={styles.tagline}>
-            Crafting Digital Experiences with Passion and Precision.
-          </p>
-          <p className={styles.description}>
-            Leidenschaft für moderne Webtechnologien und die Erstellung
-            benutzerfreundlicher, responsiver Lösungen.
-          </p>
+          <h1 className={styles.title}>{t("hero.title")}</h1>
+          <p className={styles.tagline}>{t("hero.tagline")}</p>
+          <p className={styles.description}>{t("hero.description")}</p>
           <div className={styles.buttonGroup}>
             <button className={styles.projectButton} onClick={handleProjectsClick}>
-              Projekten
+              {t("hero.projectsButton")}
             </button>
             <button className={styles.cvButton} onClick={handleCVDownload}>
-              Lebenslauf📄
+              {t("hero.cvButton")}
             </button>
           </div>
         </div>

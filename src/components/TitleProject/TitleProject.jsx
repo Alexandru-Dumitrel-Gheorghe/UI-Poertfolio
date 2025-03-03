@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import { FaChevronDown } from "react-icons/fa";
 import styles from "./TitleProject.module.css";
+import { useTranslation } from "react-i18next";
 
 const TitleProject = ({ title, subtitle, scrollToSection }) => {
+  const { t } = useTranslation();
   const [isHovered, setIsHovered] = useState(false);
 
   const handleScroll = () => {
@@ -21,10 +23,10 @@ const TitleProject = ({ title, subtitle, scrollToSection }) => {
   return (
     <section id="projects" className={styles.titleContainer}>
       <h1 className={styles.mainTitle}>
-        {title || "MY PROJECTS"}
+        {title || t("titleProject.defaultTitle")}
       </h1>
       <p className={styles.subtitle}>
-        {subtitle || "Eine Auswahl moderner Projekte"}
+        {subtitle || t("titleProject.defaultSubtitle")}
       </p>
       <div
         className={`${styles.arrowContainer} ${isHovered ? styles.arrowHovered : ""}`}

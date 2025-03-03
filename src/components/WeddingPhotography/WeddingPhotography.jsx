@@ -2,8 +2,11 @@ import React from "react";
 import styles from "./WeddingPhotography.module.css";
 import { FaJsSquare, FaHtml5, FaCss3Alt, FaReact } from "react-icons/fa";
 import { SiBootstrap } from "react-icons/si";
+import { useTranslation } from "react-i18next";
 
 const WeddingPhotography = () => {
+  const { t } = useTranslation();
+
   return (
     <section id="WeddingPhotography" className={styles.weddingSection}>
       <div className={styles.containerWedding}>
@@ -12,7 +15,7 @@ const WeddingPhotography = () => {
           <div className={styles.imageWrapper}>
             <img
               src="/ui/laptop-wedding1.png"
-              alt="Laptop Wedding"
+              alt={t("weddingPhotography.title")}
               className={styles.laptopImage}
               loading="lazy"
             />
@@ -23,16 +26,14 @@ const WeddingPhotography = () => {
         <div className={styles.right}>
           <div className={styles.textWrapper}>
             <h1 className={styles.mainTitle}>
-              Wedding <br />
-              Portfolio
+              {t("weddingPhotography.title")}
             </h1>
             <p className={styles.description}>
-              Eine Website für Hochzeitsfotografie-Dienstleistungen mit Portfolios,
-              Leistungspaketen und Kundenbewertungen.
+              {t("weddingPhotography.description")}
             </p>
             <div className={styles.listsContainer}>
               <div className={styles.listGroup}>
-                <h3>Technologien:</h3>
+                <h3>{t("weddingPhotography.technologies")}</h3>
                 <ul>
                   <li>
                     <FaJsSquare className={styles.icon} /> JavaScript
@@ -52,12 +53,12 @@ const WeddingPhotography = () => {
                 </ul>
               </div>
               <div className={styles.listGroup}>
-                <h3>Funktionen:</h3>
+                <h3>{t("weddingPhotography.features")}</h3>
                 <ul>
-                  <li>Responsives Design</li>
-                  <li>Interaktive Galerie</li>
-                  <li>Kontaktformular</li>
-                  <li>Servicepakete</li>
+                  <li>{t("weddingPhotography.responsiveDesign")}</li>
+                  <li>{t("weddingPhotography.interactiveGallery")}</li>
+                  <li>{t("weddingPhotography.contactForm")}</li>
+                  <li>{t("weddingPhotography.servicePackages")}</li>
                 </ul>
               </div>
             </div>
@@ -68,7 +69,7 @@ const WeddingPhotography = () => {
                 rel="noopener noreferrer"
                 className={styles.btnWebsite}
               >
-                Live Demo
+                {t("weddingPhotography.liveDemoButton")}
               </a>
               <a
                 href="https://github.com/Alexandru-Dumitrel-Gheorghe/Aleksander-Nikolic"
@@ -76,7 +77,7 @@ const WeddingPhotography = () => {
                 rel="noopener noreferrer"
                 className={styles.btnGithub}
               >
-                GitHub
+                {t("weddingPhotography.githubButton")}
               </a>
             </div>
           </div>
