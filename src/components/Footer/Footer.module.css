@@ -1,47 +1,97 @@
 .footer {
-  position: relative;  /* sau fixed, dacă vrei ca footer-ul să fie întotdeauna vizibil */
-  z-index: 10000;      
-  background: #111;    
+  position: relative;
+  z-index: 10000;
+  background: #111;
   color: #fff;
   padding: 2rem 1rem;
   text-align: center;
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
 }
 
+.topFooter {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  margin-bottom: 1rem;
+}
 
-  
-  .topFooter {
-    margin-bottom: 1rem;
-  }
-  
-  .navLinks {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 1.5rem;
-  }
-  
+/* Link-uri de navigație */
+.navLinks {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.navLink {
+  color: #fff;
+  text-decoration: none;
+  font-size: 1rem;
+  transition: color 0.3s ease, transform 0.3s ease;
+}
+
+.navLink:hover {
+  color: #00bcd4;
+  transform: translateY(-3px);
+}
+
+/* Informații de contact */
+.contactInfo {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.5rem;
+}
+
+.contactItem {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.95rem;
+}
+
+.icon {
+  font-size: 1rem;
+}
+
+/* Link-uri sociale */
+.socialIcons {
+  display: flex;
+  gap: 1rem;
+}
+
+.socialIcons a {
+  color: #fff;
+  font-size: 1.3rem;
+  transition: color 0.3s, transform 0.2s;
+}
+
+.socialIcons a:hover {
+  color: #00bcd4;
+  transform: translateY(-2px);
+}
+
+/* Partea de jos a footer-ului */
+.bottomFooter {
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+  padding-top: 1rem;
+  font-size: 0.9rem;
+  margin-top: 2rem;
+}
+
+/* Stiluri pentru mobile */
+@media (max-width: 480px) {
   .navLink {
-    color: #fff;
-    text-decoration: none;
-    font-size: 1rem;
-    transition: color 0.3s ease, transform 0.3s ease;
-  }
-  
-  .navLink:hover {
-    color: #00bcd4;
-    transform: translateY(-3px);
-  }
-  
-  .bottomFooter {
-    border-top: 1px solid rgba(255, 255, 255, 0.2);
-    padding-top: 1rem;
     font-size: 0.9rem;
   }
-  
-  @media (max-width: 480px) {
-    .navLink {
-      font-size: 0.9rem;
-    }
+
+  .contactItem {
+    font-size: 0.85rem;
   }
-  
+
+  .socialIcons a {
+    font-size: 1.1rem;
+  }
+}

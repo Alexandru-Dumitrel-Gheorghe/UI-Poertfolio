@@ -101,16 +101,16 @@ const resources = {
       },
       
       contact: {
-        topBar: "Kontakt",
-        letWork: "Let’s work",
+        letsWork: "Let's work",
         together: "TOGETHER",
-        subtitle: "Front-End Web Developer / UI/UX Designer",
-        projectsButton: "Projekten",
-        cvButton: "Lebenslauf📄",
-        phone: "+49 1577 2158264",
-        email: "gheorghe.93@icloud.com",
-        location: "Fürstenfeldbruck, Deutschland",
-        age: "32 Jahre"
+        ready: "Bereit, deine Ideen zum Leben zu erwecken? Schick mir eine Nachricht!",
+        projects: "Projekten",
+        resume: "Lebenslauf",
+        contactForm: "Kontaktformular",
+        name: "Name",
+        email: "E-Mail",
+        message: "Nachricht",
+        send: "Senden"
       },
       footer: {
         nav: {
@@ -254,18 +254,18 @@ const resources = {
         noDescription: "No description available."
       },
       
-contact: {
-  topBar: "Contact",
-  letWork: "Let's work",
-  together: "TOGETHER",
-  subtitle: "Front-End Web Developer / UI/UX Designer",
-  projectsButton: "Projects",
-  cvButton: "CV📄",
-  phone: "+49 1577 2158264",
-  email: "gheorghe.93@icloud.com",
-  location: "Fürstenfeldbruck, Germany",
-  age: "32 years"
-},
+      contact: {
+        letsWork: "Let's work",
+        together: "TOGETHER",
+        ready: "Ready to bring your ideas to life? Send me a message!",
+        projects: "Projects",
+        resume: "Resume",
+        contactForm: "Contact Form",
+        name: "Name",
+        email: "Email",
+        message: "Message",
+        send: "SEND"
+      },
 footer: {
     nav: {
       home: "Home",
@@ -407,16 +407,16 @@ footer: {
         noDescription: "Descriere indisponibilă."
       },
       contact: {
-        topBar: "Contact",
-        letWork: "Hai să lucrăm",
+        letsWork: "Hai să lucrăm",
         together: "ÎMPREUNĂ",
-        subtitle: "Front-End Web Developer / UI/UX Designer",
-        projectsButton: "Proiecte",
-        cvButton: "CV📄",
-        phone: "+49 1577 2158264",
-        email: "gheorghe.93@icloud.com",
-        location: "Fürstenfeldbruck, Germania",
-        age: "32 de ani"
+        ready: "Ești gata să dai viață ideilor tale? Trimite-mi un mesaj!",
+        projects: "Proiecte",
+        resume: "CV",
+        contactForm: "Formular de Contact",
+        name: "Nume",
+        email: "Email",
+        message: "Mesaj",
+        send: "Trimite"
       },
       footer: {
         nav: {

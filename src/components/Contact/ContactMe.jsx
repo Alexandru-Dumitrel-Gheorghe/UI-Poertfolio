@@ -1,100 +1,106 @@
-import React from "react";
+import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
-import {
-  FaPhoneAlt,
-  FaEnvelope,
-  FaMapMarkerAlt,
-  FaUser,
-  FaGithub,
-  FaLinkedinIn,
-} from "react-icons/fa";
-import { SiMiro, SiFigma } from "react-icons/si";
 import styles from "./ContactMe.module.css";
-
-// Funcția pentru descărcarea CV-ului
-const handleCVDownload = () => {
-  window.open("/ui/Lebenslauf.pdf", "_blank");
-};
-
-// Funcția pentru butonul "Projekten" (exemplu)
-const handleProjectsClick = () => {
-  console.log("Navigating to projects section!");
-};
 
 function ContactMe() {
   const { t } = useTranslation();
+  const [formData, setFormData] = useState({
+    name: "",
+    email: "",
+    message: "",
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
+
+  const handleFormSubmit = (e) => {
+    e.preventDefault();
+
+    // Formularul va fi trimis direct către Formspree fără a mai folosi un backend
+    const form = e.target;
+
+    // Trimite formularul către Formspree
+    form.submit();
+  };
 
   return (
     <section className={styles.contactSection}>
-      {/* Bara de sus cu "Kontakt" */}
-      <div className={styles.topBar}>
-        <div className={styles.leftHeader}>{t("contact.topBar")}</div>
-      </div>
-
-      {/* Conținutul principal */}
       <div className={styles.mainContent}>
-        <div className={styles.centerText}>
-          <h2 className={styles.scriptText}>{t("contact.letWork")}</h2>
-          <h1 className={styles.boldText}>{t("contact.together")}</h1>
-        </div>
-        {/* Subtitlu */}
-        <p className={styles.subTitle}>{t("contact.subtitle")}</p>
+        <div className={styles.leftSide}>
+          <div className={styles.centerText}>
+            <h2 className={styles.scriptText}>{t("contact.letsWork")}</h2>
+            <h1 className={styles.boldText}>{t("contact.together")}</h1>
+            <p className={styles.subTitle}>{t("contact.ready")}</p>
+          </div>
 
-        {/* Grupul de butoane: Projekten și Lebenslauf */}
-        <div className={styles.buttonGroup}>
-          <button
-            className={styles.projectButton}
-            onClick={handleProjectsClick}
-          >
-            {t("contact.projectsButton")}
-          </button>
-          <button className={styles.cvButton} onClick={handleCVDownload}>
-            {t("contact.cvButton")}
-          </button>
-        </div>
-      </div>
-
-      {/* Bara de jos cu informații de contact și link-uri */}
-      <div className={styles.bottomBar}>
-        <div className={styles.contactItem}>
-          <FaPhoneAlt className={styles.icon} />
-          <span>{t("contact.phone")}</span>
-        </div>
-        <div className={styles.contactItem}>
-          <FaEnvelope className={styles.icon} />
-          <span>{t("contact.email")}</span>
-        </div>
-        <div className={styles.contactItem}>
-          <FaMapMarkerAlt className={styles.icon} />
-          <span>{t("contact.location")}</span>
-        </div>
-        <div className={styles.contactItem}>
-          <FaUser className={styles.icon} />
-          <span>{t("contact.age")}</span>
+          <div className={styles.buttonGroup}>
+            <button className={styles.projectButton}>
+              {t("contact.projects")}
+            </button>
+            <button className={styles.cvButton}>
+              {t("contact.resume")}
+            </button>
+          </div>
         </div>
 
-        {/* Iconițele social media */}
-        <div className={styles.socialIcons}>
-          <a
-            href="https://github.com/Alexandru-Dumitrel-Gheorghe"
-            target="_blank"
-            rel="noreferrer"
-          >
-            <FaGithub />
-          </a>
-          <a href="https://miro.com" target="_blank" rel="noreferrer">
-            <SiMiro />
-          </a>
-          <a
-            href="https://www.linkedin.com/in/alexandru-gheorghe-a19a19314/"
-            target="_blank"
-            rel="noreferrer"
-          >
-            <FaLinkedinIn />
-          </a>
-          <a href="https://figma.com" target="_blank" rel="noreferrer">
-            <SiFigma />
-          </a>
+        <div className={styles.rightSide}>
+          <div className={styles.formContainer}>
+            <h3 className={styles.formTitle}>{t("contact.contactForm")}</h3>
+            <form
+              onSubmit={handleFormSubmit}
+              className={styles.contactForm}
+              action="https://formspree.io/f/xqaerwpg"  // Endpoint-ul Formspree
+              method="POST"
+            >
+              <div className={styles.formGroup}>
+                <label htmlFor="name">{t("contact.name")}</label>
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  value={formData.name}
+                  onChange={handleChange}
+                  placeholder={t("contact.name")}
+                  required
+                />
+              </div>
+
+              <div className={styles.formGroup}>
+                <label htmlFor="email">{t("contact.email")}</label>
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  value={formData.email}
+                  onChange={handleChange}
+                  placeholder="ex: name@example.com"
+                  required
+                />
+              </div>
+
+              <div className={styles.formGroup}>
+                <label htmlFor="message">{t("contact.message")}</label>
+                <textarea
+                  id="message"
+                  name="message"
+                  rows="4"
+                  value={formData.message}
+                  onChange={handleChange}
+                  placeholder={t("contact.message")}
+                  required
+                />
+              </div>
+
+              <button type="submit" className={styles.sendButton}>
+                {t("contact.send")}
+              </button>
+            </form>
+          </div>
         </div>
       </div>
     </section>
