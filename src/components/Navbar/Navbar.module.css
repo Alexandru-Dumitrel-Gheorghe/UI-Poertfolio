@@ -4,242 +4,361 @@
   top: 0;
   left: 0;
   width: 100%;
-  z-index: 999;
+  z-index: 1000;
   background-color: transparent;
-  transition: background-color 0.4s ease;
-  padding: 0.5rem 1rem;
+  transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  padding: 1rem 1.5rem;
   color: #fff;
+  backdrop-filter: blur(0px);
 }
 
-/* Navbar la scroll */
-.scrolled {
-  background-color: rgba(17, 17, 17, 0.85);
+.navbar.scrolled {
+  background-color: rgba(10, 25, 47, 0.9);
+  padding: 0.6rem 1.5rem;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
 }
 
-/* Conținutul navbar-ului */
+/* Navbar content */
 .navContent {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  max-width: 1200px;
+  max-width: 1400px;
   margin: 0 auto;
+  width: 100%;
 }
 
-/* Link-uri de navigare (desktop) */
+/* Logo */
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  z-index: 1001;
+}
+
+.logoText {
+  font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  background: linear-gradient(to right, #fff, #64ffda);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.logoDot {
+  width: 8px;
+  height: 8px;
+  background-color: #00bcd4;
+  border-radius: 50%;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  50% {
+    transform: scale(1.3);
+    opacity: 0.7;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Desktop Navigation Links */
 .linksContainer {
   display: flex;
   gap: 1.5rem;
 }
 
-.linksContainer a {
-  color: #fff;
+.navLink {
+  position: relative;
+  color: #ccd6f6;
   text-decoration: none;
   font-weight: 500;
-  position: relative;
+  font-size: 0.95rem;
+  letter-spacing: 0.5px;
   cursor: pointer;
   transition: color 0.3s ease;
+  padding: 0.5rem 0;
 }
 
-.linksContainer a::after {
-  content: "👉";
+.navLink:hover {
+  color: #fff;
+}
+
+.navLink.active {
+  color: #64ffda;
+}
+
+.linkUnderline {
   position: absolute;
-  left: -1.5rem;
-  opacity: 0;
-  transform: translateX(-10px);
-  transition: opacity 0.3s ease, transform 0.3s ease;
+  bottom: -8px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: #64ffda;
+  transform-origin: left center;
 }
 
-.linksContainer a:hover::after {
-  opacity: 1;
-  transform: translateX(0);
-}
-
-/* Zona dreaptă: social links și dropdown limbă */
+/* Right Container */
 .rightContainer {
   display: flex;
   align-items: center;
   gap: 1.5rem;
 }
 
-/* Social links (desktop) */
+/* Social Links */
 .socialLinks {
   display: flex;
   gap: 1rem;
 }
 
 .socialLinks a {
-  color: #fff;
+  color: #ccd6f6;
   font-size: 1.2rem;
-  transition: transform 0.3s ease;
+  transition: all 0.3s ease;
 }
 
 .socialLinks a:hover {
-  color: #00bcd4;
-  transform: translateY(-3px);
+  color: #64ffda;
 }
 
-
-
-
-
+/* Language Dropdown */
 .languageDropdown {
   position: relative;
-  cursor: pointer;
-  display: inline-block;
 }
 
-.languageIcon {
-  font-size: 1.4rem;
-  margin-right: 0.5rem;
+.languageTrigger {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  color: #ccd6f6;
+  font-size: 0.9rem;
+  font-weight: 500;
+  padding: 0.5rem 0.8rem;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+}
+
+.languageTrigger:hover {
+  background-color: rgba(100, 255, 218, 0.1);
 }
 
 .dropdownContent {
   position: absolute;
-  top: 2rem;
+  top: 100%;
   right: 0;
-  background-color: #111;
-  padding: 0.5rem 1rem;
+  background-color: #112240;
+  padding: 1rem;
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
-  border: 1px solid #444;
-  border-radius: 4px;
-  z-index: 9999;
+  gap: 0.8rem;
+  border-radius: 6px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  z-index: 1000;
+  min-width: 120px;
 }
 
 .dropdownContent button {
   background: none;
   border: none;
-  color: #fff;
+  color: #ccd6f6;
   text-align: left;
-  font-size: 1rem;
+  font-size: 0.9rem;
   cursor: pointer;
   padding: 0.3rem 0;
-  transition: color 0.3s ease;
+  transition: all 0.3s ease;
 }
 
 .dropdownContent button:hover {
-  color: #00bcd4;
+  color: #64ffda;
 }
 
-
+/* Mobile Menu Button */
 .mobileMenuIcon {
-  display: none;
-  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.6rem;
+  color: #64ffda;
   cursor: pointer;
+  z-index: 1001;
+  padding: 0.5rem;
+  transition: all 0.3s ease;
 }
 
+.mobileMenuIcon:hover {
+  transform: scale(1.1);
+}
+
+/* Mobile Menu */
+.mobileMenuBackdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 999;
+}
 
 .mobileMenu {
   position: fixed;
   top: 0;
   right: 0;
   width: 80%;
+  max-width: 300px;
   height: 100vh;
-  background-color: #111;
+  background-color: #112240;
+  z-index: 1000;
+  padding: 2rem 1.5rem;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-}
-
-.closeIcon {
-  position: absolute;
-  top: 1rem;
-  right: 1rem;
-  font-size: 2rem;
-  cursor: pointer;
+  overflow-y: auto;
 }
 
 .mobileMenuContent {
   display: flex;
   flex-direction: column;
-  gap: 2rem;
-  text-align: center;
+  gap: 1.5rem;
+  flex-grow: 1;
+  margin-top: 3rem;
 }
 
-.mobileMenuContent a {
-  color: #fff;
-  font-size: 1.5rem;
+.mobileNavLink {
+  position: relative;
+  color: #ccd6f6;
   text-decoration: none;
+  font-size: 1.1rem;
+  font-weight: 500;
+  padding: 0.8rem 0;
   transition: color 0.3s ease;
 }
 
-.mobileMenuContent a:hover {
-  color: #ccc;
+.mobileNavLink:hover,
+.mobileNavLink.active {
+  color: #64ffda;
 }
 
+.mobileLinkIndicator {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  height: 2px;
+  background-color: #64ffda;
+}
 
-.mobileLangDropdown {
+.mobileFooter {
+  margin-top: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding-top: 2rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.mobileLanguageDropdown {
   position: relative;
-  cursor: pointer;
-  display: inline-block;
-  margin-top: 1rem;
-}
-
-.mobileLangIcon {
-  font-size: 1.4rem;
-  margin-right: 0.5rem;
 }
 
 .mobileDropdownContent {
-  position: absolute;
-  top: 2rem;
-  left: 50%;
-  transform: translateX(-50%);
-  background-color: #111;
-  padding: 0.5rem 1rem;
+  position: relative;
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
-  border: 1px solid #444;
-  border-radius: 4px;
-  z-index: 9999;
+  gap: 0.8rem;
+  margin-top: 1rem;
+  overflow: hidden;
 }
 
 .mobileDropdownContent button {
   background: none;
   border: none;
-  color: #fff;
+  color: #ccd6f6;
+  text-align: left;
   font-size: 1rem;
   cursor: pointer;
-  padding: 0.3rem 0;
+  padding: 0.5rem 0;
   transition: color 0.3s ease;
 }
 
 .mobileDropdownContent button:hover {
-  color: #00bcd4;
+  color: #64ffda;
 }
-
 
 .mobileSocialLinks {
   display: flex;
   gap: 1.5rem;
-  margin-top: 2rem;
+  justify-content: center;
 }
 
 .mobileSocialLinks a {
-  color: #fff;
+  color: #ccd6f6;
   font-size: 1.5rem;
   transition: color 0.3s ease;
 }
 
 .mobileSocialLinks a:hover {
-  color: #ccc;
+  color: #64ffda;
 }
 
+/* Responsive Adjustments */
+@media (min-width: 768px) {
+  .navbar {
+    padding: 1.5rem 2rem;
+  }
 
-@media (max-width: 768px) {
+  .navbar.scrolled {
+    padding: 0.8rem 2rem;
+  }
+
+  .logoText {
+    font-size: 1.8rem;
+  }
+
   .linksContainer {
-    display: none;
+    gap: 2rem;
   }
+
+  .rightContainer {
+    gap: 2rem;
+  }
+
   .socialLinks {
-    display: none;
+    gap: 1.5rem;
   }
-  .desktopOnly {
-    display: none;
+
+  .socialLinks a {
+    font-size: 1.3rem;
   }
-  .mobileMenuIcon {
-    display: block;
+}
+
+@media (max-width: 480px) {
+  .mobileMenu {
+    width: 85%;
+  }
+
+  .mobileMenuContent {
+    gap: 1.2rem;
+  }
+
+  .mobileNavLink {
+    font-size: 1rem;
+  }
+
+  .mobileFooter {
+    gap: 1.5rem;
+  }
+
+  .mobileSocialLinks a {
+    font-size: 1.3rem;
   }
 }

@@ -5,61 +5,134 @@ import { useTranslation } from "react-i18next";
 
 const Skills = () => {
   const { t } = useTranslation();
-  // Obținem array-ul de abilități din traduceri; asigură-te că ai setat returnObjects: true
   const skillsData = t("skills.items", { returnObjects: true });
+
+  // Animation variants
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2,
+        delayChildren: 0.3,
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 30 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.6,
+        ease: [0.6, -0.05, 0.01, 0.99],
+      },
+    },
+  };
+
+  const titleVariants = {
+    hidden: { opacity: 0, y: -50 },
+    visible: {
+      opacity: 1,
+      y: 0,
+      transition: {
+        duration: 0.8,
+        type: "spring",
+        stiffness: 100,
+      },
+    },
+  };
+
+  const imageVariants = {
+    hidden: { opacity: 0, scale: 0.8, rotate: -5 },
+    visible: {
+      opacity: 1,
+      scale: 1,
+      rotate: 0,
+      transition: {
+        duration: 0.8,
+        ease: "backOut",
+      },
+    },
+    hover: {
+      scale: 1.03,
+      rotate: 1,
+      transition: { duration: 0.3 },
+    },
+  };
 
   return (
     <section id="skills" className={styles.skillsSection}>
+      {/* Animated background elements */}
+      <div className={styles.animatedBackground}></div>
+
       <motion.h2
         className={styles.sectionTitle}
-        initial={{ opacity: 0, y: -50 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 1 }}
+        initial="hidden"
+        animate="visible"
+        variants={titleVariants}
       >
         {t("skills.sectionTitle")}
       </motion.h2>
 
-      <div className={styles.container}>
-        {/* Stânga: Text și Skill Cards */}
-        <motion.div
-          className={styles.leftSide}
-          initial={{ opacity: 0, x: -50 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 1, delay: 0.3 }}
-        >
+      <motion.div
+        className={styles.container}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-100px" }}
+        variants={containerVariants}
+      >
+        {/* Left: Text and Skill Cards */}
+        <div className={styles.leftSide}>
           {skillsData.map((skill, index) => (
-            <div key={index} className={styles.skillItem}>
+            <motion.div
+              key={index}
+              className={styles.skillItem}
+              variants={itemVariants}
+            >
               <motion.div
                 className={styles.skillCard}
-                whileHover={{ scale: 1.05 }}
+                whileHover={{
+                  scale: 1.05,
+                  backgroundColor: "rgba(0, 188, 212, 0.2)",
+                  borderColor: "#00bcd4",
+                  boxShadow: "0 10px 25px rgba(0, 188, 212, 0.3)",
+                }}
+                whileTap={{ scale: 0.95 }}
               >
                 <p className={styles.skillTitle}>{skill.title}</p>
               </motion.div>
-              <p className={styles.description}>{skill.description}</p>
-            </div>
+              <motion.p
+                className={styles.description}
+                whileHover={{
+                  color: "#fff",
+                  x: 5,
+                }}
+              >
+                {skill.description}
+              </motion.p>
+            </motion.div>
           ))}
-        </motion.div>
+        </div>
 
-        {/* Dreapta: Imagine */}
+        {/* Right: Image */}
         <motion.div
           className={styles.rightSide}
-          initial={{ opacity: 0, x: 50 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 1, delay: 0.5 }}
+          variants={imageVariants}
+          whileHover="hover"
         >
-          <motion.div
-            className={styles.laptopContainer}
-            whileHover={{ scale: 1.03, rotate: 1 }}
-            transition={{ duration: 0.3 }}
-          >
+          <div className={styles.laptopContainer}>
             <img
               src="/ui/skills-laptop.png"
               alt="Laptop showcasing skills"
               className={styles.laptopImage}
             />
-          </motion.div>
+            {/* Glow effect */}
+            <div className={styles.laptopGlow}></div>
+          </div>
         </motion.div>
-      </div>
+      </motion.div>
     </section>
   );
 };

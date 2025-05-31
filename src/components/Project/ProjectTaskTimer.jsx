@@ -13,10 +13,17 @@ function ProjectTaskTimer() {
         {/* Left Column: Text and information */}
         <div className={styles.leftColumn}>
           <h1 className={styles.title}>{t("projectTaskTimer.title")}</h1>
-          <p className={styles.description} dangerouslySetInnerHTML={{ __html: t("projectTaskTimer.description") }} />
+          <p
+            className={styles.description}
+            dangerouslySetInnerHTML={{
+              __html: t("projectTaskTimer.description"),
+            }}
+          />
           <div className={styles.listsContainer}>
             <div className={styles.techSection}>
-              <h3 className={styles.sectionTitle}>{t("projectTaskTimer.technologies")}</h3>
+              <h3 className={styles.sectionTitle}>
+                {t("projectTaskTimer.technologies")}
+              </h3>
               <ul className={styles.techList}>
                 <li>
                   <FaReact className={styles.icon} /> React
@@ -33,7 +40,9 @@ function ProjectTaskTimer() {
               </ul>
             </div>
             <div className={styles.featuresSection}>
-              <h3 className={styles.sectionTitle}>{t("projectTaskTimer.features")}</h3>
+              <h3 className={styles.sectionTitle}>
+                {t("projectTaskTimer.features")}
+              </h3>
               <ul className={styles.featuresList}>
                 <li>{t("projectTaskTimer.timer")}</li>
                 <li>{t("projectTaskTimer.categories")}</li>

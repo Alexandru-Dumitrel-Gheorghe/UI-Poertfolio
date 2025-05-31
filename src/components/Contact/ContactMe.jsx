@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useTranslation } from "react-i18next";
 import styles from "./ContactMe.module.css";
+import { motion } from "framer-motion";
 
 function ContactMe() {
   const { t } = useTranslation();
@@ -20,18 +21,20 @@ function ContactMe() {
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
-
-    // Formularul va fi trimis direct către Formspree fără a mai folosi un backend
     const form = e.target;
-
-    // Trimite formularul către Formspree
     form.submit();
   };
 
   return (
-    <section className={styles.contactSection}>
+    <section id="contact" className={styles.contactSection}>
       <div className={styles.mainContent}>
-        <div className={styles.leftSide}>
+        <motion.div
+          className={styles.leftSide}
+          initial={{ opacity: 0, x: -50 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+        >
           <div className={styles.centerText}>
             <h2 className={styles.scriptText}>{t("contact.letsWork")}</h2>
             <h1 className={styles.boldText}>{t("contact.together")}</h1>
@@ -39,22 +42,40 @@ function ContactMe() {
           </div>
 
           <div className={styles.buttonGroup}>
-            <button className={styles.projectButton}>
+            <motion.a
+              href="#projects"
+              className={styles.projectButton}
+              whileHover={{ y: -3 }}
+              whileTap={{ scale: 0.95 }}
+            >
               {t("contact.projects")}
-            </button>
-            <button className={styles.cvButton}>
+            </motion.a>
+            <motion.a
+              href="/resume.pdf" // Update with your actual CV path
+              target="_blank"
+              rel="noopener noreferrer"
+              className={styles.cvButton}
+              whileHover={{ y: -3 }}
+              whileTap={{ scale: 0.95 }}
+            >
               {t("contact.resume")}
-            </button>
+            </motion.a>
           </div>
-        </div>
+        </motion.div>
 
-        <div className={styles.rightSide}>
+        <motion.div
+          className={styles.rightSide}
+          initial={{ opacity: 0, x: 50 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+        >
           <div className={styles.formContainer}>
             <h3 className={styles.formTitle}>{t("contact.contactForm")}</h3>
             <form
               onSubmit={handleFormSubmit}
               className={styles.contactForm}
-              action="https://formspree.io/f/xqaerwpg"  // Endpoint-ul Formspree
+              action="https://formspree.io/f/xqaerwpg"
               method="POST"
             >
               <div className={styles.formGroup}>
@@ -96,12 +117,17 @@ function ContactMe() {
                 />
               </div>
 
-              <button type="submit" className={styles.sendButton}>
+              <motion.button
+                type="submit"
+                className={styles.sendButton}
+                whileHover={{ y: -3 }}
+                whileTap={{ scale: 0.95 }}
+              >
                 {t("contact.send")}
-              </button>
+              </motion.button>
             </form>
           </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

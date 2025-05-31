@@ -1,245 +1,293 @@
 import React, { useState, useEffect } from "react";
 import styles from "./Navbar.module.css";
 import { motion, AnimatePresence } from "framer-motion";
-import {
-  FaBars,
-  FaTimes,
-  FaLinkedin,
-  FaGithub,
-  FaGlobe
-} from "react-icons/fa";
+import { FaBars, FaTimes, FaLinkedin, FaGithub, FaGlobe } from "react-icons/fa";
 import { SiMiro, SiFigma } from "react-icons/si";
 import { Link } from "react-scroll";
 import { useTranslation } from "react-i18next";
 
 const Navbar = () => {
-  const [isOpen, setIsOpen] = useState(false); // Meniu mobil
-  const [isScrolled, setIsScrolled] = useState(false); // Efect scroll pe navbar
-  const [isLangDropdownOpen, setIsLangDropdownOpen] = useState(false); // Dropdown limbă (desktop și mobil)
+  const [isOpen, setIsOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [isLangDropdownOpen, setIsLangDropdownOpen] = useState(false);
+  const [activeLink, setActiveLink] = useState("home");
   const { t, i18n } = useTranslation();
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
 
-  // Efect scroll: schimbă fundalul navbar-ului după 50px scroll
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
+
+      // Update active link based on scroll position
+      const sections = ["home", "about", "skills", "projects", "contact"];
+      for (const section of sections) {
+        const element = document.getElementById(section);
+        if (element) {
+          const rect = element.getBoundingClientRect();
+          if (rect.top <= 100 && rect.bottom >= 100) {
+            setActiveLink(section);
+            break;
+          }
+        }
+      }
     };
+
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+      if (window.innerWidth >= 768 && isOpen) {
+        setIsOpen(false);
+      }
+    };
+
     window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+      window.removeEventListener("resize", handleResize);
+    };
+  }, [isOpen]);
 
-  // Toggle pentru meniul mobil
-  const toggleMenu = () => {
-    setIsOpen(!isOpen);
-  };
+  const toggleMenu = () => setIsOpen(!isOpen);
+  const toggleLangDropdown = () => setIsLangDropdownOpen((prev) => !prev);
 
-  // Toggle pentru dropdown-ul de limbă (desktop și mobil)
-  const toggleLangDropdown = () => {
-    setIsLangDropdownOpen((prev) => !prev);
-  };
-
-  // Schimbă limba și închide dropdown-ul (la desktop sau mobil)
   const changeLanguage = (lng) => {
     i18n.changeLanguage(lng);
     setIsLangDropdownOpen(false);
+    if (isOpen) setIsOpen(false);
   };
+
+  const languages = [
+    { code: "en", name: "English" },
+    { code: "de", name: "Deutsch" },
+    { code: "ro", name: "Română" },
+  ];
 
   return (
     <nav className={`${styles.navbar} ${isScrolled ? styles.scrolled : ""}`}>
       <div className={styles.navContent}>
-        {/* Link-urile de navigare (desktop) */}
-        <div className={styles.linksContainer}>
-          <Link to="home" smooth={true} duration={500} offset={-70}>
-            {t("navbar.home") || "Home"}
-          </Link>
-          <Link to="about" smooth={true} duration={500} offset={-70}>
-            {t("navbar.about") || "About"}
-          </Link>
-          <Link to="skills" smooth={true} duration={500} offset={-70}>
-            {t("navbar.skills") || "Skills"}
-          </Link>
-          <Link to="projects" smooth={true} duration={500} offset={-70}>
-            {t("navbar.projects") || "Projects"}
-          </Link>
-          <Link to="contact" smooth={true} duration={500} offset={-70}>
-            {t("navbar.contact") || "Contact"}
-          </Link>
-        </div>
+        {/* Logo/Brand */}
+        <motion.div
+          className={styles.logo}
+          initial={{ opacity: 0, x: -20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ delay: 0.2 }}
+        >
+          <span className={styles.logoText}>AG</span>
+          <span className={styles.logoDot}></span>
+        </motion.div>
 
-        {/* Zona dreaptă: social links și dropdown limbă (desktop) */}
-        <div className={styles.rightContainer}>
-          <div className={styles.socialLinks}>
-            <a href="https://miro.com" target="_blank" rel="noreferrer">
-              <SiMiro />
-            </a>
-            <a href="https://figma.com" target="_blank" rel="noreferrer">
-              <SiFigma />
-            </a>
-            <a
-              href="https://github.com/Alexandru-Dumitrel-Gheorghe"
-              target="_blank"
-              rel="noreferrer"
-            >
-              <FaGithub />
-            </a>
-            <a
-              href="https://www.linkedin.com/in/alexandru-gheorghe-a19a19314/"
-              target="_blank"
-              rel="noreferrer"
-            >
-              <FaLinkedin />
-            </a>
-          </div>
-
-          {/* Dropdown limbă (doar pe desktop) */}
-          <div className={`${styles.languageDropdown} ${styles.desktopOnly}`}>
-            <FaGlobe
-              className={styles.languageIcon}
-              onClick={toggleLangDropdown}
-            />
-            <AnimatePresence>
-              {isLangDropdownOpen && (
-                <motion.div
-                  className={styles.dropdownContent}
-                  initial={{ opacity: 0, y: -10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -10 }}
-                  transition={{ duration: 0.3 }}
-                >
-                  <button onClick={() => changeLanguage("de")}>
-                    Deutsch
-                  </button>
-                  <button onClick={() => changeLanguage("en")}>
-                    English
-                  </button>
-                  <button onClick={() => changeLanguage("ro")}>
-                    Română
-                  </button>
-                </motion.div>
+        {/* Desktop Navigation */}
+        {!isMobile && (
+          <>
+            <div className={styles.linksContainer}>
+              {["home", "about", "skills", "projects", "contact"].map(
+                (link) => (
+                  <Link
+                    key={link}
+                    to={link}
+                    smooth={true}
+                    duration={500}
+                    offset={-100}
+                    className={`${styles.navLink} ${
+                      activeLink === link ? styles.active : ""
+                    }`}
+                    onSetActive={() => setActiveLink(link)}
+                  >
+                    {t(`navbar.${link}`) ||
+                      link.charAt(0).toUpperCase() + link.slice(1)}
+                    <motion.span
+                      className={styles.linkUnderline}
+                      initial={{ scaleX: 0 }}
+                      animate={{ scaleX: activeLink === link ? 1 : 0 }}
+                      transition={{ duration: 0.3, ease: "easeInOut" }}
+                    />
+                  </Link>
+                )
               )}
-            </AnimatePresence>
-          </div>
-
-          {/* Buton hamburger (doar pe mobil) */}
-          <div className={styles.mobileMenuIcon} onClick={toggleMenu}>
-            <FaBars />
-          </div>
-        </div>
-      </div>
-
-      {/* Meniul mobil (overlay) */}
-      <AnimatePresence>
-        {isOpen && (
-          <motion.div
-            className={styles.mobileMenu}
-            initial={{ clipPath: "circle(0% at 90% 10%)", opacity: 0 }}
-            animate={{ clipPath: "circle(150% at 90% 10%)", opacity: 1 }}
-            exit={{ clipPath: "circle(0% at 90% 10%)", opacity: 0 }}
-            transition={{ duration: 0.5, ease: "easeInOut" }}
-          >
-            <div className={styles.closeIcon} onClick={toggleMenu}>
-              <FaTimes />
             </div>
-            <div className={styles.mobileMenuContent}>
-              <Link
-                onClick={toggleMenu}
-                to="home"
-                smooth={true}
-                duration={500}
-                offset={-70}
-              >
-                {t("navbar.home") || "Home"}
-              </Link>
-              <Link
-                onClick={toggleMenu}
-                to="about"
-                smooth={true}
-                duration={500}
-                offset={-70}
-              >
-                {t("navbar.about") || "About"}
-              </Link>
-              <Link
-                onClick={toggleMenu}
-                to="skills"
-                smooth={true}
-                duration={500}
-                offset={-70}
-              >
-                {t("navbar.skills") || "Skills"}
-              </Link>
-              <Link
-                onClick={toggleMenu}
-                to="projects"
-                smooth={true}
-                duration={500}
-                offset={-70}
-              >
-                {t("navbar.projects") || "Projects"}
-              </Link>
-              <Link
-                onClick={toggleMenu}
-                to="contact"
-                smooth={true}
-                duration={500}
-                offset={-70}
-              >
-                {t("navbar.contact") || "Contact"}
-              </Link>
 
-              {/* Dropdown limbă în meniul mobil */}
-              <div className={styles.mobileLangDropdown}>
-                <FaGlobe
-                  className={styles.mobileLangIcon}
+            {/* Right Section - Desktop */}
+            <div className={styles.rightContainer}>
+              <div className={styles.socialLinks}>
+                {[
+                  { icon: <SiMiro />, url: "https://miro.com" },
+                  { icon: <SiFigma />, url: "https://figma.com" },
+                  {
+                    icon: <FaGithub />,
+                    url: "https://github.com/Alexandru-Dumitrel-Gheorghe",
+                  },
+                  {
+                    icon: <FaLinkedin />,
+                    url: "https://www.linkedin.com/in/alexandru-gheorghe-a19a19314/",
+                  },
+                ].map((social, i) => (
+                  <motion.a
+                    key={i}
+                    href={social.url}
+                    target="_blank"
+                    rel="noreferrer"
+                    whileHover={{ y: -3, color: "#00bcd4" }}
+                    transition={{ type: "spring", stiffness: 300 }}
+                  >
+                    {social.icon}
+                  </motion.a>
+                ))}
+              </div>
+
+              {/* Language Dropdown - Desktop */}
+              <div className={styles.languageDropdown}>
+                <motion.div
+                  className={styles.languageTrigger}
                   onClick={toggleLangDropdown}
-                />
+                  whileHover={{ scale: 1.1 }}
+                >
+                  <FaGlobe />
+                  <span>{i18n.language.toUpperCase()}</span>
+                </motion.div>
+
                 <AnimatePresence>
                   {isLangDropdownOpen && (
                     <motion.div
-                      className={styles.mobileDropdownContent}
+                      className={styles.dropdownContent}
                       initial={{ opacity: 0, y: -10 }}
                       animate={{ opacity: 1, y: 0 }}
                       exit={{ opacity: 0, y: -10 }}
-                      transition={{ duration: 0.3 }}
+                      transition={{ duration: 0.2 }}
                     >
-                      <button onClick={() => { changeLanguage("de"); toggleMenu(); }}>
-                        Deutsch
-                      </button>
-                      <button onClick={() => { changeLanguage("en"); toggleMenu(); }}>
-                        English
-                      </button>
-                      <button onClick={() => { changeLanguage("ro"); toggleMenu(); }}>
-                        Română
-                      </button>
+                      {languages.map((lang) => (
+                        <motion.button
+                          key={lang.code}
+                          onClick={() => changeLanguage(lang.code)}
+                          whileHover={{ x: 5, color: "#00bcd4" }}
+                          transition={{ type: "spring", stiffness: 300 }}
+                        >
+                          {lang.name}
+                        </motion.button>
+                      ))}
                     </motion.div>
                   )}
                 </AnimatePresence>
               </div>
-
-              {/* Social links mobil (opțional) */}
-              <div className={styles.mobileSocialLinks}>
-                <a href="https://miro.com" target="_blank" rel="noreferrer">
-                  <SiMiro />
-                </a>
-                <a href="https://figma.com" target="_blank" rel="noreferrer">
-                  <SiFigma />
-                </a>
-                <a
-                  href="https://github.com/Alexandru-Dumitrel-Gheorghe"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  <FaGithub />
-                </a>
-                <a
-                  href="https://www.linkedin.com/in/alexandru-gheorghe-a19a19314/"
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  <FaLinkedin />
-                </a>
-              </div>
             </div>
+          </>
+        )}
+
+        {/* Mobile Menu Button */}
+        {isMobile && (
+          <motion.div
+            className={styles.mobileMenuIcon}
+            onClick={toggleMenu}
+            whileTap={{ scale: 0.9 }}
+          >
+            {isOpen ? <FaTimes /> : <FaBars />}
           </motion.div>
+        )}
+      </div>
+
+      {/* Mobile Menu */}
+      <AnimatePresence>
+        {isMobile && isOpen && (
+          <>
+            <motion.div
+              className={styles.mobileMenuBackdrop}
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={toggleMenu}
+            />
+
+            <motion.div
+              className={styles.mobileMenu}
+              initial={{ x: "100%" }}
+              animate={{ x: 0 }}
+              exit={{ x: "100%" }}
+              transition={{ type: "spring", damping: 25 }}
+            >
+              <div className={styles.mobileMenuContent}>
+                {["home", "about", "skills", "projects", "contact"].map(
+                  (link) => (
+                    <Link
+                      key={link}
+                      to={link}
+                      smooth={true}
+                      duration={500}
+                      offset={-100}
+                      className={`${styles.mobileNavLink} ${
+                        activeLink === link ? styles.active : ""
+                      }`}
+                      onClick={toggleMenu}
+                      onSetActive={() => setActiveLink(link)}
+                    >
+                      {t(`navbar.${link}`) ||
+                        link.charAt(0).toUpperCase() + link.slice(1)}
+                      {activeLink === link && (
+                        <motion.span
+                          className={styles.mobileLinkIndicator}
+                          layoutId="mobileIndicator"
+                        />
+                      )}
+                    </Link>
+                  )
+                )}
+
+                <div className={styles.mobileFooter}>
+                  <div className={styles.mobileLanguageDropdown}>
+                    <div
+                      className={styles.languageTrigger}
+                      onClick={toggleLangDropdown}
+                    >
+                      <FaGlobe />
+                      <span>{i18n.language.toUpperCase()}</span>
+                    </div>
+
+                    <AnimatePresence>
+                      {isLangDropdownOpen && (
+                        <motion.div
+                          className={styles.mobileDropdownContent}
+                          initial={{ opacity: 0, height: 0 }}
+                          animate={{ opacity: 1, height: "auto" }}
+                          exit={{ opacity: 0, height: 0 }}
+                        >
+                          {languages.map((lang) => (
+                            <button
+                              key={lang.code}
+                              onClick={() => changeLanguage(lang.code)}
+                            >
+                              {lang.name}
+                            </button>
+                          ))}
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
+                  </div>
+
+                  <div className={styles.mobileSocialLinks}>
+                    {[
+                      { icon: <SiMiro />, url: "https://miro.com" },
+                      { icon: <SiFigma />, url: "https://figma.com" },
+                      {
+                        icon: <FaGithub />,
+                        url: "https://github.com/Alexandru-Dumitrel-Gheorghe",
+                      },
+                      {
+                        icon: <FaLinkedin />,
+                        url: "https://www.linkedin.com/in/alexandru-gheorghe-a19a19314/",
+                      },
+                    ].map((social, i) => (
+                      <a
+                        key={i}
+                        href={social.url}
+                        target="_blank"
+                        rel="noreferrer"
+                      >
+                        {social.icon}
+                      </a>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+          </>
         )}
       </AnimatePresence>
     </nav>

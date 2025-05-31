@@ -1,18 +1,18 @@
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
-import { 
-  FaExternalLinkAlt, 
-  FaReact, 
-  FaNodeJs, 
-  FaJs, 
-  FaHtml5, 
-  FaCss3Alt, 
-  FaDatabase, 
+import {
+  FaExternalLinkAlt,
+  FaReact,
+  FaNodeJs,
+  FaJs,
+  FaHtml5,
+  FaCss3Alt,
+  FaDatabase,
   FaGitAlt,
   FaGithub,
   FaStar,
   FaCodeBranch,
-  FaEye
+  FaEye,
 } from "react-icons/fa";
 import { GoCommit } from "react-icons/go";
 import styles from "./GitHubProjects.module.css";
@@ -27,6 +27,26 @@ const GitHubProjects = () => {
   const [commitCounts, setCommitCounts] = useState({});
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
+
+  // Animation variants
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.2,
+        delayChildren: 0.3,
+      },
+    },
+  };
+
+  const cardVariants = {
+    hover: {
+      y: -10,
+      boxShadow: "0 15px 30px rgba(0, 188, 212, 0.3)",
+      backgroundColor: "rgba(255, 255, 255, 0.08)",
+    },
+  };
 
   // Fetch repositories
   useEffect(() => {
@@ -45,7 +65,6 @@ const GitHubProjects = () => {
           throw new Error("Failed to fetch repositories");
         }
         const data = await response.json();
-        // Select the first 3 most recently updated repositories
         setRepos(data.slice(0, 3));
       } catch (err) {
         setError(err.message);
@@ -57,7 +76,7 @@ const GitHubProjects = () => {
     fetchRepos();
   }, []);
 
-  // Fetch commit counts for each repository
+  // Fetch commit counts
   useEffect(() => {
     const fetchCommitCounts = async () => {
       if (repos.length > 0) {
@@ -107,75 +126,129 @@ const GitHubProjects = () => {
     const icons = [];
 
     if (lowerName.includes("react"))
-      icons.push(<FaReact key="react" title="React" />);
+      icons.push(
+        <FaReact key="react" className={styles.techIcon} title="React" />
+      );
     if (lowerName.includes("node"))
-      icons.push(<FaNodeJs key="node" title="Node.js" />);
+      icons.push(
+        <FaNodeJs key="node" className={styles.techIcon} title="Node.js" />
+      );
     if (lowerName.includes("js"))
-      icons.push(<FaJs key="js" title="JavaScript" />);
+      icons.push(
+        <FaJs key="js" className={styles.techIcon} title="JavaScript" />
+      );
     if (lowerName.includes("html"))
-      icons.push(<FaHtml5 key="html" title="HTML5" />);
+      icons.push(
+        <FaHtml5 key="html" className={styles.techIcon} title="HTML5" />
+      );
     if (lowerName.includes("css"))
-      icons.push(<FaCss3Alt key="css" title="CSS3" />);
+      icons.push(
+        <FaCss3Alt key="css" className={styles.techIcon} title="CSS3" />
+      );
     if (lowerName.includes("mongo") || lowerName.includes("db"))
-      icons.push(<FaDatabase key="db" title="MongoDB" />);
+      icons.push(
+        <FaDatabase key="db" className={styles.techIcon} title="MongoDB" />
+      );
     if (lowerName.includes("git"))
-      icons.push(<FaGitAlt key="git" title="Git" />);
+      icons.push(
+        <FaGitAlt key="git" className={styles.techIcon} title="Git" />
+      );
 
     return icons;
   };
 
   if (loading) {
-    return <div className={styles.loader}>{t("githubProjects.loader")}</div>;
+    return (
+      <div className={styles.loaderContainer}>
+        <div className={styles.loader}></div>
+        <p>{t("githubProjects.loader")}</p>
+      </div>
+    );
   }
 
   if (error) {
-    return <div className={styles.error}>{t("githubProjects.error", { error })}</div>;
+    return (
+      <div className={styles.error}>{t("githubProjects.error", { error })}</div>
+    );
   }
 
   return (
     <section id="github-projects" className={styles.githubProjects}>
-      <h2 className={styles.heading}>
+      {/* Animated background */}
+      <div className={styles.animatedBackground}></div>
+
+      <motion.h2
+        className={styles.heading}
+        initial={{ opacity: 0, y: -30 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8 }}
+      >
         <FaGithub className={styles.githubIcon} /> {t("githubProjects.heading")}
-      </h2>
-      <div className={styles.projectGrid}>
+      </motion.h2>
+
+      <motion.div
+        className={styles.projectGrid}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-100px" }}
+        variants={containerVariants}
+      >
         {repos.map((repo) => (
           <motion.div
             key={repo.id}
             className={styles.projectCard}
-            whileHover={{ scale: 1.05 }}
+            variants={cardVariants}
+            whileHover="hover"
           >
             <h3 className={styles.repoName}>{repo.name}</h3>
             <div className={styles.techIcons}>{getTechIcons(repo)}</div>
             <p className={styles.repoDescription}>
-              {repo.description
-                ? repo.description
-                : t("githubProjects.noDescription")}
+              {repo.description || t("githubProjects.noDescription")}
             </p>
-            <a
+            <motion.a
               href={repo.html_url}
               target="_blank"
               rel="noopener noreferrer"
               className={styles.repoLink}
+              whileHover={{ color: "#3cc2c2" }}
             >
               {t("githubProjects.repoLinkText")} <FaExternalLinkAlt />
-            </a>
+            </motion.a>
             <div className={styles.repoExtra}>
-              <div className={styles.repoStat}>
-                <FaStar title="Stars" /> {repo.stargazers_count}
-              </div>
-              <div className={styles.repoStat}>
-                <FaCodeBranch title="Forks" /> {repo.forks_count}
-              </div>
-              <div className={styles.repoStat}>
-                <FaEye title="Watchers" /> {repo.watchers_count}
-              </div>
-              <div className={styles.repoStat}>
-                <GoCommit title="Commits" /> {commitCounts[repo.id] || 0}
-              </div>
+              {[
+                {
+                  icon: <FaStar />,
+                  value: repo.stargazers_count,
+                  title: "Stars",
+                },
+                {
+                  icon: <FaCodeBranch />,
+                  value: repo.forks_count,
+                  title: "Forks",
+                },
+                {
+                  icon: <FaEye />,
+                  value: repo.watchers_count,
+                  title: "Watchers",
+                },
+                {
+                  icon: <GoCommit />,
+                  value: commitCounts[repo.id] || 0,
+                  title: "Commits",
+                },
+              ].map((stat, index) => (
+                <motion.div
+                  key={index}
+                  className={styles.repoStat}
+                  whileHover={{ scale: 1.1 }}
+                >
+                  {stat.icon} {stat.value}
+                </motion.div>
+              ))}
             </div>
           </motion.div>
         ))}
-      </div>
+      </motion.div>
     </section>
   );
 };
